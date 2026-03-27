@@ -9,14 +9,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&family=Mitr:wght@300;400;500&family=Special+Elite&display=swap" rel="stylesheet">
 <style>
 :root {
---bg-paper: #fff0f6; /* ปรับโทนสดใสอมชมพู */
+--bg-paper: #fff9e6; /* พื้นหลังเหลืองอ่อนนวลๆ */
 --black: #000000;
 --white: #ffffff;
---pink-bright: #ff5ebc;
+--pink-bright: #ff77bc; /* ชมพูสดใส */
 --blue-bright: #3ea6ff;
---yellow-bright: #ffde00;
+--yellow-bright: #ffe135; /* เหลืองสว่าง */
 --purple-bright: #a855f7;
---grid-line: rgba(0, 0, 0, 0.08);
+--grid-line: rgba(255, 119, 188, 0.1); /* ปรับเส้นกริดเป็นสีชมพูจางๆ */
 }
 * {
 box-sizing: border-box;
@@ -77,15 +77,11 @@ border: 3px solid var(--black);
 text-transform: uppercase;
 box-shadow: 3px 3px 0 var(--black);
 }
-.char-box:nth-child(odd) { transform: rotate(-3deg); }
-.char-box:nth-child(even) { transform: rotate(3deg); }
+/* ปรับสีตัวอักษรใน Header เป็น ชมพู-เหลือง สลับกัน */
+.char-box:nth-child(odd) { transform: rotate(-3deg); background: var(--pink-bright); color: white; }
+.char-box:nth-child(even) { transform: rotate(3deg); background: var(--yellow-bright); color: black; }
 .char-box:nth-child(1) { background: var(--black); color: var(--white); }
-.char-box:nth-child(2) { background: var(--blue-bright); }
-.char-box:nth-child(3) { background: var(--white); }
-.char-box:nth-child(4) { background: var(--pink-bright); color: var(--white); }
-.char-box:nth-child(5) { background: var(--yellow-bright); }
-.char-box:nth-child(6) { background: var(--purple-bright); color: var(--white); }
-.char-box:nth-child(7) { background: var(--white); }
+
 .sub-header {
 font-family: 'Special Elite', cursive;
 font-size: 0.85rem;
@@ -105,7 +101,7 @@ margin-top: 25px;
 padding: 15px;
 background: var(--white);
 border: 3px solid var(--black);
-box-shadow: 10px 10px 0px rgba(0,0,0,0.1);
+box-shadow: 10px 10px 0px var(--pink-bright); /* เงาสีชมพู */
 position: relative;
 }
 .grid-layout::after {
@@ -117,7 +113,7 @@ transform: translateX(-50%);
 width: 2px;
 height: 100%;
 background: var(--black);
-opacity: 0.2;
+opacity: 0.1;
 z-index: 1;
 }
 .item-card {
@@ -144,7 +140,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 margin-bottom: 8px;
-box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+box-shadow: 4px 4px 0 rgba(255, 119, 188, 0.2);
 padding: 5px;
 }
 .date-tag {
@@ -165,9 +161,14 @@ font-size: 1.1rem;
 text-transform: uppercase;
 }
 .card-desc { font-size: 0.75rem; opacity: 0.8; margin-top: 2px; }
+
+/* การเน้นสีชมพูและเหลือง */
+.item-card.yellow { background: var(--yellow-bright); }
+.item-card.pink { background: var(--pink-bright); color: white; }
+
 .item-card.featured {
 grid-column: 1 / -1;
-background: var(--blue-bright);
+background: var(--pink-bright); /* เปลี่ยนจากน้ำเงินเป็นชมพู */
 color: var(--white);
 flex-direction: row;
 text-align: center;
@@ -179,20 +180,19 @@ align-items: center;
 .featured .sticker-icon {
 width: 65px; height: 65px;
 margin-bottom: 0;
-background: white;
-color: var(--blue-bright);
+background: var(--yellow-bright);
+color: var(--black);
 flex-shrink: 0;
 }
 .featured .card-label { font-size: 1.6rem; line-height: 1.1; }
-.item-card.yellow { background: var(--yellow-bright); }
-.item-card.pink { background: var(--pink-bright); color: white; }
+
 .rules-section {
 margin-top: 45px;
-background: #fff8e1;
+background: #fff;
 border: 3px solid var(--black);
 padding: 35px 20px 30px;
 position: relative;
-box-shadow: 8px 8px 0 var(--black);
+box-shadow: 8px 8px 0 var(--yellow-bright);
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -251,14 +251,17 @@ border-radius: 12px;
 display: flex;
 align-items: center;
 justify-content: center;
-box-shadow: 4px 4px 0 var(--black);
+box-shadow: 4px 4px 0 var(--pink-bright);
 transition: 0.2s;
 }
+
+/* Modal Styles */
 .modal-overlay {
 display: none;
 position: fixed;
 top: 0; left: 0; width: 100%; height: 100%;
-background: rgba(0,0,0,0.8);
+background: rgba(0,0,0,0.6);
+backdrop-filter: blur(2px);
 z-index: 2000;
 align-items: center; justify-content: center;
 padding: 20px;
@@ -271,7 +274,7 @@ padding: 25px;
 width: 100%;
 max-width: 420px;
 position: relative;
-box-shadow: 12px 12px 0 var(--yellow-bright);
+box-shadow: 12px 12px 0 var(--pink-bright);
 max-height: 85vh;
 overflow-y: auto;
 }
@@ -290,7 +293,7 @@ gap: 8px;
 }
 .link-btn {
 display: block;
-background: #f8f9fa;
+background: #fff9e6;
 border: 2px solid var(--black);
 padding: 10px;
 text-decoration: none;
@@ -321,8 +324,8 @@ left: 0;
 color: var(--pink-bright);
 }
 .note-box {
-background: #fff8e1;
-border: 2px dashed #000;
+background: #fff9e6;
+border: 2px dashed var(--pink-bright);
 padding: 10px;
 font-size: 0.8rem;
 margin-top: 15px;
@@ -345,9 +348,14 @@ justify-content: center;
 </style>
 </head>
 <body>
+<!-- ตกแต่งพื้นหลังสลับสี -->
 <svg class="bg-deco" style="top:10%; left:5%;" width="40" height="40" viewBox="0 0 24 24" fill="var(--yellow-bright)" stroke="black" stroke-width="1.5">
 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
 </svg>
+<svg class="bg-deco" style="bottom:15%; right:8%;" width="35" height="35" viewBox="0 0 24 24" fill="var(--pink-bright)" stroke="black" stroke-width="1.5">
+<circle cx="12" cy="12" r="10"/>
+</svg>
+
 <div class="container">
 <header>
 <div class="scheduler-title">
@@ -364,7 +372,7 @@ justify-content: center;
 <main>
 <div class="grid-layout">
 <!-- Design Card -->
-<div class="item-card yellow" onclick="openModal('designModal')">
+<div class="item-card pink" onclick="openModal('designModal')">
 <div class="date-tag">ART WORK</div>
 <div class="sticker-icon">
 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
@@ -373,7 +381,7 @@ justify-content: center;
 <div class="card-desc">ป้าย ลายน้ำ โลโก้</div>
 </div>
 <!-- Sheet Card -->
-<div class="item-card pink" onclick="openModal('sheetModal')">
+<div class="item-card yellow" onclick="openModal('sheetModal')">
 <div class="date-tag">SYSTEM</div>
 <div class="sticker-icon">
 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
@@ -383,9 +391,9 @@ justify-content: center;
 </div>
 <!-- Featured: Website -->
 <div class="item-card featured" onclick="openModal('webModal')">
-<div class="date-tag" style="background:var(--pink-bright); left: 50%; transform: translateX(-50%) rotate(-3deg);">RECOMMENDED</div>
+<div class="date-tag" style="background:var(--yellow-bright); color: black; left: 50%; transform: translateX(-50%) rotate(-3deg);">RECOMMENDED</div>
 <div class="sticker-icon">
-<svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+<svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
 </div>
 <div>
 <div class="card-label">Website</div>
@@ -393,7 +401,7 @@ justify-content: center;
 </div>
 </div>
 <!-- Portfolio -->
-<div class="item-card" onclick="openModal('portfolioModal')">
+<div class="item-card yellow" onclick="openModal('portfolioModal')">
 <div class="date-tag">PORTFOLIO</div>
 <div class="sticker-icon">
 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
@@ -402,7 +410,7 @@ justify-content: center;
 <div class="card-desc">คลิกเพื่อดูผลงาน</div>
 </div>
 <!-- Order Step -->
-<div class="item-card yellow" onclick="openModal('orderModal')">
+<div class="item-card pink" onclick="openModal('orderModal')">
 <div class="date-tag">HOW TO</div>
 <div class="sticker-icon">
 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
@@ -438,7 +446,7 @@ Thank you for choosing koyangi! 💖
 <div class="modal-overlay" id="designModal" onclick="if(event.target==this) closeModal('designModal')">
 <div class="modal-content">
 <button class="close-btn" onclick="closeModal('designModal')">×</button>
-<h2 style="border-bottom:4px solid black; margin-bottom:15px; font-family:'Fredoka';">🎨 Graphic Design</h2>
+<h2 style="border-bottom:4px solid var(--pink-bright); margin-bottom:15px; font-family:'Fredoka';">🎨 Graphic Design</h2>
 <ul class="feature-list">
 <li>รับออกแบบป้ายสินค้า / ป้ายบัญชี</li>
 <li>ออกแบบลายน้ำ (Watermark)</li>
@@ -452,7 +460,7 @@ Thank you for choosing koyangi! 💖
 <div class="modal-overlay" id="sheetModal" onclick="if(event.target==this) closeModal('sheetModal')">
 <div class="modal-content">
 <button class="close-btn" onclick="closeModal('sheetModal')">×</button>
-<h2 style="border-bottom:4px solid black; margin-bottom:15px; font-family:'Fredoka';">📊 Google Sheet</h2>
+<h2 style="border-bottom:4px solid var(--pink-bright); margin-bottom:15px; font-family:'Fredoka';">📊 Google Sheet</h2>
 <p style="font-weight: bold; color: var(--pink-bright);">จัดการระบบร้านค้าให้เป็นเรื่องง่าย!</p>
 <ul class="feature-list">
 <li>ระบบคำนวณยอดขายอัตโนมัติ</li>
@@ -466,7 +474,7 @@ Thank you for choosing koyangi! 💖
 <div class="modal-overlay" id="webModal" onclick="if(event.target==this) closeModal('webModal')">
 <div class="modal-content">
 <button class="close-btn" onclick="closeModal('webModal')">×</button>
-<h2 style="border-bottom:4px solid black; margin-bottom:15px; font-family:'Fredoka';">🖥 Website</h2>
+<h2 style="border-bottom:4px solid var(--pink-bright); margin-bottom:15px; font-family:'Fredoka';">🖥 Website</h2>
 <ul class="feature-list">
 <li>ออกแบบเว็บไซต์สไตล์ Scrapbook</li>
 <li>รองรับการแสดงผลบนมือถือ</li>
@@ -479,7 +487,7 @@ Thank you for choosing koyangi! 💖
 <div class="modal-overlay" id="portfolioModal" onclick="if(event.target==this) closeModal('portfolioModal')">
 <div class="modal-content">
 <button class="close-btn" onclick="closeModal('portfolioModal')">×</button>
-<h2 style="border-bottom:4px solid black; margin-bottom:15px; font-family:'Fredoka';">⭐ Portfolio</h2>
+<h2 style="border-bottom:4px solid var(--pink-bright); margin-bottom:15px; font-family:'Fredoka';">⭐ Portfolio</h2>
 <div class="link-list">
 <a href="https://julie-vwb.github.io/pinkjulie-land/" target="_blank" class="link-btn">Pinkjulie Land</a>
 <a href="https://julie-vwb.github.io/mahatep-shop/" target="_blank" class="link-btn">Mahatep Shop</a>
@@ -497,7 +505,7 @@ Thank you for choosing koyangi! 💖
 <div class="modal-overlay" id="orderModal" onclick="if(event.target==this) closeModal('orderModal')">
 <div class="modal-content">
 <button class="close-btn" onclick="closeModal('orderModal')">×</button>
-<h2 style="border-bottom:4px solid black; margin-bottom:15px; font-family:'Fredoka';">📋 Order Steps</h2>
+<h2 style="border-bottom:4px solid var(--pink-bright); margin-bottom:15px; font-family:'Fredoka';">📋 Order Steps</h2>
 <div class="note-box">
 <b>ขั้นตอนการสั่ง:</b><br>
 1. กรอกฟอร์ม รายละเอียดร้านค้า<br>
