@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>koyangi - Creative Design & System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&family=Mitr:wght@300;400;500&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+:root {
+--bg-paper: #fff0f6; /* ปรับโทนสดใสอมชมพู */
+--black: #000000;
+--white: #ffffff;
+--pink-bright: #ff5ebc;
+--blue-bright: #3ea6ff;
+--yellow-bright: #ffde00;
+--purple-bright: #a855f7;
+--grid-line: rgba(0, 0, 0, 0.08);
+}
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+-webkit-tap-highlight-color: transparent;
+}
+body {
+font-family: 'Mitr', sans-serif;
+background-color: var(--bg-paper);
+background-image: linear-gradient(var(--grid-line) 1px, transparent 1px);
+background-size: 100% 30px;
+color: var(--black);
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding-bottom: 60px;
+overflow-x: hidden;
+position: relative;
+}
+.bg-deco {
+position: absolute;
+z-index: -1;
+pointer-events: none;
+opacity: 0.6;
+filter: drop-shadow(2px 2px 0px white);
+}
+.container {
+width: 100%;
+max-width: 480px;
+position: relative;
+padding: 0 15px;
+z-index: 10;
+}
+header {
+width: 100%;
+padding: 40px 0 20px;
+text-align: center;
+}
+.scheduler-title {
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 4px;
+margin-bottom: 15px;
+}
+.char-box {
+font-family: 'Fredoka', sans-serif;
+font-weight: 700;
+font-size: 1.8rem;
+width: 42px;
+height: 52px;
+display: flex;
+align-items: center;
+justify-content: center;
+border: 3px solid var(--black);
+text-transform: uppercase;
+box-shadow: 3px 3px 0 var(--black);
+}
+.char-box:nth-child(odd) { transform: rotate(-3deg); }
+.char-box:nth-child(even) { transform: rotate(3deg); }
+.char-box:nth-child(1) { background: var(--black); color: var(--white); }
+.char-box:nth-child(2) { background: var(--blue-bright); }
+.char-box:nth-child(3) { background: var(--white); }
+.char-box:nth-child(4) { background: var(--pink-bright); color: var(--white); }
+.char-box:nth-child(5) { background: var(--yellow-bright); }
+.char-box:nth-child(6) { background: var(--purple-bright); color: var(--white); }
+.char-box:nth-child(7) { background: var(--white); }
+.sub-header {
+font-family: 'Special Elite', cursive;
+font-size: 0.85rem;
+font-weight: bold;
+letter-spacing: 1px;
+background: var(--white);
+display: inline-block;
+padding: 2px 10px;
+border: 2px solid var(--black);
+transform: rotate(-1deg);
+}
+.grid-layout {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 15px;
+margin-top: 25px;
+padding: 15px;
+background: var(--white);
+border: 3px solid var(--black);
+box-shadow: 10px 10px 0px rgba(0,0,0,0.1);
+position: relative;
+}
+.grid-layout::after {
+content: '';
+position: absolute;
+top: 0;
+left: 50%;
+transform: translateX(-50%);
+width: 2px;
+height: 100%;
+background: var(--black);
+opacity: 0.2;
+z-index: 1;
+}
+.item-card {
+border: 3px solid var(--black);
+padding: 20px 10px;
+background: var(--white);
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+cursor: pointer;
+position: relative;
+z-index: 2;
+transition: transform 0.1s;
+}
+.item-card:active { transform: scale(0.95); }
+.sticker-icon {
+background: white;
+border: 3px solid var(--black);
+border-radius: 50%;
+width: 55px;
+height: 55px;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-bottom: 8px;
+box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+padding: 5px;
+}
+.date-tag {
+position: absolute;
+top: -10px; left: -5px;
+background: var(--black);
+color: var(--white);
+padding: 2px 8px;
+font-size: 0.65rem;
+font-weight: 700;
+transform: rotate(-5deg);
+z-index: 5;
+}
+.card-label {
+font-family: 'Fredoka', sans-serif;
+font-weight: 700;
+font-size: 1.1rem;
+text-transform: uppercase;
+}
+.card-desc { font-size: 0.75rem; opacity: 0.8; margin-top: 2px; }
+.item-card.featured {
+grid-column: 1 / -1;
+background: var(--blue-bright);
+color: var(--white);
+flex-direction: row;
+text-align: center;
+padding: 20px;
+gap: 20px;
+justify-content: center;
+align-items: center;
+}
+.featured .sticker-icon {
+width: 65px; height: 65px;
+margin-bottom: 0;
+background: white;
+color: var(--blue-bright);
+flex-shrink: 0;
+}
+.featured .card-label { font-size: 1.6rem; line-height: 1.1; }
+.item-card.yellow { background: var(--yellow-bright); }
+.item-card.pink { background: var(--pink-bright); color: white; }
+.rules-section {
+margin-top: 45px;
+background: #fff8e1;
+border: 3px solid var(--black);
+padding: 35px 20px 30px;
+position: relative;
+box-shadow: 8px 8px 0 var(--black);
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+}
+.tape-deco {
+position: absolute;
+top: -18px;
+left: 50%;
+transform: translateX(-50%) rotate(1deg);
+background: var(--pink-bright);
+color: white;
+padding: 6px 30px;
+font-weight: bold;
+border: 2px dashed white;
+outline: 3px solid var(--black);
+white-space: nowrap;
+z-index: 10;
+}
+.rules-content {
+line-height: 1.8;
+width: 100%;
+}
+.thank-you-note {
+margin-top: 50px;
+background: var(--white);
+border: 2px solid var(--black);
+padding: 20px;
+width: 100%;
+text-align: center;
+position: relative;
+transform: rotate(1deg);
+}
+.thank-you-note::before {
+content: 'THANK YOU!';
+position: absolute;
+top: -15px; left: 50%;
+transform: translateX(-50%);
+background: var(--yellow-bright);
+border: 2px solid var(--black);
+padding: 2px 10px;
+font-weight: bold;
+font-size: 0.8rem;
+}
+.footer-social {
+margin-top: 30px;
+display: flex;
+justify-content: center;
+gap: 20px;
+}
+.social-sticker {
+width: 55px; height: 55px;
+background: white;
+border: 3px solid var(--black);
+border-radius: 12px;
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow: 4px 4px 0 var(--black);
+transition: 0.2s;
+}
+.modal-overlay {
+display: none;
+position: fixed;
+top: 0; left: 0; width: 100%; height: 100%;
+background: rgba(0,0,0,0.8);
+z-index: 2000;
+align-items: center; justify-content: center;
+padding: 20px;
+}
+.modal-overlay.active { display: flex; }
+.modal-content {
+background: white;
+border: 5px solid var(--black);
+padding: 25px;
+width: 100%;
+max-width: 420px;
+position: relative;
+box-shadow: 12px 12px 0 var(--yellow-bright);
+max-height: 85vh;
+overflow-y: auto;
+}
+.price-row {
+display: flex;
+justify-content: space-between;
+border-bottom: 2px dotted #eee;
+padding: 8px 0;
+font-size: 0.95rem;
+}
+.price-val { font-weight: bold; color: var(--pink-bright); }
+.link-list {
+margin-top: 15px;
+display: grid;
+gap: 8px;
+}
+.link-btn {
+display: block;
+background: #f8f9fa;
+border: 2px solid var(--black);
+padding: 10px;
+text-decoration: none;
+color: black;
+font-size: 0.85rem;
+font-weight: 500;
+border-radius: 8px;
+transition: 0.2s;
+text-align: center;
+}
+.link-btn:hover { background: var(--yellow-bright); }
+.feature-list {
+list-style: none;
+margin: 10px 0;
+}
+.feature-list li {
+position: relative;
+padding-left: 25px;
+margin-bottom: 6px;
+font-size: 0.85rem;
+line-height: 1.5;
+text-align: left;
+}
+.feature-list li::before {
+content: '✿';
+position: absolute;
+left: 0;
+color: var(--pink-bright);
+}
+.note-box {
+background: #fff8e1;
+border: 2px dashed #000;
+padding: 10px;
+font-size: 0.8rem;
+margin-top: 15px;
+text-align: left;
+}
+.close-btn {
+position: absolute;
+top: 10px; right: 10px;
+background: var(--black);
+color: white;
+border: none;
+width: 30px; height: 30px;
+border-radius: 50%;
+cursor: pointer;
+font-weight: bold;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+</style>
+</head>
+<body>
+<svg class="bg-deco" style="top:10%; left:5%;" width="40" height="40" viewBox="0 0 24 24" fill="var(--yellow-bright)" stroke="black" stroke-width="1.5">
+<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+</svg>
+<div class="container">
+<header>
+<div class="scheduler-title">
+<span class="char-box">k</span>
+<span class="char-box">o</span>
+<span class="char-box">y</span>
+<span class="char-box">a</span>
+<span class="char-box">n</span>
+<span class="char-box">g</span>
+<span class="char-box">i</span>
+</div>
+</header>
+<div class="sub-header">DESIGN • GOOGLE SHEET • WEBSITE</div>
+<main>
+<div class="grid-layout">
+<!-- Design Card -->
+<div class="item-card yellow" onclick="openModal('designModal')">
+<div class="date-tag">ART WORK</div>
+<div class="sticker-icon">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+</div>
+<div class="card-label">Graphic Design</div>
+<div class="card-desc">ป้าย ลายน้ำ โลโก้</div>
+</div>
+<!-- Sheet Card -->
+<div class="item-card pink" onclick="openModal('sheetModal')">
+<div class="date-tag">SYSTEM</div>
+<div class="sticker-icon">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+</div>
+<div class="card-label">Google Sheet</div>
+<div class="card-desc">จัดการระบบร้านค้า</div>
+</div>
+<!-- Featured: Website -->
+<div class="item-card featured" onclick="openModal('webModal')">
+<div class="date-tag" style="background:var(--pink-bright); left: 50%; transform: translateX(-50%) rotate(-3deg);">RECOMMENDED</div>
+<div class="sticker-icon">
+<svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+</div>
+<div>
+<div class="card-label">Website</div>
+<div class="card-desc" style="color:white; font-weight:500;">ออกแบบเว็บสวยงาม</div>
+</div>
+</div>
+<!-- Portfolio -->
+<div class="item-card" onclick="openModal('portfolioModal')">
+<div class="date-tag">PORTFOLIO</div>
+<div class="sticker-icon">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+</div>
+<div class="card-label">ตัวอย่างงาน</div>
+<div class="card-desc">คลิกเพื่อดูผลงาน</div>
+</div>
+<!-- Order Step -->
+<div class="item-card yellow" onclick="openModal('orderModal')">
+<div class="date-tag">HOW TO</div>
+<div class="sticker-icon">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+</div>
+<div class="card-label">ขั้นตอนการสั่ง</div>
+<div class="card-desc">และเงื่อนไขต่างๆ</div>
+</div>
+</div>
+<!-- Rules Section -->
+<section class="rules-section">
+<div class="tape-deco">📍 กฎของร้าน 📍</div>
+<div class="rules-content">
+<p style="font-size: 0.85rem;">• โอนเงินแล้วไม่คืนเงินทุกกรณี</p>
+<p style="font-size: 0.85rem;">• ยกเลิกงานหลังส่งบรีฟ (เริ่มงานแล้ว) คืนเงิน 50%</p>
+<p style="font-size: 0.85rem;">• ยกเลิกหลังเช็คงาน = ไม่คืนเงินและส่งงานปกติ</p>
+<p style="font-size: 0.85rem; margin-top:5px; color: var(--pink-bright); font-weight: bold;">คิวงาน 4-8 ชม. (งานเร่ง *2 ของราคา)</p>
+</div>
+</section>
+<div class="thank-you-note">
+<p style="font-family: 'Special Elite', cursive; font-size: 1.1rem; letter-spacing: 1px;">
+Thank you for choosing koyangi! 💖
+</p>
+</div>
+<div class="footer-social">
+<a href="https://www.facebook.com/profile.php?id=61554192600355" target="_blank" class="social-sticker"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+<a href="https://line.me/ti/p/LfBtdhlrVa" target="_blank" class="social-sticker"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+<a href="https://www.instagram.com/k0yangi_ii?igsh=ZDBnemRmNmI5amcy&utm_source=qr" target="_blank" class="social-sticker"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+</div>
+</main>
+</div>
+
+<!-- Modals -->
+<div class="modal-overlay" id="designModal" onclick="if(event.target==this) closeModal('designModal')">
+<div class="modal-content">
+<button class="close-btn" onclick="closeModal('designModal')">×</button>
+<h2 style="border-bottom:4px solid black; margin-bottom:15px; font-family:'Fredoka';">🎨 Graphic Design</h2>
+<ul class="feature-list">
+<li>รับออกแบบป้ายสินค้า / ป้ายบัญชี</li>
+<li>ออกแบบลายน้ำ (Watermark)</li>
+<li>ออกแบบโลโก้ร้านค้า</li>
+<li>สไตล์งานตามบรีฟ (เน้นสดใส/น่ารัก)</li>
+</ul>
+<p style="font-size: 0.8rem; color: #666;">*ราคาสอบถามเพิ่มเติมทางแชท</p>
+</div>
+</div>
+
+<div class="modal-overlay" id="sheetModal" onclick="if(event.target==this) closeModal('sheetModal')">
+<div class="modal-content">
+<button class="close-btn" onclick="closeModal('sheetModal')">×</button>
+<h2 style="border-bottom:4px solid black; margin-bottom:15px; font-family:'Fredoka';">📊 Google Sheet</h2>
+<p style="font-weight: bold; color: var(--pink-bright);">จัดการระบบร้านค้าให้เป็นเรื่องง่าย!</p>
+<ul class="feature-list">
+<li>ระบบคำนวณยอดขายอัตโนมัติ</li>
+<li>ระบบเช็คสต็อกสินค้า</li>
+<li>สรุปกำไร-ขาดทุน รายวัน/เดือน</li>
+<li>ปรับแต่งสีสันและหน้าตาให้ใช้งานง่าย</li>
+</ul>
+</div>
+</div>
+
+<div class="modal-overlay" id="webModal" onclick="if(event.target==this) closeModal('webModal')">
+<div class="modal-content">
+<button class="close-btn" onclick="closeModal('webModal')">×</button>
+<h2 style="border-bottom:4px solid black; margin-bottom:15px; font-family:'Fredoka';">🖥 Website</h2>
+<ul class="feature-list">
+<li>ออกแบบเว็บไซต์สไตล์ Scrapbook</li>
+<li>รองรับการแสดงผลบนมือถือ</li>
+<li>ใส่ข้อมูลร้าน ลิงก์โซเชียล และคิวงานครบถ้วน</li>
+<li>เริ่มต้นเพียงหลักร้อย!</li>
+</ul>
+</div>
+</div>
+
+<div class="modal-overlay" id="portfolioModal" onclick="if(event.target==this) closeModal('portfolioModal')">
+<div class="modal-content">
+<button class="close-btn" onclick="closeModal('portfolioModal')">×</button>
+<h2 style="border-bottom:4px solid black; margin-bottom:15px; font-family:'Fredoka';">⭐ Portfolio</h2>
+<div class="link-list">
+<a href="https://julie-vwb.github.io/pinkjulie-land/" target="_blank" class="link-btn">Pinkjulie Land</a>
+<a href="https://julie-vwb.github.io/mahatep-shop/" target="_blank" class="link-btn">Mahatep Shop</a>
+<a href="https://julie-vwb.github.io/cxllmestore-shop/" target="_blank" class="link-btn">Cxllmestore Shop</a>
+<a href="https://julie-vwb.github.io/cooper-shop/" target="_blank" class="link-btn">Cooper Shop</a>
+<a href="https://julie-vwb.github.io/babybear-design/" target="_blank" class="link-btn">Babybear Design</a>
+<a href="https://julie-vwb.github.io/tanewcutie-design/" target="_blank" class="link-btn">Tanewcutie Design</a>
+<a href="https://julie-vwb.github.io/meow-font/" target="_blank" class="link-btn">Meow Font</a>
+<a href="https://julie-vwb.github.io/waray-design/" target="_blank" class="link-btn">Waray Design</a>
+<a href="https://julie-vwb.github.io/luna-webstudio/" target="_blank" class="link-btn">Luna Webstudio</a>
+</div>
+</div>
+</div>
+
+<div class="modal-overlay" id="orderModal" onclick="if(event.target==this) closeModal('orderModal')">
+<div class="modal-content">
+<button class="close-btn" onclick="closeModal('orderModal')">×</button>
+<h2 style="border-bottom:4px solid black; margin-bottom:15px; font-family:'Fredoka';">📋 Order Steps</h2>
+<div class="note-box">
+<b>ขั้นตอนการสั่ง:</b><br>
+1. กรอกฟอร์ม รายละเอียดร้านค้า<br>
+2. ส่งลิงก์เรฟ/ตัวอย่างงาน (และโลโก้ถ้ามี)<br>
+3. ตรวจเช็คงาน แจ้งยอด และชำระเงิน<br>
+4. รอรับลิงก์งานได้เลยค่า!
+</div>
+<p style="font-size: 0.8rem; margin-top: 10px;">*รองาน 4-8 ชั่วโมง ขึ้นอยู่กับคิว</p>
+</div>
+</div>
+
+<script>
+function openModal(id) {
+document.getElementById(id).classList.add('active');
+document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+document.getElementById(id).classList.remove('active');
+document.body.style.overflow = 'auto';
+}
+</script>
+</body>
+</html>
