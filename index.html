@@ -17,206 +17,206 @@
 .animate-marquee { display: inline-block; white-space: nowrap; animation: marquee 20s linear infinite; }
 .hide-scrollbar::-webkit-scrollbar { display: none; }
 .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-/* 🌌 Gaming Cyber Grid Background */
+/* 🌸 Bright Pattern Background */
 @keyframes pan-grid { 0% { transform: translateY(0); } 100% { transform: translateY(30px); } }
-.cyber-grid-bg { background-image: linear-gradient(rgba(236, 72, 153, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(236, 72, 153, 0.1) 1px, transparent 1px); background-size: 30px 30px; animation: pan-grid 4s linear infinite; }
-/* ✨ Floating Gaming Particles */
+.cyber-grid-bg { background-image: linear-gradient(rgba(255, 182, 193, 0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 182, 193, 0.4) 1px, transparent 1px); background-size: 30px 30px; animation: pan-grid 4s linear infinite; }
+/* ✨ Floating Bright Particles */
 @keyframes float-particle { 0% { transform: translateY(0) scale(1); opacity: 0; } 50% { opacity: 0.8; } 100% { transform: translateY(-100px) scale(1.5); opacity: 0; } }
-.particle { position: absolute; background: #fff; border-radius: 50%; animation: float-particle 3s ease-in infinite; }
+.particle { position: absolute; background: #FFB6C1; border-radius: 50%; animation: float-particle 3s ease-in infinite; }
 /* ⏳ Slower, Smoother Loading Bar */
 @keyframes slide-smooth { 0% { background-position: 0 0; } 100% { background-position: 120px 0; } }
-.loading-bar-smooth { background: repeating-linear-gradient(90deg, #ff85b2 0px, #f472b6 30px, #ec4899 60px, #f472b6 90px, #ff85b2 120px); background-size: 120px 100%; animation: slide-smooth 2.5s linear infinite; }
-/* White Outline Text Effect */
-.text-stroke-white { -webkit-text-stroke: 1.5px #ffffff; color: #ff85b2; text-shadow: 0 0 15px rgba(255, 133, 178, 0.8), 0 0 30px rgba(255, 133, 178, 0.5); }
+.loading-bar-smooth { background: repeating-linear-gradient(90deg, #ffb6c1 0px, #ff85b2 30px, #f472b6 60px, #ff85b2 90px, #ffb6c1 120px); background-size: 120px 100%; animation: slide-smooth 2.5s linear infinite; }
+/* Pink Outline Text Effect */
+.text-stroke-pink { -webkit-text-stroke: 1.5px #ff4d94; color: #ffffff; text-shadow: 0 0 10px rgba(255, 77, 148, 0.3); }
 .icon-fill-current { fill: currentColor; }
 </style>
 </head>
-<body class="bg-[#0f0814] text-white flex justify-center relative overflow-x-hidden min-h-screen pb-20">
+<body class="bg-[#fff5f7] text-[#5d3a4a] flex justify-center relative overflow-x-hidden min-h-screen pb-20">
 <!-- 📱 Mobile Container -->
-<div class="w-full max-w-[430px] bg-[#140b19] shadow-[0_0_50px_rgba(236,72,153,0.15)] relative overflow-hidden flex flex-col border-x border-[#331e3d]">
+<div class="w-full max-w-[430px] bg-white shadow-[0_0_50px_rgba(255,182,193,0.3)] relative overflow-hidden flex flex-col border-x border-[#ffe4e9]">
 <!-- ✨ Hero Section -->
-<div class="flex flex-col items-center justify-center pt-14 pb-8 px-4 relative overflow-hidden">
+<div class="flex flex-col items-center justify-center pt-14 pb-8 px-4 relative overflow-hidden bg-gradient-to-b from-[#fff0f3] to-white">
 <!-- Animated Background Layers -->
-<div class="absolute inset-0 cyber-grid-bg opacity-40"></div>
-<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[250px] h-[250px] bg-pink-500/20 rounded-full blur-[70px] pointer-events-none"></div>
+<div class="absolute inset-0 cyber-grid-bg opacity-30"></div>
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[250px] h-[250px] bg-pink-200/50 rounded-full blur-[70px] pointer-events-none"></div>
 <!-- Floating Particles -->
-<div class="particle w-1.5 h-1.5 shadow-[0_0_8px_#ec4899]" style="left: 20%; top: 80%; animation-delay: 0s;"></div>
-<div class="particle w-2 h-2 shadow-[0_0_10px_#f472b6]" style="left: 70%; top: 90%; animation-delay: 1s;"></div>
-<p class="text-pink-300 text-[10px] font-bold tracking-[0.2em] mb-4 uppercase z-10 flex items-center gap-2 drop-shadow-[0_0_5px_rgba(236,72,153,0.8)]">
-<i data-lucide="cat" class="w-3 h-3 text-pink-400 icon-fill-current"></i>
+<div class="particle w-1.5 h-1.5 opacity-60" style="left: 20%; top: 80%; animation-delay: 0s;"></div>
+<div class="particle w-2 h-2 opacity-60" style="left: 70%; top: 90%; animation-delay: 1s;"></div>
+<p class="text-pink-500 text-[10px] font-bold tracking-[0.2em] mb-4 uppercase z-10 flex items-center gap-2">
+<i data-lucide="cat" class="w-3 h-3 text-pink-500 icon-fill-current"></i>
 Welcome to Koyangi Store
-<i data-lucide="cat" class="w-3 h-3 text-pink-400 icon-fill-current"></i>
+<i data-lucide="cat" class="w-3 h-3 text-pink-500 icon-fill-current"></i>
 </p>
 <div class="relative z-10 flex flex-col items-center w-full">
 <!-- Custom SVG Orbit -->
-<svg class="absolute -right-2 -bottom-6 w-24 h-24 text-pink-400 opacity-60 animate-[spin_8s_linear_infinite]" viewBox="0 0 100 100" fill="none">
+<svg class="absolute -right-2 -bottom-6 w-24 h-24 text-pink-300 opacity-60 animate-[spin_8s_linear_infinite]" viewBox="0 0 100 100" fill="none">
 <path d="M50 5C74.8528 5 95 25.1472 95 50C95 74.8528 74.8528 95 50 95" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="10 10"/>
 <circle cx="85" cy="15" r="4" fill="#FFD700" class="animate-pulse"/>
 </svg>
-<h1 class="text-5xl md:text-6xl font-black italic text-center leading-[1.05] tracking-wide relative z-10 text-stroke-white transform -rotate-2">
+<h1 class="text-5xl md:text-6xl font-black italic text-center leading-[1.05] tracking-wide relative z-10 text-stroke-pink transform -rotate-2">
 KOYANGI<br/>STORE!
 </h1>
 </div>
-<div class="mt-8 bg-[#2d1433]/80 backdrop-blur-sm border border-pink-500/40 rounded-[30px] py-3 px-5 text-[10px] text-pink-50 font-medium text-center w-[90%] z-10 shadow-[0_0_15px_rgba(236,72,153,0.2)]">
+<div class="mt-8 bg-white/80 backdrop-blur-sm border border-pink-200 rounded-[30px] py-3 px-5 text-[10px] text-pink-600 font-bold text-center w-[90%] z-10 shadow-sm">
 ร้านเจ้าเหมียวทำเว็บนะคะ⭐️ รับทำเว็บ / โลโก้ / ป้ายครบวงจร
 </div>
 </div>
 
 <!-- 🚀 Marquee Announcement -->
-<div class="bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-pink-500/20 border-y border-pink-500/30 overflow-hidden py-3 relative shadow-[0_0_15px_rgba(236,72,153,0.15)] block">
+<div class="bg-pink-100 border-y border-pink-200 overflow-hidden py-3 relative block">
 <div class="absolute inset-0 flex justify-around items-center opacity-40 pointer-events-none z-0">
 <i data-lucide="star" class="text-yellow-400 w-3 h-3 animate-pulse icon-fill-current"></i>
 <i data-lucide="sparkles" class="text-pink-400 w-4 h-4 animate-bounce"></i>
 </div>
-<div class="animate-marquee whitespace-nowrap text-white font-bold text-[12px] tracking-wider relative z-10">
+<div class="animate-marquee whitespace-nowrap text-pink-600 font-bold text-[12px] tracking-wider relative z-10">
 <span class="inline-flex items-center gap-2">
-<i data-lucide="zap" class="w-3.5 h-3.5 text-yellow-400 icon-fill-current"></i>
+<i data-lucide="zap" class="w-3.5 h-3.5 text-yellow-500 icon-fill-current"></i>
 ร้าน Koyangi รับทำเว็บไซต์ พรีเมียมเว็บแอพ และงานออกแบบทุกรูปแบบ 
-<span class="text-yellow-400 ml-1">ยินดีให้บริการค่า ✨</span>
+<span class="text-pink-700 ml-1">ยินดีให้บริการค่า ✨</span>
 </span>
 </div>
 </div>
 
 <div class="px-5 mt-8 space-y-6">
 <!-- 🎯 Services Section -->
-<div class="border-[1.5px] border-pink-400/80 rounded-[20px] p-4 bg-[#1a0b1f] shadow-[0_0_20px_rgba(236,72,153,0.15)] relative overflow-hidden">
+<div class="border-[1.5px] border-pink-200 rounded-[20px] p-4 bg-white shadow-sm relative overflow-hidden">
 <div class="grid grid-cols-3 gap-3 relative z-10">
 <!-- Item 1: Web -->
-<div class="border border-pink-500/60 rounded-[16px] flex flex-col items-center p-3 bg-[#24122b] shadow-[inset_0_0_15px_rgba(236,72,153,0.05)] hover:border-pink-400 transition-all cursor-pointer group">
-<div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-pink-900/60 to-purple-900/60 flex items-center justify-center border border-pink-400/50 mb-3 group-hover:shadow-[0_0_15px_rgba(236,72,153,0.4)]">
-<i data-lucide="layout" class="text-pink-300 w-6 h-6"></i>
+<div class="border border-pink-100 rounded-[16px] flex flex-col items-center p-3 bg-[#fff9fa] hover:border-pink-300 transition-all cursor-pointer group">
+<div class="w-12 h-12 rounded-2xl bg-pink-100 flex items-center justify-center border border-pink-200 mb-3 group-hover:bg-pink-200 transition-colors">
+<i data-lucide="layout" class="text-pink-500 w-6 h-6"></i>
 </div>
-<p class="text-white text-[11px] font-bold mb-0.5">เว็บแอพ</p>
-<p class="text-pink-200/60 text-[8px] mb-3">พรีเมียม</p>
-<div class="bg-pink-950/50 px-1 py-1.5 rounded text-yellow-400 text-[9px] font-black w-full text-center tracking-widest mt-auto border border-pink-500/30">PREMIUM</div>
+<p class="text-pink-800 text-[11px] font-bold mb-0.5">เว็บแอพ</p>
+<p class="text-pink-400 text-[8px] mb-3">พรีเมียม</p>
+<div class="bg-pink-500 px-1 py-1.5 rounded text-white text-[9px] font-black w-full text-center tracking-widest mt-auto">PREMIUM</div>
 </div>
 <!-- Item 2: Game -->
-<div class="border border-purple-500/60 rounded-[16px] flex flex-col items-center p-3 bg-[#24122b] hover:border-purple-400 transition-all cursor-pointer group">
-<div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-900/60 to-pink-900/60 flex items-center justify-center border border-purple-400/50 mb-3 group-hover:shadow-[0_0_15px_rgba(168,85,247,0.4)]">
-<i data-lucide="gamepad-2" class="text-purple-300 w-6 h-6"></i>
+<div class="border border-blue-100 rounded-[16px] flex flex-col items-center p-3 bg-[#f5faff] hover:border-blue-300 transition-all cursor-pointer group">
+<div class="w-12 h-12 rounded-2xl bg-blue-100 flex items-center justify-center border border-blue-200 mb-3 group-hover:bg-blue-200 transition-colors">
+<i data-lucide="gamepad-2" class="text-blue-500 w-6 h-6"></i>
 </div>
-<p class="text-white text-[11px] font-bold mb-0.5 text-center">เว็บเติมเกม</p>
-<p class="text-purple-200/60 text-[8px] mb-2 mt-1">อัตโนมัติ</p>
-<div class="bg-purple-950/50 px-1 py-1.5 rounded text-yellow-400 text-[9px] font-black w-full text-center tracking-widest mt-auto border border-purple-500/30">TOPUP</div>
+<p class="text-blue-800 text-[11px] font-bold mb-0.5 text-center">เว็บเติมเกม</p>
+<p class="text-blue-400 text-[8px] mb-2 mt-1">อัตโนมัติ</p>
+<div class="bg-blue-500 px-1 py-1.5 rounded text-white text-[9px] font-black w-full text-center tracking-widest mt-auto">TOPUP</div>
 </div>
 <!-- Item 3: Design -->
-<div class="border border-yellow-500/60 rounded-[16px] flex flex-col items-center p-3 bg-[#24122b] hover:border-yellow-400 transition-all cursor-pointer group">
-<div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-yellow-900/60 to-orange-900/60 flex items-center justify-center border border-yellow-400/50 mb-3 group-hover:shadow-[0_0_15px_rgba(234,179,8,0.4)]">
-<i data-lucide="palette" class="text-yellow-300 w-6 h-6"></i>
+<div class="border border-yellow-100 rounded-[16px] flex flex-col items-center p-3 bg-[#fffcf5] hover:border-yellow-300 transition-all cursor-pointer group">
+<div class="w-12 h-12 rounded-2xl bg-yellow-100 flex items-center justify-center border border-yellow-200 mb-3 group-hover:bg-yellow-200 transition-colors">
+<i data-lucide="palette" class="text-yellow-600 w-6 h-6"></i>
 </div>
-<p class="text-white text-[11px] font-bold mb-0.5">โลโก้/ป้าย</p>
-<p class="text-yellow-200/60 text-[8px] mb-3">ลายน้ำ</p>
-<div class="bg-yellow-950/50 px-1 py-1.5 rounded text-white text-[9px] font-black w-full text-center tracking-widest mt-auto border border-yellow-500/30">DESIGN</div>
+<p class="text-yellow-800 text-[11px] font-bold mb-0.5">โลโก้/ป้าย</p>
+<p class="text-yellow-500 text-[8px] mb-3">ลายน้ำ</p>
+<div class="bg-yellow-500 px-1 py-1.5 rounded text-white text-[9px] font-black w-full text-center tracking-widest mt-auto">DESIGN</div>
 </div>
 </div>
 </div>
 
 <!-- 💻 Rates Card -->
-<div class="border border-[#3d1e3d] bg-[#1d0f24]/80 backdrop-blur-sm rounded-[24px] p-5 relative shadow-lg">
+<div class="border border-pink-100 bg-white rounded-[24px] p-5 relative shadow-sm">
 <div class="text-center mb-6 mt-1">
-<h3 class="text-pink-400 font-bold text-base flex justify-center items-center gap-2 drop-shadow-[0_0_5px_rgba(236,72,153,0.5)]">
+<h3 class="text-pink-500 font-bold text-base flex justify-center items-center gap-2">
 บริการที่เราเปิดรับ 🎨
 </h3>
-<p class="text-pink-100 text-[10px] mt-1.5 bg-[#2d1433] inline-block px-4 py-1.5 rounded-full border border-pink-900/50 shadow-inner">
+<p class="text-pink-400 text-[10px] mt-1.5 bg-pink-50 inline-block px-4 py-1.5 rounded-full border border-pink-100 font-medium">
 Koyangi Shop Service List
 </p>
 </div>
 <div class="space-y-3">
 <!-- List Items -->
-<div class="flex items-center gap-4 bg-[#140b19] border border-pink-500/40 p-3.5 rounded-[16px]">
-<div class="w-11 h-11 rounded-full bg-pink-900/40 flex items-center justify-center border border-pink-500/50"><i data-lucide="pen-tool" class="text-pink-400 w-5 h-5"></i></div>
+<div class="flex items-center gap-4 bg-[#fff9fa] border border-pink-100 p-3.5 rounded-[16px]">
+<div class="w-11 h-11 rounded-full bg-white flex items-center justify-center border border-pink-200 shadow-sm text-pink-500"><i data-lucide="pen-tool" class="w-5 h-5"></i></div>
 <div class="flex-1">
-<p class="font-black text-pink-300 text-sm tracking-wider">ป้าย / โลโก้ / ลายน้ำ</p>
-<p class="text-[10px] text-gray-400 mt-0.5">งานกราฟิกดีไซน์ครบวงจร</p>
+<p class="font-bold text-pink-800 text-sm tracking-wider">ป้าย / โลโก้ / ลายน้ำ</p>
+<p class="text-[10px] text-pink-400 mt-0.5">งานกราฟิกดีไซน์ครบวงจร</p>
 </div>
 </div>
-<div class="flex items-center gap-4 bg-[#140b19] border border-green-500/40 p-3.5 rounded-[16px]">
-<div class="w-11 h-11 rounded-full bg-green-900/40 flex items-center justify-center border border-green-500/50"><i data-lucide="table-2" class="text-green-400 w-5 h-5"></i></div>
+<div class="flex items-center gap-4 bg-[#f6fff9] border border-green-100 p-3.5 rounded-[16px]">
+<div class="w-11 h-11 rounded-full bg-white flex items-center justify-center border border-green-200 shadow-sm text-green-500"><i data-lucide="table-2" class="w-5 h-5"></i></div>
 <div class="flex-1">
-<p class="font-black text-green-300 text-sm tracking-wider">Google Sheet</p>
-<p class="text-[10px] text-gray-400 mt-0.5">ระบบจัดการข้อมูล / สต็อก</p>
+<p class="font-bold text-green-800 text-sm tracking-wider">Google Sheet</p>
+<p class="text-[10px] text-green-400 mt-0.5">ระบบจัดการข้อมูล / สต็อก</p>
 </div>
 </div>
-<div class="flex items-center gap-4 bg-[#140b19] border border-purple-500/40 p-3.5 rounded-[16px]">
-<div class="w-11 h-11 rounded-full bg-purple-900/40 flex items-center justify-center border border-purple-500/50"><i data-lucide="globe" class="text-purple-400 w-5 h-5"></i></div>
+<div class="flex items-center gap-4 bg-[#faf9ff] border border-purple-100 p-3.5 rounded-[16px]">
+<div class="w-11 h-11 rounded-full bg-white flex items-center justify-center border border-purple-200 shadow-sm text-purple-500"><i data-lucide="globe" class="w-5 h-5"></i></div>
 <div class="flex-1">
-<p class="font-black text-purple-300 text-sm tracking-wider">เว็บแอพ / เว็บเติมเกม</p>
-<p class="text-[10px] text-gray-400 mt-0.5">ระบบพรีเมียม / ทำป้ายเว็บ</p>
+<p class="font-bold text-purple-800 text-sm tracking-wider">เว็บแอพ / เว็บเติมเกม</p>
+<p class="text-[10px] text-purple-400 mt-0.5">ระบบพรีเมียม / ทำป้ายเว็บ</p>
 </div>
 </div>
 </div>
-<p class="text-[8.5px] text-gray-500 text-center mt-4 leading-relaxed">
+<p class="text-[8.5px] text-pink-300 text-center mt-4 leading-relaxed font-medium">
 *ราคาประเมินตามความยากง่ายของงานนะคะ ✨
 </p>
 </div>
 
 <!-- 🎨 Portfolio Popup Trigger -->
-<div class="border border-[#3d1e3d] bg-[#1d0f24]/80 backdrop-blur-sm rounded-[24px] p-5 shadow-lg relative overflow-hidden">
-<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-pink-400 to-purple-500"></div>
+<div class="border border-pink-100 bg-white rounded-[24px] p-5 shadow-sm relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-pink-300 to-blue-300"></div>
 <div class="text-center mb-5 mt-1">
-<h3 class="text-pink-400 font-bold text-sm flex justify-center items-center gap-2 drop-shadow-[0_0_5px_rgba(236,72,153,0.5)]">
+<h3 class="text-pink-500 font-bold text-sm flex justify-center items-center gap-2">
 ตัวอย่างผลงาน 🎨
 </h3>
-<p class="text-gray-400 text-[10px] mt-1">คลิกที่ปุ่มเพื่อดู Google Drive ผลงานทั้งหมด</p>
+<p class="text-pink-300 text-[10px] mt-1">คลิกที่ปุ่มเพื่อดู Google Drive ผลงานทั้งหมด</p>
 </div>
 <div class="grid grid-cols-2 gap-3 mb-4">
-<a href="https://drive.google.com/drive/folders/1MzigyMzY0B_QnFz4dzk29Ppyk55xvfPE" target="_blank" class="bg-gradient-to-br from-[#2d1433] to-[#140b19] border border-pink-500/50 rounded-2xl p-4 flex flex-col items-center justify-center cursor-pointer active:scale-95 group">
-<div class="bg-pink-900/40 p-2.5 rounded-full mb-2 border border-pink-500/30"><i data-lucide="image" class="text-pink-300 w-5 h-5"></i></div>
-<span class="font-black text-white text-[10px] text-center">ตัวอย่างงาน 1</span>
+<a href="https://drive.google.com/drive/folders/1MzigyMzY0B_QnFz4dzk29Ppyk55xvfPE" target="_blank" class="bg-[#fff9fa] border border-pink-100 rounded-2xl p-4 flex flex-col items-center justify-center cursor-pointer active:scale-95 group hover:bg-pink-50">
+<div class="bg-white p-2.5 rounded-full mb-2 border border-pink-100 shadow-sm text-pink-400"><i data-lucide="image" class="w-5 h-5"></i></div>
+<span class="font-bold text-pink-700 text-[10px] text-center">ตัวอย่างงาน 1</span>
 </a>
-<a href="https://drive.google.com/drive/folders/1f4PPc1eVWV_VMclN8001cKOx1doNnbD_" target="_blank" class="bg-gradient-to-br from-[#1d1b36] to-[#140b19] border border-purple-500/50 rounded-2xl p-4 flex flex-col items-center justify-center cursor-pointer active:scale-95 group">
-<div class="bg-purple-900/40 p-2.5 rounded-full mb-2 border border-purple-500/30"><i data-lucide="folder" class="text-purple-300 w-5 h-5"></i></div>
-<span class="font-black text-white text-[10px] text-center">ตัวอย่างงาน 2</span>
+<a href="https://drive.google.com/drive/folders/1f4PPc1eVWV_VMclN8001cKOx1doNnbD_" target="_blank" class="bg-[#fcfaff] border border-purple-100 rounded-2xl p-4 flex flex-col items-center justify-center cursor-pointer active:scale-95 group hover:bg-purple-50">
+<div class="bg-white p-2.5 rounded-full mb-2 border border-purple-100 shadow-sm text-purple-400"><i data-lucide="folder" class="w-5 h-5"></i></div>
+<span class="font-bold text-purple-700 text-[10px] text-center">ตัวอย่างงาน 2</span>
 </a>
 </div>
 </div>
 
 <!-- 📋 Steps & Rules Section -->
-<div class="border border-[#3d1e3d] bg-[#140b19]/90 backdrop-blur-sm rounded-[24px] p-6 shadow-lg mt-6 relative overflow-hidden">
-<h3 class="text-pink-400 font-bold text-sm flex items-center gap-2 mb-4 border-b border-[#331e3d] pb-3">
+<div class="border border-pink-100 bg-white rounded-[24px] p-6 shadow-sm mt-6 relative overflow-hidden">
+<h3 class="text-pink-600 font-bold text-sm flex items-center gap-2 mb-4 border-b border-pink-50 pb-3">
 <i data-lucide="list-checks" class="w-4 h-4"></i> ขั้นตอนการสั่ง
 </h3>
-<ul class="text-[10.5px] text-gray-300 space-y-3.5 font-medium leading-relaxed mb-6">
+<ul class="text-[10.5px] text-pink-800/80 space-y-3.5 font-medium leading-relaxed mb-6">
 <li class="flex gap-2.5 items-start"><span class="text-pink-500 mt-0.5 font-bold">•</span><span>กรอกฟอร์ม เขียนรายละเอียดร้านค้า</span></li>
 <li class="flex gap-2.5 items-start"><span class="text-pink-500 mt-0.5 font-bold">•</span><span>ใส่ลิงก์ ตัวอย่างงาน/เรฟ มาให้พร้อม หากมีโลโก้ให้แนบมา</span></li>
 <li class="flex gap-2.5 items-start"><span class="text-pink-500 mt-0.5 font-bold">•</span><span>ส่งงานให้เช็ค แจ้งยอด ชำระเงิน</span></li>
-<li class="flex gap-2.5 items-start bg-pink-900/20 p-2.5 rounded-lg border border-pink-500/20"><span class="text-pink-500 mt-0.5 font-bold">⚠</span><span class="text-pink-200 font-bold">รอคิวงาน 4-8 ชม. งานเร่งคิดราคา *2</span></li>
+<li class="flex gap-2.5 items-start bg-pink-50 p-2.5 rounded-lg border border-pink-100"><span class="text-pink-500 mt-0.5 font-bold">⚠</span><span class="text-pink-600 font-bold">รอคิวงาน 4-8 ชม. งานเร่งคิดราคา *2</span></li>
 </ul>
-<div class="bg-gradient-to-b from-[#1a0b12] to-[#0b0408] border border-pink-900/80 rounded-xl p-5 shadow-inner">
+<div class="bg-gradient-to-b from-[#fffbfc] to-[#fff5f8] border border-pink-100 rounded-xl p-5">
 <h4 class="text-pink-500 font-bold text-[12px] flex items-center gap-2 mb-3">
 <i data-lucide="alert-circle" class="w-4 h-4"></i> กฎของร้าน Koyangi
 </h4>
-<div class="text-gray-300 text-[10px] leading-relaxed space-y-2.5 font-medium">
-<p class="flex items-start gap-2"><span class="text-pink-500/80">•</span><span>โอนเงินแล้วทางร้านไม่คืนเงินทุกกรณีนะคะ</span></p>
-<p class="flex items-start gap-2"><span class="text-pink-500/80">•</span><span>หากยกเลิกงานหลังส่งบรีฟ (กรณีเริ่มงานไปแล้ว) คืนแค่ 50%</span></p>
-<p class="flex items-start gap-2"><span class="text-pink-500/80">•</span><span>หากยกเลิกหลังเช็คงาน = ไม่คืน และส่งงานให้ตามปกติ</span></p>
+<div class="text-pink-800/70 text-[10px] leading-relaxed space-y-2.5 font-medium">
+<p class="flex items-start gap-2"><span class="text-pink-400">•</span><span>โอนเงินแล้วทางร้านไม่คืนเงินทุกกรณีนะคะ</span></p>
+<p class="flex items-start gap-2"><span class="text-pink-400">•</span><span>หากยกเลิกงานหลังส่งบรีฟ (กรณีเริ่มงานไปแล้ว) คืนแค่ 50%</span></p>
+<p class="flex items-start gap-2"><span class="text-pink-400">•</span><span>หากยกเลิกหลังเช็คงาน = ไม่คืน และส่งงานให้ตามปกติ</span></p>
 </div>
 </div>
 </div>
 
 <!-- 🚀 Rainbow Loading & START Button -->
 <div class="mt-14 mb-10 px-2 relative z-10">
-<div class="flex justify-between text-[11px] font-bold mb-2 tracking-wide">
-<span class="text-pink-400">KOYANGI SYSTEM...</span>
-<span class="text-pink-400">100% READY</span>
+<div class="flex justify-between text-[11px] font-bold mb-2 tracking-wide text-pink-400">
+<span>KOYANGI SYSTEM...</span>
+<span>100% READY</span>
 </div>
-<div class="h-[20px] rounded-full shadow-[0_0_20px_rgba(236,72,153,0.6)] mb-4 relative overflow-hidden border-2 border-white/10 loading-bar-smooth"></div>
+<div class="h-[20px] rounded-full shadow-inner mb-4 relative overflow-hidden border border-pink-100 bg-pink-50 loading-bar-smooth"></div>
 <div class="relative flex justify-center mt-2">
-<button onclick="window.open('https://lin.ee/UUfn5xL', '_blank')" class="bg-gradient-to-b from-[#ff85b2] to-[#ec4899] w-full max-w-[320px] rounded-[50px] py-4.5 shadow-[0_0_40px_rgba(236,72,153,0.4)] flex flex-col items-center justify-center transform transition active:scale-95 border-b-[5px] border-[#be185d] cursor-pointer">
+<button onclick="window.open('https://lin.ee/UUfn5xL', '_blank')" class="bg-gradient-to-b from-[#ffb6c1] to-[#ff4d94] w-full max-w-[320px] rounded-[50px] py-4.5 shadow-lg flex flex-col items-center justify-center transform transition active:scale-95 border-b-[5px] border-[#d81b60] cursor-pointer">
 <span class="text-[36px] font-black text-white tracking-widest leading-none mb-1.5">START</span>
-<span class="text-white/90 text-[11px] font-bold bg-[#be185d]/40 px-5 py-1.5 rounded-full border border-white/20 shadow-inner">กดเพื่อสั่งงานที่ Line</span>
+<span class="text-white/90 text-[11px] font-bold bg-[#d81b60]/40 px-5 py-1.5 rounded-full border border-white/20 shadow-inner">กดเพื่อสั่งงานที่ Line</span>
 </button>
-<div class="absolute -top-5 right-2 md:right-6 bg-red-600 border-[3px] border-[#140b19] text-white text-[11px] font-black px-3.5 py-1.5 rounded-full shadow-xl z-10 animate-bounce tracking-wide pointer-events-none">สั่งเลย!</div>
+<div class="absolute -top-5 right-2 md:right-6 bg-red-500 border-[3px] border-white text-white text-[11px] font-black px-3.5 py-1.5 rounded-full shadow-md z-10 animate-bounce tracking-wide pointer-events-none">สั่งเลย!</div>
 </div>
 </div>
 
 <!-- Footer Contacts -->
-<footer class="pt-8 border-t border-[#331e3d] text-center pb-8 relative">
-<p class="text-pink-400 font-bold text-xs mb-5 tracking-wide drop-shadow-[0_0_5px_rgba(236,72,153,0.5)]">✨ ขอบคุณที่ไว้วางใจ Koyangi Store ✨</p>
+<footer class="pt-8 border-t border-pink-50 text-center pb-8 relative">
+<p class="text-pink-400 font-bold text-xs mb-5 tracking-wide">✨ ขอบคุณที่ไว้วางใจ Koyangi Store ✨</p>
 <div class="flex justify-center gap-5">
-<a href="https://www.facebook.com/k0yang1i?" target="_blank" class="flex items-center justify-center w-[50px] h-[50px] bg-[#1d0f24] rounded-full border border-[#3d1e3d] hover:border-[#1877F2] transition-all"><i data-lucide="facebook" class="w-5 h-5"></i></a>
-<a href="https://lin.ee/UUfn5xL" target="_blank" class="flex items-center justify-center w-[50px] h-[50px] bg-[#1d0f24] rounded-full border border-[#3d1e3d] hover:border-[#00B900] transition-all"><i data-lucide="message-circle" class="w-5 h-5"></i></a>
-<a href="https://www.instagram.com/k0yangi_ii?igsh=ZDBnemRmNmI5amcy&utm_source=qr" target="_blank" class="flex items-center justify-center w-[50px] h-[50px] bg-[#1d0f24] rounded-full border border-[#3d1e3d] hover:border-[#E1306C] transition-all"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+<a href="https://www.facebook.com/k0yang1i?" target="_blank" class="flex items-center justify-center w-[50px] h-[50px] bg-white rounded-full border border-pink-100 text-pink-300 hover:text-blue-500 hover:border-blue-200 transition-all shadow-sm"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+<a href="https://lin.ee/UUfn5xL" target="_blank" class="flex items-center justify-center w-[50px] h-[50px] bg-white rounded-full border border-pink-100 text-pink-300 hover:text-green-500 hover:border-green-200 transition-all shadow-sm"><i data-lucide="message-circle" class="w-5 h-5"></i></a>
+<a href="https://www.instagram.com/k0yangi_ii?igsh=ZDBnemRmNmI5amcy&utm_source=qr" target="_blank" class="flex items-center justify-center w-[50px] h-[50px] bg-white rounded-full border border-pink-100 text-pink-300 hover:text-pink-500 hover:border-pink-200 transition-all shadow-sm"><i data-lucide="instagram" class="w-5 h-5"></i></a>
 </div>
 </footer>
 </div>
