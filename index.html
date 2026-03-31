@@ -28,6 +28,11 @@
 .modal-content { background: white; width: 100%; max-width: 380px; border-radius: 24px; padding: 24px; position: relative; transform: scale(0.9); transition: 0.3s ease-in-out; }
 .modal-overlay.active { display: flex; }
 .modal-overlay.active .modal-content { transform: scale(1); }
+
+/* Custom Scrollbar for Modal */
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: #fff5f7; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #ffb6c1; border-radius: 10px; }
 </style>
 </head>
 <body class="bg-[#fff5f7] text-[#5d3a4a] flex justify-center relative overflow-x-hidden min-h-screen pb-20">
@@ -35,7 +40,7 @@
 <!-- 📱 Popup Modals -->
 <div id="modal-overlay" class="modal-overlay" onclick="closeModal()">
     <div class="modal-content shadow-2xl border border-pink-100" onclick="event.stopPropagation()">
-        <button onclick="closeModal()" class="absolute top-4 right-4 text-pink-300 hover:text-pink-500"><i data-lucide="x-circle"></i></button>
+        <button onclick="closeModal()" class="absolute top-4 right-4 text-pink-300 hover:text-pink-500 z-20"><i data-lucide="x-circle"></i></button>
         <div id="modal-body">
             <!-- Content will be injected here -->
         </div>
@@ -176,35 +181,87 @@
 
     const services = {
         design: {
-            title: "งานป้าย & โลโก้",
+            title: "งานป้าย • โลโก้ • ลายน้ำ",
             icon: "pen-tool",
             color: "text-pink-500",
-            desc: "รับออกแบบป้ายโปรโมชั่น, โลโก้ร้านค้า, ลายน้ำกันก๊อป และงานกราฟิกทุกรูปแบบ ดีไซน์น่ารัก ทันสมัย ตรงใจลูกค้าแน่นอนค่า!"
+            desc: `
+                <div class="text-left space-y-4 max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
+                    <div class="bg-pink-50 p-3 rounded-xl border border-pink-100">
+                        <p class="font-bold text-pink-600 mb-1 flex items-center gap-1 text-xs"><i data-lucide="book-open" class="w-3.5 h-3.5"></i> อ่านก่อนจ้า</p>
+                        <p class="text-[10px] text-pink-800">บรีฟงาน - สรุปยอด - แจ้งกำหนดส่งงาน</p>
+                    </div>
+
+                    <div>
+                        <p class="font-bold text-pink-600 text-xs mb-1 flex items-center gap-1"><i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i> How to สั่งงาน</p>
+                        <ul class="text-[10px] text-gray-600 list-disc pl-4 space-y-1">
+                            <li>เลือกงานส่งให้ทางร้านเพื่อสอบถามราคาและรายละเอียด</li>
+                            <li>เลือก สี / ตูน / ของตกแต่ง / บล็อก (หากไม่ใช้ตัวไหนแจ้งได้เลยค่ะ)</li>
+                            <li>ห้ามนำของตกแต่งมายำรวมกัน <span class="text-red-500 font-bold">เลือกเป็นเซ็ทเท่านั้น และไม่สามารถเปลี่ยนใหม่ได้ภายหลัง</span></li>
+                            <li>หากต้องการโทนสีเฉพาะ <span class="font-bold underline">ต้องแนบรูปเฉดสีมาให้</span> (ถ้าแจ้งแค่ชื่อสี ไม่สามารถขอแก้โทนภายหลังได้)</li>
+                            <li>รายละเอียดต้อง <span class="font-bold text-red-500 underline">"พิมพ์"</span> เท่านั้น และตรวจสอบก่อนส่ง</li>
+                        </ul>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-2">
+                        <div class="bg-white border border-pink-100 p-3 rounded-xl shadow-sm">
+                            <p class="font-bold text-pink-600 text-[10px] mb-2 flex items-center gap-1"><i data-lucide="tag" class="w-3 h-3"></i> เรทราคางาน</p>
+                            <div class="space-y-1 text-[9px] text-gray-500">
+                                <div class="flex justify-between border-b border-pink-50 pb-1"><span>💧 ลายน้ำ (ปกติ)</span><span class="font-bold text-pink-500">29.-</span></div>
+                                <div class="flex justify-between border-b border-pink-50 pb-1 italic pl-2"><span>- ใช้ตัวตูน</span><span>39.-</span></div>
+                                <div class="flex justify-between border-b border-pink-50 pb-1"><span>🖼️ งานป้าย (ปกติ)</span><span class="font-bold text-pink-500">39.-</span></div>
+                                <div class="flex justify-between border-b border-pink-50 pb-1 italic pl-2"><span>- ใช้บล็อก</span><span>59.-</span></div>
+                                <div class="flex justify-between"><span>🎨 โลโก้</span><span class="font-bold text-pink-500">39.-</span></div>
+                            </div>
+                        </div>
+                        <div class="bg-red-50 border border-red-100 p-2 rounded-lg">
+                            <p class="font-bold text-red-600 text-[10px] flex items-center gap-1"><i data-lucide="zap" class="w-3 h-3"></i> Rush Work (งานเร่ง)</p>
+                            <p class="text-[9px] text-red-700 mt-1">ราคา <span class="font-bold underline">x2 ของราคางาน</span> (ขึ้นอยู่กับคิวงาน) เร่ง 1 ครั้งต่อ 1 งาน <span class="font-bold">"หากไม่ได้จ่ายค่าเร่ง งดเร่ง งดวีนนะคะ"</span></p>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 p-3 rounded-xl border border-gray-200">
+                        <p class="font-bold text-gray-700 text-xs mb-1 flex items-center gap-1"><i data-lucide="refresh-cw" class="w-3.5 h-3.5 text-blue-400"></i> การแก้งาน</p>
+                        <p class="text-[10px] text-gray-500 leading-relaxed">
+                            แก้ได้จนกว่าจะพอใจในขอบเขตบรีฟเดิม <span class="text-red-500 font-bold">ห้ามเปลี่ยนบรีฟ/ของตกแต่ง/ตูน/บล็อกที่เลือกไว้ตอนแรก</span> หากมีการส่งไฟล์จริงแล้วต้องการแก้ คิดค่าบริการ <span class="font-bold underline">จุดละ 10.-</span>
+                        </p>
+                    </div>
+                </div>
+            `
         },
         sheet: {
             title: "Google Sheet System",
             icon: "table-2",
             color: "text-blue-500",
-            desc: "รับทำระบบจัดการหลังบ้านผ่าน Google Sheet เช่น ระบบสต็อกสินค้า, บันทึกรายรับ-รายจ่าย, ระบบคำนวณอัตโนมัติ ช่วยให้งานของคุณง่ายขึ้น 100%!"
+            desc: "<p class='text-sm text-gray-500 text-left'>รับทำระบบจัดการหลังบ้านผ่าน Google Sheet เช่น ระบบสต็อกสินค้า, บันทึกรายรับ-รายจ่าย, ระบบคำนวณอัตโนมัติ ช่วยให้งานของคุณง่ายขึ้น 100%!</p>"
         },
         web: {
             title: "Website Design",
             icon: "layout",
             color: "text-yellow-600",
-            desc: "รับทำเว็บไซต์ Event, เว็บโชว์ผลงาน (Portfolio) หรือเว็บหน้าเดียว (Landing Page) พร้อมแอนิเมชันสวยๆ แบบที่คุณเห็นอยู่นี้เลย!"
+            desc: "<p class='text-sm text-gray-500 text-left'>รับทำเว็บไซต์ Event, เว็บโชว์ผลงาน (Portfolio) หรือเว็บหน้าเดียว (Landing Page) พร้อมแอนิเมชันสวยๆ แบบที่คุณเห็นอยู่นี้เลย!</p>"
         }
     };
 
     function openModal(type) {
         const data = services[type];
         const body = document.getElementById('modal-body');
+        
+        const modalContent = document.querySelector('.modal-content');
+        if(type === 'design') {
+            modalContent.classList.remove('max-w-[380px]');
+            modalContent.classList.add('max-w-[420px]');
+        } else {
+            modalContent.classList.add('max-w-[380px]');
+            modalContent.classList.remove('max-w-[420px]');
+        }
+
         body.innerHTML = `
-            <div class="flex flex-col items-center text-center">
-                <div class="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center mb-4 border border-gray-100">
-                    <i data-lucide="${data.icon}" class="${data.color} w-8 h-8"></i>
+            <div class="flex flex-col items-center">
+                <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-3 border border-pink-100 shadow-sm">
+                    <i data-lucide="${data.icon}" class="${data.color} w-7 h-7"></i>
                 </div>
-                <h2 class="text-xl font-black ${data.color} mb-3">${data.title}</h2>
-                <p class="text-sm text-gray-500 leading-relaxed">${data.desc}</p>
+                <h2 class="text-lg font-black ${data.color} mb-4">${data.title}</h2>
+                <div class="w-full">${data.desc}</div>
             </div>
         `;
         document.getElementById('modal-overlay').classList.add('active');
