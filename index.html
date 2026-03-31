@@ -186,26 +186,25 @@
             color: "text-pink-500",
             desc: `
                 <div class="text-left space-y-4 max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
-                    <div class="bg-pink-50 p-3 rounded-xl border border-pink-100">
-                        <p class="font-bold text-pink-600 mb-1 flex items-center gap-1 text-xs"><i data-lucide="book-open" class="w-3.5 h-3.5"></i> อ่านก่อนจ้า</p>
-                        <p class="text-[10px] text-pink-800">บรีฟงาน - สรุปยอด - แจ้งกำหนดส่งงาน</p>
-                    </div>
-
                     <div>
-                        <p class="font-bold text-pink-600 text-xs mb-1 flex items-center gap-1"><i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i> How to สั่งงาน</p>
-                        <ul class="text-[10px] text-gray-600 list-disc pl-4 space-y-1">
+                        <p class="font-bold text-pink-600 text-xs mb-2 flex items-center gap-1">
+                            <i data-lucide="shopping-cart" class="w-4 h-4"></i> How to สั่งงาน
+                        </p>
+                        <ul class="text-[11px] text-gray-600 list-disc pl-5 space-y-1.5 leading-relaxed">
                             <li>เลือกงานส่งให้ทางร้านเพื่อสอบถามราคาและรายละเอียด</li>
                             <li>เลือก สี / ตูน / ของตกแต่ง / บล็อก (หากไม่ใช้ตัวไหนแจ้งได้เลยค่ะ)</li>
                             <li>ห้ามนำของตกแต่งมายำรวมกัน <span class="text-red-500 font-bold">เลือกเป็นเซ็ทเท่านั้น และไม่สามารถเปลี่ยนใหม่ได้ภายหลัง</span></li>
-                            <li>หากต้องการโทนสีเฉพาะ <span class="font-bold underline">ต้องแนบรูปเฉดสีมาให้</span> (ถ้าแจ้งแค่ชื่อสี ไม่สามารถขอแก้โทนภายหลังได้)</li>
+                            <li>หากต้องการโทนสีเฉพาะ <span class="font-bold underline">ต้องแนบรูปเฉดสีมาให้</span></li>
                             <li>รายละเอียดต้อง <span class="font-bold text-red-500 underline">"พิมพ์"</span> เท่านั้น และตรวจสอบก่อนส่ง</li>
                         </ul>
                     </div>
 
                     <div class="grid grid-cols-1 gap-2">
                         <div class="bg-white border border-pink-100 p-3 rounded-xl shadow-sm">
-                            <p class="font-bold text-pink-600 text-[10px] mb-2 flex items-center gap-1"><i data-lucide="tag" class="w-3 h-3"></i> เรทราคางาน</p>
-                            <div class="space-y-1 text-[9px] text-gray-500">
+                            <p class="font-bold text-pink-600 text-[11px] mb-2 flex items-center gap-1">
+                                <i data-lucide="tag" class="w-3.5 h-3.5"></i> เรทราคางาน
+                            </p>
+                            <div class="space-y-1.5 text-[10px] text-gray-500">
                                 <div class="flex justify-between border-b border-pink-50 pb-1"><span>💧 ลายน้ำ (ปกติ)</span><span class="font-bold text-pink-500">29.-</span></div>
                                 <div class="flex justify-between border-b border-pink-50 pb-1 italic pl-2"><span>- ใช้ตัวตูน</span><span>39.-</span></div>
                                 <div class="flex justify-between border-b border-pink-50 pb-1"><span>🖼️ งานป้าย (ปกติ)</span><span class="font-bold text-pink-500">39.-</span></div>
@@ -213,16 +212,19 @@
                                 <div class="flex justify-between"><span>🎨 โลโก้</span><span class="font-bold text-pink-500">39.-</span></div>
                             </div>
                         </div>
-                        <div class="bg-red-50 border border-red-100 p-2 rounded-lg">
-                            <p class="font-bold text-red-600 text-[10px] flex items-center gap-1"><i data-lucide="zap" class="w-3 h-3"></i> Rush Work (งานเร่ง)</p>
-                            <p class="text-[9px] text-red-700 mt-1">ราคา <span class="font-bold underline">x2 ของราคางาน</span> (ขึ้นอยู่กับคิวงาน) เร่ง 1 ครั้งต่อ 1 งาน <span class="font-bold">"หากไม่ได้จ่ายค่าเร่ง งดเร่ง งดวีนนะคะ"</span></p>
+                        
+                        <div class="bg-red-50 border border-red-100 p-2.5 rounded-lg">
+                            <p class="font-bold text-red-600 text-[10px] flex items-center gap-1"><i data-lucide="zap" class="w-3.5 h-3.5"></i> Rush Work (งานเร่ง)</p>
+                            <p class="text-[10px] text-red-700 mt-1">ราคา <span class="font-bold underline">x2 ของราคางาน</span> (ขึ้นอยู่กับคิวงาน) <br/>"หากไม่ได้จ่ายค่าเร่ง งดเร่งนะคะ"</p>
                         </div>
                     </div>
 
                     <div class="bg-gray-50 p-3 rounded-xl border border-gray-200">
-                        <p class="font-bold text-gray-700 text-xs mb-1 flex items-center gap-1"><i data-lucide="refresh-cw" class="w-3.5 h-3.5 text-blue-400"></i> การแก้งาน</p>
+                        <p class="font-bold text-gray-700 text-xs mb-1 flex items-center gap-1">
+                            <i data-lucide="refresh-cw" class="w-3.5 h-3.5 text-blue-400"></i> การแก้งาน
+                        </p>
                         <p class="text-[10px] text-gray-500 leading-relaxed">
-                            แก้ได้จนกว่าจะพอใจในขอบเขตบรีฟเดิม <span class="text-red-500 font-bold">ห้ามเปลี่ยนบรีฟ/ของตกแต่ง/ตูน/บล็อกที่เลือกไว้ตอนแรก</span> หากมีการส่งไฟล์จริงแล้วต้องการแก้ คิดค่าบริการ <span class="font-bold underline">จุดละ 10.-</span>
+                            แก้ได้จนกว่าจะพอใจในขอบเขตบรีฟเดิม <span class="text-red-500 font-bold">ห้ามเปลี่ยนบรีฟ/ของตกแต่งที่เลือกไว้</span> หากมีการส่งไฟล์จริงแล้วต้องการแก้ คิดค่าบริการ <span class="font-bold underline">จุดละ 10.-</span>
                         </p>
                     </div>
                 </div>
@@ -245,14 +247,14 @@
     function openModal(type) {
         const data = services[type];
         const body = document.getElementById('modal-body');
-        
         const modalContent = document.querySelector('.modal-content');
+        
         if(type === 'design') {
             modalContent.classList.remove('max-w-[380px]');
-            modalContent.classList.add('max-w-[420px]');
+            modalContent.classList.add('max-w-[400px]');
         } else {
             modalContent.classList.add('max-w-[380px]');
-            modalContent.classList.remove('max-w-[420px]');
+            modalContent.classList.remove('max-w-[400px]');
         }
 
         body.innerHTML = `
