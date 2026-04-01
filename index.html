@@ -168,7 +168,7 @@ color: #6B4423;
         <div class="flex flex-col items-center gap-3 mb-10">
             <div class="flex justify-center gap-3 w-full max-w-[280px]">
                 <a href="https://www.facebook.com/k0yang1i?" target="_blank" class="flex-1 bg-[#7A554D] text-white py-3 rounded-full text-[11px] font-bold">FACEBOOK</a>
-                <a href="https://lin.ee/UUfn5xL" target="_blank" class="flex-1 bg-white border-[1.5px] border-[#7A554D ] text-[#7A554D] py-3 rounded-full text-[11px] font-bold">LINE</a>
+                <a href="https://lin.ee/UUfn5xL" target="_blank" class="flex-1 bg-white border-[1.5px] border-[#7A554D] text-[#7A554D] py-3 rounded-full text-[11px] font-bold">LINE</a>
             </div>
             <a href="https://www.instagram.com/k0yangi_ii?" target="_blank" class="w-[140px] bg-[#FF889B] text-white py-3 rounded-full text-[11px] font-bold uppercase">INSTAGRAM</a>
         </div>
@@ -182,8 +182,7 @@ color: #6B4423;
             <button onclick="closeModal()" class="w-8 h-8 bg-white/50 rounded-full flex items-center justify-center"><i data-lucide="x" class="w-5 h-5 text-brown"></i></button>
         </div>
         <div class="p-6 overflow-y-auto flex-1 bg-cream">
-            <div id="modalLinks" class="space-y-4 text-sm text-brown-light">
-                </div>
+            <div id="modalLinks" class="space-y-4 text-sm text-brown-light"></div>
         </div>
     </div>
 </div>
@@ -195,15 +194,50 @@ const portfolioData = {
     graphics: {
         title: "ป้าย โลโก้ ลายน้ำ",
         content: `
-            <div class="space-y-3">
-                <p>🎨 <b>รับออกแบบงานกราฟิกทุกรูปแบบ</b></p>
-                <ul class="list-disc list-inside space-y-1">
-                    <li>โลโก้ร้านค้า / แบรนด์</li>
-                    <li>ป้ายบัญชี / ป้ายที่อยู่</li>
-                    <li>ลายน้ำกันก๊อป</li>
-                    <li>แบนเนอร์โปรโมทสินค้า</li>
-                </ul>
-                <p class="mt-4 text-pinky-dark font-medium">เริ่มต้นเพียง XX.- บาท</p>
+            <div class="space-y-6 text-[13px] leading-relaxed">
+                <section>
+                    <h4 class="font-bold text-brown flex items-center gap-1 mb-2">
+                        <i data-lucide="help-circle" class="w-4 h-4 text-pinky-dark"></i> How to สั่งงาน
+                    </h4>
+                    <ul class="list-disc list-inside space-y-1 text-brown-light">
+                        <li>เลือกงานที่ต้องการเพื่อสอบถามราคาและรายละเอียด</li>
+                        <li>เลือก <b>สี / ตูน / ของตกแต่ง / บล็อก</b> ที่ต้องการใช้ (หากไม่ใช้แจ้งได้เลยค่ะ)</li>
+                        <li class="text-pinky-dark">ของตกแต่งเลือกเป็นเซ็ตเท่านั้น ไม่สามารถเปลี่ยนใหม่หรือนำมายำรวมกันได้</li>
+                        <li>ระบุโทนสีโดยการ <b>"แนบรูปเฉดสี"</b> (หากแจ้งแค่ชื่อสี ไม่สามารถแก้โทนสีทีหลังได้)</li>
+                        <li>รายละเอียดใช้การ <b class="underline">"พิมพ์"</b> เท่านั้น รบกวนตรวจสอบให้ถูกต้องก่อนส่ง</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h4 class="font-bold text-brown flex items-center gap-1 mb-2">
+                        <i data-lucide="tag" class="w-4 h-4 text-pinky-dark"></i> เรทราคางาน
+                    </h4>
+                    <div class="grid grid-cols-1 gap-2">
+                        <div class="bg-white/50 p-2 rounded-lg border border-pinky-light/50">
+                            <p class="font-bold text-pinky-dark">งานลายน้ำ เริ่มต้น 29.-</p>
+                            <p class="text-[11px]">- ใช้บล็อก เริ่มต้น 29.- / ใช้ตัวตูน เริ่มต้น 39.-</p>
+                        </div>
+                        <div class="bg-white/50 p-2 rounded-lg border border-pinky-light/50">
+                            <p class="font-bold text-pinky-dark">งานป้าย เริ่มต้น 39.-</p>
+                            <p class="text-[11px]">- ไม่ใช้บล็อก/ตัวตูน 39.- / ใช้บล็อก เริ่มต้น 59.-</p>
+                        </div>
+                        <div class="bg-white/50 p-2 rounded-lg border border-pinky-light/50">
+                            <p class="font-bold text-pinky-dark">โลโก้ เริ่มต้น 39.-</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="bg-pinky/10 p-3 rounded-xl border border-pinky-light">
+                    <h4 class="font-bold text-brown flex items-center gap-1 mb-1">
+                        <i data-lucide="refresh-cw" class="w-4 h-4 text-pinky-dark"></i> การแก้งาน
+                    </h4>
+                    <p class="text-brown-light mb-2 italic">แก้ได้จนกว่าจะพอใจ (ในขอบเขตบรีฟแรก)</p>
+                    <ul class="list-disc list-inside space-y-1 text-[12px] text-brown-light">
+                        <li class="text-red-500 font-medium">หากส่งงานแล้ว จะไม่สามารถแก้งานย้อนหลังได้</li>
+                        <li>ไม่สามารถเปลี่ยนบรีฟ/ของตกแต่ง/ตัวตูน/บล็อก ที่เลือกไว้แต่แรกได้</li>
+                        <li class="font-bold">หากต้องการแก้หลังจากส่งงานแล้ว คิดค่าแก้จุดละ 10.-</li>
+                    </ul>
+                </section>
             </div>
         `
     },
@@ -212,7 +246,7 @@ const portfolioData = {
         content: `
             <div class="space-y-3">
                 <p>📊 <b>จัดการหลังบ้านให้เป็นระบบ</b></p>
-                <ul class="list-disc list-inside space-y-1">
+                <ul class="list-disc list-inside space-y-1 text-brown-light">
                     <li>ระบบสต็อกสินค้า</li>
                     <li>บัญชีรายรับ-รายจ่าย</li>
                     <li>สรุปยอดขายอัตโนมัติ</li>
@@ -227,7 +261,7 @@ const portfolioData = {
         content: `
             <div class="space-y-3">
                 <p>🌐 <b>เว็บไซต์สวยงาม ใช้งานง่าย</b></p>
-                <ul class="list-disc list-inside space-y-1">
+                <ul class="list-disc list-inside space-y-1 text-brown-light">
                     <li>เว็บแอพพรีเมียม</li>
                     <li>เว็บรับเติมเกมส์</li>
                     <li>เว็บรวมลิงก์ / Portfolio</li>
@@ -243,6 +277,9 @@ function openModal(category) {
     const data = portfolioData[category];
     document.getElementById('modalTitle').innerHTML = `<span>${data.title}</span>`;
     document.getElementById('modalLinks').innerHTML = data.content;
+    
+    // Re-initialize icons for dynamic content
+    lucide.createIcons();
     
     const modal = document.getElementById('portfolioModal');
     modal.classList.remove('invisible', 'opacity-0');
