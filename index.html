@@ -157,17 +157,17 @@
         <div class="flex items-center justify-center gap-5 bg-white/50 backdrop-blur-md border border-pink-100 p-5 rounded-[35px] shadow-sm">
             <a href="https://lin.ee/UUfn5xL" target="_blank" 
                class="w-12 h-12 bg-white border-2 border-pink-200 rounded-2xl flex items-center justify-center text-pink-400 shadow-sm hover:border-pink-400 hover:text-pink-500 hover:-translate-y-1 active:scale-95 transition-all duration-300">
-                <i data-lucide="message-circle" stroke-width="1.5" class="w-6 h-6"></i>
+                <i data-lucide="message-circle" stroke-width="2" class="w-6 h-6"></i>
             </a>
             
             <a href="https://www.facebook.com/k0yang1i?" target="_blank" 
                class="w-12 h-12 bg-white border-2 border-pink-200 rounded-2xl flex items-center justify-center text-pink-400 shadow-sm hover:border-pink-400 hover:text-pink-500 hover:-translate-y-1 active:scale-95 transition-all duration-300">
-                <i data-lucide="facebook" stroke-width="1.5" class="w-6 h-6"></i>
+                <i data-lucide="facebook" stroke-width="2" class="w-6 h-6"></i>
             </a>
             
             <a href="https://www.instagram.com/k0yangi_ii?" target="_blank" 
                class="w-12 h-12 bg-white border-2 border-pink-200 rounded-2xl flex items-center justify-center text-pink-400 shadow-sm hover:border-pink-400 hover:text-pink-500 hover:-translate-y-1 active:scale-95 transition-all duration-300">
-                <i data-lucide="instagram" stroke-width="1.5" class="w-6 h-6"></i>
+                <i data-lucide="instagram" stroke-width="2" class="w-6 h-6"></i>
             </a>
         </div>
         
@@ -176,6 +176,7 @@
 </div>
 
 <script>
+    // Initializing Lucide icons
     lucide.createIcons();
 
     const services = {
@@ -203,14 +204,38 @@
         const data = services[type];
         const body = document.getElementById('modal-body');
         const modalContent = document.querySelector('.modal-content');
-        if(type === 'design') { modalContent.classList.remove('max-w-[380px]'); modalContent.classList.add('max-w-[400px]'); }
-        else { modalContent.classList.add('max-w-[380px]'); modalContent.classList.remove('max-w-[400px]'); }
-        body.innerHTML = `<div class="flex flex-col items-center"><div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-3 border border-pink-100 shadow-sm"><i data-lucide="${data.icon}" class="${data.color} w-7 h-7"></i></div><h2 class="text-lg font-black ${data.color} mb-4">${data.title}</h2><div class="w-full">${data.desc}</div></div>`;
+        
+        if(type === 'design') { 
+            modalContent.classList.remove('max-w-[380px]'); 
+            modalContent.classList.add('max-w-[400px]'); 
+        } else { 
+            modalContent.classList.add('max-w-[380px]'); 
+            modalContent.classList.remove('max-w-[400px]'); 
+        }
+
+        body.innerHTML = `
+            <div class="flex flex-col items-center">
+                <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-3 border border-pink-100 shadow-sm">
+                    <i data-lucide="${data.icon}" class="${data.color} w-7 h-7"></i>
+                </div>
+                <h2 class="text-lg font-black ${data.color} mb-4">${data.title}</h2>
+                <div class="w-full">${data.desc}</div>
+            </div>`;
+            
         document.getElementById('modal-overlay').classList.add('active');
-        lucide.createIcons();
+        
+        // Refresh icons only for the modal content to avoid flickering elsewhere
+        lucide.createIcons({
+            attrs: {
+                class: 'lucide'
+            },
+            nameAttr: 'data-lucide'
+        });
     }
 
-    function closeModal() { document.getElementById('modal-overlay').classList.remove('active'); }
+    function closeModal() { 
+        document.getElementById('modal-overlay').classList.remove('active'); 
+    }
 </script>
 </body>
 </html>
