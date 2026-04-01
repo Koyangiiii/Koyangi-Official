@@ -28,6 +28,14 @@
 .custom-scrollbar::-webkit-scrollbar { width: 4px; }
 .custom-scrollbar::-webkit-scrollbar-track { background: #fff5f7; }
 .custom-scrollbar::-webkit-scrollbar-thumb { background: #ffb6c1; border-radius: 10px; }
+
+/* Enhanced Shadow for Contact Card */
+.contact-card-premium {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 182, 193, 0.5);
+    box-shadow: 0 15px 35px -5px rgba(255, 182, 193, 0.4), 0 5px 15px -5px rgba(255, 182, 193, 0.2);
+}
 </style>
 </head>
 <body class="bg-gradient-to-b from-[#fff5f7] to-white text-[#5d3a4a] flex justify-center relative overflow-x-hidden min-h-screen pb-20">
@@ -126,28 +134,17 @@
         </button>
     </div>
 
-    <div class="px-5 mt-10 space-y-3">
-        <div class="border border-pink-100 bg-white rounded-[24px] p-5 shadow-sm relative overflow-hidden">
-            <div class="text-center mb-4">
-                <h3 class="text-pink-500 font-bold text-sm flex justify-center items-center gap-2">ช่องทางการติดต่อ 💬</h3>
-            </div>
-            <div class="grid grid-cols-1 gap-3">
-                <a href="https://lin.ee/UUfn5xL" target="_blank" class="flex items-center gap-4 bg-[#f6fff9] border border-green-100 p-3 rounded-[16px] hover:border-green-300 transition-all active:scale-95">
-                    <div class="w-10 h-10 rounded-xl bg-[#06C755] flex items-center justify-center text-white shadow-sm"><i data-lucide="message-circle" class="w-6 h-6"></i></div>
-                    <div class="flex-1"><p class="font-bold text-green-800 text-[12px]">LINE Official</p><p class="text-[10px] text-green-500">@koyangistore</p></div>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-green-300"></i>
-                </a>
-                <a href="https://www.facebook.com/k0yang1i?" target="_blank" class="flex items-center gap-4 bg-[#f0f7ff] border border-blue-100 p-3 rounded-[16px] hover:border-blue-300 transition-all active:scale-95">
-                    <div class="w-10 h-10 rounded-xl bg-[#1877F2] flex items-center justify-center text-white shadow-sm"><i data-lucide="facebook" class="w-6 h-6"></i></div>
-                    <div class="flex-1"><p class="font-bold text-blue-800 text-[12px]">Facebook Page</p><p class="text-[10px] text-blue-500">Koyangi Store</p></div>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-blue-300"></i>
-                </a>
-                <a href="https://www.instagram.com/k0yangi_ii?" target="_blank" class="flex items-center gap-4 bg-[#fff5f6] border border-pink-100 p-3 rounded-[16px] hover:border-pink-300 transition-all active:scale-95">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] flex items-center justify-center text-white shadow-sm"><i data-lucide="instagram" class="w-6 h-6"></i></div>
-                    <div class="flex-1"><p class="font-bold text-pink-800 text-[12px]">Instagram</p><p class="text-[10px] text-pink-500">k0yangi_ii</p></div>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-pink-300"></i>
-                </a>
-            </div>
+    <div class="px-8 mt-12 mb-4">
+        <div class="contact-card-premium rounded-[30px] p-5 flex items-center justify-around">
+            <a href="https://lin.ee/UUfn5xL" target="_blank" class="w-12 h-12 rounded-full bg-[#06C755] flex items-center justify-center text-white shadow-lg hover:scale-110 active:scale-90 transition-all">
+                <i data-lucide="message-circle" class="w-6 h-6"></i>
+            </a>
+            <a href="https://www.facebook.com/k0yang1i?" target="_blank" class="w-12 h-12 rounded-full bg-[#1877F2] flex items-center justify-center text-white shadow-lg hover:scale-110 active:scale-90 transition-all">
+                <i data-lucide="facebook" class="w-6 h-6"></i>
+            </a>
+            <a href="https://www.instagram.com/k0yangi_ii?" target="_blank" class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] flex items-center justify-center text-white shadow-lg hover:scale-110 active:scale-90 transition-all">
+                <i data-lucide="instagram" class="w-6 h-6"></i>
+            </a>
         </div>
     </div>
 
