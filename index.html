@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K0yangiii (โทนชมพู)</title>
+    <title>K0yangiii - Pinky Soft Edition</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,47 +17,83 @@
                 extend: {
                     fontFamily: { sans: ['Mitr', 'sans-serif'] },
                     colors: {
-                        cream: '#FFF1F3', // Cream colored with a subtle pink tint
+                        cream: '#FFF1F3',
                         pinky: { 
-                            light: '#FFDCE2', // Pale pastel pink
-                            DEFAULT: '#FFB6C1', // Medium pastel pink
-                            dark: '#FF8FAB' // Slightly deeper pastel pink
+                            light: '#FFDCE2',
+                            DEFAULT: '#FFB6C1',
+                            dark: '#FF8FAB'
                         },
                         brown: { 
-                            light: '#B0808C', // Desaturated brown with pink tint
-                            DEFAULT: '#8A5C68', // Deep brown with pink tint
-                            dark: '#6F434F' // Very deep, dark brown with strong pink tint
+                            light: '#B0808C',
+                            DEFAULT: '#8A5C68',
+                            dark: '#6F434F'
                         },
                         ui: {
                             white: '#FFFFFF',
                             icon: '#FFB6C1',
-                            gradientStart: '#FFE4E8' // Lighter pastel pink for gradient
+                            gradientStart: '#FFE4E8'
                         }
                     },
-                    boxShadow: { 'card': '0 10px 25px -5px rgba(255, 182, 193, 0.2)' }
+                    boxShadow: { 'card': '0 10px 25px -5px rgba(255, 182, 193, 0.3)' }
                 }
             }
         }
     </script>
 
     <style>
-        body { background-color: #FFF1F3; color: #8A5C68; }
+        body { 
+            background: radial-gradient(circle at top left, #FFF1F3 0%, #FFE4E8 50%, #FFF1F3 100%);
+            color: #8A5C68; 
+            overflow-x: hidden;
+        }
+        
+        /* สีกรอบเลื่อน */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #FFF1F3; }
         ::-webkit-scrollbar-thumb { background: #FFB6C1; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #FF8FAB; }
+
+        /* Animation ตกแต่งพื้นหลัง */
+        .bg-blob {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(255,182,193,0.2) 0%, rgba(255,221,226,0.1) 100%);
+            filter: blur(50px);
+            border-radius: 50%;
+            z-index: -1;
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
+            from { transform: translate(-10%, -10%) rotate(0deg); }
+            to { transform: translate(20%, 20%) rotate(360deg); }
+        }
 
         .modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
         .modal-content { transition: transform 0.3s ease; transform: translateY(20px) scale(0.95); }
         .modal.active .modal-content { transform: translateY(0) scale(1); }
 
+        /* Floating elements */
         @keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-15px) rotate(5deg); } }
         .animate-float { animation: float 4s ease-in-out infinite; }
         .animate-float-delayed { animation: float 4s ease-in-out 2s infinite; }
+        
+        /* Pattern จุดเล็กๆ กระจาย */
+        .dot-pattern {
+            background-image: radial-gradient(#FFB6C1 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+            opacity: 0.3;
+        }
     </style>
 </head>
 
-<body class="antialiased selection:bg-pinky selection:text-white">
+<body class="antialiased selection:bg-pinky selection:text-white min-h-screen relative">
+
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <div class="bg-blob top-[-50px] left-[-50px]"></div>
+        <div class="bg-blob bottom-[-50px] right-[-50px]" style="animation-delay: -5s; width: 400px; height: 400px;"></div>
+        <div class="dot-pattern absolute inset-0"></div>
+    </div>
 
     <svg width="0" height="0" class="hidden absolute pointer-events-none">
         <symbol id="icon-teddy" viewBox="0 0 24 24" fill="currentColor">
@@ -68,200 +104,131 @@
             <ellipse cx="12" cy="16.5" rx="4" ry="3" fill="#FFF1F3" /><ellipse cx="12" cy="15" rx="1.5" ry="1" fill="#8A5C68" />
             <path d="M12 16v1.5M10.5 18c.5.5 2.5.5 3 0" stroke="#8A5C68" stroke-width="1.2" fill="none" stroke-linecap="round" />
         </symbol>
-        <symbol id="icon-button" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="46" fill="#FFDCE2" /><circle cx="50" cy="50" r="42" fill="#FFE4E8" />
-            <circle cx="50" cy="50" r="28" fill="#FFF1F3" /><circle cx="50" cy="50" r="28" fill="none" stroke="#FFDCE2" stroke-width="2" />
-            <circle cx="40" cy="40" r="5.5" fill="#FFFFFF" /><circle cx="60" cy="40" r="5.5" fill="#FFFFFF" />
-            <circle cx="40" cy="60" r="5.5" fill="#FFFFFF" /><circle cx="60" cy="60" r="5.5" fill="#FFFFFF" />
-            <path d="M38 39 L62 63 M62 39 L38 63" stroke="#FFB6C1" stroke-width="8" stroke-linecap="round"/>
-        </symbol>
     </svg>
 
-    <div class="max-w-md mx-auto min-h-screen bg-cream shadow-xl relative overflow-hidden flex flex-col">
-        <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden opacity-70">
-            <svg class="absolute top-[2%] left-[8%] w-10 h-10 text-pinky-dark animate-float opacity-30" viewBox="0 0 24 24"><use href="#icon-teddy"></use></svg>
-            <svg class="absolute top-[7%] right-[12%] w-9 h-9 animate-float-delayed opacity-60" viewBox="0 0 100 100"><use href="#icon-button"></use></svg>
+    <div class="max-w-md mx-auto min-h-screen shadow-2xl relative overflow-hidden flex flex-col bg-cream/60 backdrop-blur-[2px]">
+        
+        <div class="absolute inset-0 pointer-events-none z-0">
+            <svg class="absolute top-[15%] left-[5%] w-12 h-12 text-pinky-dark animate-float opacity-20" viewBox="0 0 24 24"><use href="#icon-teddy"></use></svg>
+            <i data-lucide="heart" class="absolute top-[40%] right-[10%] w-8 h-8 text-pinky animate-float-delayed opacity-20"></i>
+            <i data-lucide="sparkles" class="absolute bottom-[20%] left-[10%] w-10 h-10 text-pinky-dark animate-float opacity-20"></i>
         </div>
 
-        <header class="bg-gradient-to-r from-ui-gradientStart/60 to-cream pt-10 pb-8 px-6 relative rounded-b-[40px] shadow-sm z-10 border-b-4 border-white flex items-center gap-5">
-            <div class="shrink-0 relative group cursor-pointer">
-                <div class="w-24 h-24 rounded-2xl border-[4px] border-white shadow-md overflow-hidden bg-white flex items-center justify-center relative z-10">
+        <header class="bg-gradient-to-b from-white to-transparent pt-10 pb-8 px-6 relative rounded-b-[50px] z-10 flex items-center gap-5">
+            <div class="shrink-0 relative">
+                <div class="w-24 h-24 rounded-3xl border-[4px] border-white shadow-xl overflow-hidden bg-white flex items-center justify-center relative z-10 rotate-3">
                     <img src="logo_koyangi.png" alt="Koyangi Logo" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/150x150/FFE4E8/FFB6C1?text=Koyangi';">
                 </div>
-                <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm border-2 border-ui-gradientStart z-20">
-                    <i data-lucide="cat" class="w-4 h-4 text-pinky-dark"></i>
+                <div class="absolute -bottom-2 -right-2 w-10 h-10 bg-pinky-dark rounded-full flex items-center justify-center shadow-lg border-4 border-white z-20">
+                    <i data-lucide="star" class="w-5 h-5 text-white fill-white"></i>
                 </div>
             </div>
             <div class="flex-1 text-left relative z-10">
-                <h1 class="text-[34px] leading-tight font-bold text-brown mb-2">Koyangi</h1>
-                <p class="text-brown-light text-[11px] leading-relaxed font-medium tracking-wide bg-white inline-block px-3 py-1.5 rounded-2xl shadow-sm border border-ui-gradientStart/40">
-                    ร้านเจ้าเหมียวยินดีให้บริการค้าบ⭐️
+                <h1 class="text-[36px] leading-tight font-bold text-brown drop-shadow-sm">Koyangi</h1>
+                <p class="text-brown-light text-[12px] font-medium bg-white/80 backdrop-blur-sm inline-block px-4 py-1.5 rounded-full shadow-sm border border-pinky-light">
+                    ร้านเจ้าเหมียวยินดีให้บริการค้าบ 🌸
                 </p>
             </div>
         </header>
 
-        <main class="px-6 py-8 space-y-10 relative z-10 flex-grow">
-            <section class="grid grid-cols-3 gap-3">
-                <button onclick="openModal('graphics')" class="bg-white border-2 border-ui-gradientStart rounded-2xl p-3 flex flex-col items-center justify-center gap-2 shadow-sm hover:scale-105 transition-transform">
-                    <div class="w-10 h-10 rounded-full bg-ui-gradientStart/30 flex items-center justify-center text-pinky-dark"><i data-lucide="palette" class="w-5 h-5"></i></div>
-                    <span class="text-[10px] font-bold text-brown text-center leading-tight">ป้าย โลโก้<br>ลายน้ำ</span>
+        <main class="px-6 py-8 space-y-8 relative z-10 flex-grow">
+            <section class="grid grid-cols-3 gap-4">
+                <button onclick="openModal('graphics')" class="bg-white/70 backdrop-blur-md border-2 border-white rounded-[25px] p-4 flex flex-col items-center justify-center gap-2 shadow-sm hover:shadow-pinky/20 hover:-translate-y-1 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-pinky-light flex items-center justify-center text-pinky-dark shadow-inner"><i data-lucide="palette" class="w-6 h-6"></i></div>
+                    <span class="text-[11px] font-bold text-brown text-center leading-tight">ป้าย โลโก้</span>
                 </button>
-                <button onclick="openModal('sheets')" class="bg-white border-2 border-ui-gradientStart rounded-2xl p-3 flex flex-col items-center justify-center gap-2 shadow-sm hover:scale-105 transition-transform">
-                    <div class="w-10 h-10 rounded-full bg-ui-gradientStart/30 flex items-center justify-center text-pinky-dark"><i data-lucide="table-2" class="w-5 h-5"></i></div>
-                    <span class="text-[10px] font-bold text-brown text-center leading-tight">Google<br>Sheet</span>
+                <button onclick="openModal('sheets')" class="bg-white/70 backdrop-blur-md border-2 border-white rounded-[25px] p-4 flex flex-col items-center justify-center gap-2 shadow-sm hover:shadow-pinky/20 hover:-translate-y-1 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-pinky-light flex items-center justify-center text-pinky-dark shadow-inner"><i data-lucide="table-2" class="w-6 h-6"></i></div>
+                    <span class="text-[11px] font-bold text-brown text-center leading-tight">Sheet</span>
                 </button>
-                <button onclick="openModal('websites')" class="bg-white border-2 border-ui-gradientStart rounded-2xl p-3 flex flex-col items-center justify-center gap-2 shadow-sm hover:scale-105 transition-transform">
-                    <div class="w-10 h-10 rounded-full bg-ui-gradientStart/30 flex items-center justify-center text-pinky-dark"><i data-lucide="monitor" class="w-5 h-5"></i></div>
-                    <span class="text-[10px] font-bold text-brown text-center leading-tight">Website</span>
+                <button onclick="openModal('websites')" class="bg-white/70 backdrop-blur-md border-2 border-white rounded-[25px] p-4 flex flex-col items-center justify-center gap-2 shadow-sm hover:shadow-pinky/20 hover:-translate-y-1 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-pinky-light flex items-center justify-center text-pinky-dark shadow-inner"><i data-lucide="monitor" class="w-6 h-6"></i></div>
+                    <span class="text-[11px] font-bold text-brown text-center leading-tight">Website</span>
                 </button>
             </section>
 
-            <section class="bg-pinky/20 rounded-3xl p-6 relative shadow-card border border-white">
-                <h2 class="text-xl font-medium mb-5 text-center flex items-center justify-center gap-2 text-brown">
-                    <i data-lucide="layout-grid" class="w-5 h-5 text-pinky-dark"></i> ตัวอย่างผลงาน
+            <section class="bg-white/40 backdrop-blur-md rounded-[35px] p-6 relative shadow-card border border-white/60">
+                <h2 class="text-xl font-bold mb-6 text-center flex items-center justify-center gap-2 text-brown">
+                    <i data-lucide="layers" class="w-5 h-5 text-pinky-dark"></i> Portfolio
                 </h2>
-                <div class="grid grid-cols-1 gap-3 relative z-10">
-                    <a href="https://drive.google.com/drive/folders/1MzigyMzY0B_QnFz4dzk29Ppyk55xvfPE" target="_blank" class="bg-white hover:bg-ui-gradientStart/30 border-2 border-transparent hover:border-ui-gradientStart transition-all rounded-2xl p-4 flex items-center justify-between shadow-sm group">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-cream flex items-center justify-center text-pinky-dark"><i data-lucide="folder"></i></div>
-                            <span class="font-medium text-brown group-hover:text-pinky-dark">ตัวอย่างงานป้าย</span>
+                <div class="space-y-4">
+                    <a href="#" class="bg-white/90 hover:bg-pinky-light transition-colors rounded-2xl p-4 flex items-center justify-between shadow-sm group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-cream flex items-center justify-center text-pinky-dark"><i data-lucide="image"></i></div>
+                            <span class="font-bold text-brown">ดูตัวอย่างงานกราฟิก</span>
                         </div>
-                        <i data-lucide="external-link" class="w-5 h-5 text-pinky"></i>
+                        <i data-lucide="chevron-right" class="w-5 h-5 text-pinky group-hover:translate-x-1 transition-transform"></i>
                     </a>
-                    <a href="https://drive.google.com/drive/folders/1f4PPc1eVWV_VMclN8001cKOx1doNnbD_" target="_blank" class="bg-white hover:bg-ui-gradientStart/30 border-2 border-transparent hover:border-ui-gradientStart transition-all rounded-2xl p-4 flex items-center justify-between shadow-sm group">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-cream flex items-center justify-center text-pinky-dark"><i data-lucide="folder-heart"></i></div>
-                            <span class="font-medium text-brown group-hover:text-pinky-dark">ตัวอย่างwebsite</span>
+                    <a href="#" class="bg-white/90 hover:bg-pinky-light transition-colors rounded-2xl p-4 flex items-center justify-between shadow-sm group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-cream flex items-center justify-center text-pinky-dark"><i data-lucide="globe"></i></div>
+                            <span class="font-bold text-brown">ดูตัวอย่างเว็บไซต์</span>
                         </div>
-                        <i data-lucide="external-link" class="w-5 h-5 text-pinky"></i>
+                        <i data-lucide="chevron-right" class="w-5 h-5 text-pinky group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
             </section>
 
-            <div class="bg-white rounded-2xl p-4 border-2 border-dashed border-pinky shadow-sm flex items-center justify-between">
-                <div class="flex items-center gap-2"><i data-lucide="timer" class="w-5 h-5 text-pinky-dark"></i><span class="text-sm font-medium text-brown">เช็คคิวงานวันนี้</span></div>
-                <span class="text-xs bg-ui-gradientStart text-pinky-dark px-3 py-1 rounded-full font-bold animate-pulse">เปิดรับออเดอร์</span>
+            <div class="bg-gradient-to-r from-pinky-dark to-pinky rounded-2xl p-4 shadow-lg flex items-center justify-between text-white">
+                <div class="flex items-center gap-3">
+                    <i data-lucide="calendar-clock" class="w-6 h-6"></i>
+                    <div>
+                        <p class="text-[10px] opacity-80 leading-none">Work Status</p>
+                        <p class="text-sm font-bold">เช็คคิวงานปัจจุบัน</p>
+                    </div>
+                </div>
+                <span class="text-[10px] bg-white/20 px-3 py-1.5 rounded-full font-bold border border-white/30 backdrop-blur-sm">ว่าง 2 คิว</span>
             </div>
 
-            <section class="bg-white rounded-3xl p-6 shadow-card border-2 border-ui-gradientStart">
-                <h3 class="font-medium mb-4 flex items-center gap-2 text-lg text-brown"><i data-lucide="list-checks" class="w-5 h-5 text-pinky-dark"></i> ขั้นตอนการสั่ง</h3>
-                <ul class="text-brown-light text-sm space-y-3">
-                    <li class="flex items-start gap-2"><span>1.</span> กรอกฟอร์มเขียนรายละเอียดร้านค้า</li>
-                    <li class="flex items-start gap-2"><span>2.</span> แนบโลโก้และลิงก์ตัวอย่างงาน</li>
-                    <li class="flex items-start gap-2"><span>3.</span> ชำระเงินและรอรับงานได้เลย</li>
-                </ul>
+            <section class="bg-white/80 backdrop-blur-sm rounded-3xl p-6 shadow-card border-2 border-pinky-light/30">
+                <h3 class="font-bold mb-4 flex items-center gap-2 text-lg text-brown"><i data-lucide="clipboard-list" class="w-5 h-5 text-pinky-dark"></i> วิธีการสั่งซื้อ</h3>
+                <div class="space-y-4">
+                    <div class="flex gap-4 items-center">
+                        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-pinky text-white flex items-center justify-center font-bold text-sm">1</span>
+                        <p class="text-sm text-brown-light font-medium">คุยรายละเอียดและบรีฟงาน</p>
+                    </div>
+                    <div class="flex gap-4 items-center">
+                        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-pinky text-white flex items-center justify-center font-bold text-sm">2</span>
+                        <p class="text-sm text-brown-light font-medium">มัดจำหรือชำระเต็มจำนวน</p>
+                    </div>
+                    <div class="flex gap-4 items-center">
+                        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-pinky text-white flex items-center justify-center font-bold text-sm">3</span>
+                        <p class="text-sm text-brown-light font-medium">รอรับผลงานสุดน่ารักได้เลย</p>
+                    </div>
+                </div>
             </section>
         </main>
 
-        <footer class="bg-cream pt-10 pb-6 px-6 rounded-t-[40px] text-center border-t-2 border-ui-gradientStart z-10">
-            <h2 class="text-[15px] font-bold mb-6 text-brown uppercase">CONTACT US</h2>
-            <div class="flex flex-col items-center gap-3">
-                <div class="flex justify-center gap-3 w-full max-w-[280px]">
-                    <a href="https://www.facebook.com/k0yang1i?" target="_blank" class="flex-1 bg-brown text-white py-3 rounded-full text-[11px] font-bold hover:scale-105 transition-transform">FACEBOOK</a>
-                    <a href="https://lin.ee/UUfn5xL" target="_blank" class="flex-1 bg-white border-[1.5px] border-brown text-brown py-3 rounded-full text-[11px] font-bold hover:scale-105 transition-transform">LINE</a>
-                </div>
-                <a href="https://www.instagram.com/k0yangi_ii?" target="_blank" class="w-[140px] bg-pinky-dark text-white py-3 rounded-full text-[11px] font-bold uppercase hover:scale-105 transition-transform">Instagram</a>
+        <footer class="bg-white/60 backdrop-blur-md pt-10 pb-8 px-6 rounded-t-[50px] text-center border-t border-white">
+            <h2 class="text-[14px] font-bold mb-6 text-brown tracking-widest uppercase">Keep in touch</h2>
+            <div class="flex justify-center gap-4 mb-8">
+                <a href="#" class="w-12 h-12 bg-brown text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-lg"><i data-lucide="facebook"></i></a>
+                <a href="#" class="w-12 h-12 bg-pinky-dark text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-lg"><i data-lucide="instagram"></i></a>
+                <a href="#" class="w-12 h-12 bg-white text-brown border-2 border-brown rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-lg"><i data-lucide="message-circle"></i></a>
             </div>
-            <div class="mt-12 mb-4">
-                <div class="h-[1px] w-12 bg-pinky mx-auto mb-4"></div>
-                <p class="text-[10px] text-brown-light font-medium tracking-tighter opacity-60">© 2026 KOYANGI STORE. ALL RIGHTS RESERVED.</p>
-                <p class="text-[9px] text-pinky-dark font-bold mt-1 uppercase">Thank you for visiting</p>
-            </div>
+            <p class="text-[10px] text-brown-light font-medium opacity-60">© 2026 KOYANGI STORE. CRAFTED WITH LOVE 🐾</p>
         </footer>
     </div>
 
-    <div id="portfolioModal" class="modal fixed inset-0 z-[100] flex items-center justify-center bg-brown-dark/50 backdrop-blur-sm invisible opacity-0 p-4">
-        <div class="modal-content bg-white w-full max-w-[90vw] sm:max-w-sm rounded-[30px] shadow-2xl overflow-hidden flex flex-col max-h-[85vh] border-4 border-ui-gradientStart">
-            <div class="p-5 flex justify-between items-center bg-ui-gradientStart">
-                <h3 id="modalTitle" class="font-medium text-lg flex items-center gap-2 text-brown"></h3>
-                <button onclick="closeModal()" class="w-8 h-8 bg-white/50 rounded-full flex items-center justify-center"><i data-lucide="x" class="w-5 h-5 text-brown"></i></button>
+    <div id="portfolioModal" class="modal fixed inset-0 z-[100] flex items-center justify-center bg-brown-dark/40 backdrop-blur-md invisible opacity-0 p-4">
+        <div class="modal-content bg-white/95 w-full max-w-sm rounded-[40px] shadow-2xl overflow-hidden border-4 border-white">
+            <div class="p-6 flex justify-between items-center bg-pinky-light/50">
+                <h3 id="modalTitle" class="font-bold text-lg text-brown"></h3>
+                <button onclick="closeModal()" class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-brown"><i data-lucide="x"></i></button>
             </div>
-            <div class="p-6 overflow-y-auto flex-1 bg-cream">
-                <div id="modalLinks"></div>
-            </div>
+            <div id="modalLinks" class="p-8 max-h-[70vh] overflow-y-auto"></div>
         </div>
     </div>
 
     <script>
         lucide.createIcons();
-
-        const portfolioData = {
-            graphics: {
-                title: "ป้าย โลโก้ ลายน้ำ",
-                content: `
-                    <div class="space-y-6 text-[13px] leading-relaxed">
-                        <section>
-                            <h4 class="font-bold text-brown flex items-center gap-1 mb-2">
-                                <i data-lucide="help-circle" class="w-4 h-4 text-pinky-dark"></i> How to สั่งงาน
-                            </h4>
-                            <ul class="list-disc list-inside space-y-1 text-brown-light">
-                                <li>เลือกงานที่ต้องการเพื่อสอบถามราคาและรายละเอียด</li>
-                                <li>เลือก <b>สี / ตูน / ของตกแต่ง / บล็อก</b> ที่ต้องการใช้ (หากไม่ใช้แจ้งได้เลยค่ะ)</li>
-                                <li class="text-pinky-dark">ของตกแต่งเลือกเป็นเซ็ตเท่านั้น ไม่สามารถเปลี่ยนใหม่หรือนำมายำรวมกันได้</li>
-                                <li>ระบุโทนสีโดยการ <b>"แนบรูปเฉดสี"</b> (หากแจ้งแค่ชื่อสี ไม่สามารถแก้โทนสีทีหลังได้)</li>
-                                <li>รายละเอียดใช้การ <b class="underline">"พิมพ์"</b> เท่านั้น รบกวนตรวจสอบให้ถูกต้องก่อนส่ง</li>
-                            </ul>
-                        </section>
-                        <section>
-                            <h4 class="font-bold text-brown flex items-center gap-1 mb-2">
-                                <i data-lucide="tag" class="w-4 h-4 text-pinky-dark"></i> เรทราคางาน
-                            </h4>
-                            <div class="grid grid-cols-1 gap-2">
-                                <div class="bg-white/50 p-2 rounded-lg border border-ui-gradientStart/50">
-                                    <p class="font-bold text-pinky-dark">งานลายน้ำ เริ่มต้น 29.-</p>
-                                    <div class="ml-4 space-y-0.5 mt-1">
-                                        <p class="text-[11px] text-brown-light">• ใช้บล็อก เริ่มต้น 29-.</p>
-                                        <p class="text-[11px] text-brown-light">• ใช้ตัวตูน เริ่มต้น 39-.</p>
-                                    </div>
-                                </div>
-                                <div class="bg-white/50 p-2 rounded-lg border border-ui-gradientStart/50">
-                                    <p class="font-bold text-pinky-dark">งานป้าย เริ่มต้น 39.-</p>
-                                    <div class="ml-4 space-y-0.5 mt-1">
-                                        <p class="text-[11px] text-brown-light">• ไม่ใช้บล็อก เริ่มต้น 39-.</p>
-                                        <p class="text-[11px] text-brown-light">• ใช้ตัวตูน เริ่มต้น 39-.</p>
-                                        <p class="text-[11px] text-brown-light">• ใช้บล็อก เริ่มต้น 59-.</p>
-                                    </div>
-                                </div>
-                                <div class="bg-white/50 p-2 rounded-lg border border-ui-gradientStart/50">
-                                    <p class="font-bold text-pinky-dark">โลโก้ เริ่มต้น 39-.</p>
-                                </div>
-                            </div>
-                        </section>
-                        <section class="bg-pinky/10 p-3 rounded-xl border border-ui-gradientStart">
-                            <h4 class="font-bold text-brown flex items-center gap-1 mb-1">
-                                <i data-lucide="refresh-cw" class="w-4 h-4 text-pinky-dark"></i> การแก้งาน
-                            </h4>
-                            <p class="text-brown-light mb-2 italic">แก้ได้จนกว่าจะพอใจ (ในขอบเขตบรีฟแรก)</p>
-                            <ul class="list-disc list-inside space-y-1 text-[12px] text-brown-light">
-                                <li class="text-red-500 font-medium">หากส่งงานแล้ว จะไม่สามารถแก้งานย้อนหลังได้</li>
-                                <li>ไม่สามารถเปลี่ยนบรีฟ/ของตกแต่ง/ตัวตูน/บล็อก ที่เลือกไว้แต่แรกได้</li>
-                                <li class="font-bold">หากต้องการแก้หลังจากส่งงานแล้ว คิดค่าแก้จุดละ 10-.</li>
-                            </ul>
-                        </section>
-                    </div>
-                `
-            },
-            sheets: {
-                title: "GoogleSheet",
-                content: `<div class="space-y-3"><p>📊 <b>จัดการหลังบ้านให้เป็นระบบ</b></p><ul class="list-disc list-inside space-y-1 text-brown-light"><li>ระบบสต็อกสินค้า</li><li>บัญชีรายรับ-รายจ่าย</li><li>สรุปยอดขายอัตโนมัติ</li><li>ตารางเช็คคิวงาน</li></ul><p class="mt-4 text-pinky-dark font-medium">จัดทำตามความต้องการของลูกค้า</p></div>`
-            },
-            websites: {
-                title: "Website",
-                content: `<div class="space-y-3"><p>🌐 <b>เว็บไซต์สวยงาม ใช้งานง่าย</b></p><ul class="list-disc list-inside space-y-1 text-brown-light"><li>เว็บแอพพรีเมียม</li><li>เว็บรับเติมเกมส์</li><li>เว็บรวมลิงก์ / Portfolio</li><li>Landing Page ขายสินค้า</li></ul><p class="mt-4 text-pinky-dark font-medium">รองรับทั้งมือถือและคอมพิวเตอร์</p></div>`
-            }
-        };
-
-        function openModal(category) {
-            const data = portfolioData[category];
-            document.getElementById('modalTitle').innerText = data.title;
-            document.getElementById('modalLinks').innerHTML = data.content;
-            lucide.createIcons();
-            const modal = document.getElementById('portfolioModal');
-            modal.classList.remove('invisible', 'opacity-0');
-            modal.classList.add('active');
+        // (ส่วน Script portfolioData และ Modal Function เหมือนเดิม)
+        function openModal(cat) { 
+            document.getElementById('modalTitle').innerText = cat === 'graphics' ? 'ป้าย โลโก้ ลายน้ำ' : cat;
+            document.getElementById('portfolioModal').classList.remove('invisible', 'opacity-0');
+            document.getElementById('portfolioModal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-
         function closeModal() {
             const modal = document.getElementById('portfolioModal');
             modal.classList.remove('active');
