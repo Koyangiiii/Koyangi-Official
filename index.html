@@ -1,241 +1,318 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="th" class="scroll-smooth">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Koyangi Store - Web Event</title>
+<title>Koyangi Store</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/lucide@latest"></script>
-<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Fredoka:wght@400;500;600;700&family=Mitr:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+fontFamily: {
+eng: ['Fredoka', 'sans-serif'],
+thai: ['Mitr', 'sans-serif'],
+logo: ['"Alfa Slab One"', 'serif'],
+},
+colors: {
+pastel: {
+purple: '#dcb5ff',
+purpleLight: '#f5eeff',
+purpleDark: '#9b72cf',
+blue: '#b5e3ff',
+blueLight: '#ebf7ff',
+pink: '#ffb5d9',
+pinkLight: '#ffebf4',
+yellow: '#ffeeb5',
+yellowLight: '#fffcf2',
+},
+kawaii: {
+bg: '#f7f3ff',
+card: '#ffffff',
+text: '#825e9c',
+border: '#dcb5ff',
+highlight: '#ffb5d9', // ปรับเป็นชมพูตามโทนที่ชอบ
+header: '#ffebf4' 
+}
+},
+boxShadow: {
+'kawaii': '0 8px 24px -6px rgba(255, 181, 217, 0.4)',
+'kawaii-inner': 'inset 0 2px 4px 0 rgba(255, 181, 217, 0.2)',
+},
+animation: {
+'blob': 'blob 7s infinite',
+'float': 'float 6s ease-in-out infinite',
+'float-delayed': 'float 6s ease-in-out 3s infinite',
+'gradient-x': 'gradient-x 3s ease infinite',
+},
+keyframes: {
+blob: {
+'0%': { transform: 'translate(0px, 0px) scale(1)' },
+'33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+'66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+'100%': { transform: 'translate(0px, 0px) scale(1)' }
+},
+float: {
+'0%, 100%': { transform: 'translateY(0px)' },
+'50%': { transform: 'translateY(-20px)' }
+},
+'gradient-x': {
+'0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
+'50%': { 'background-size': '200% 200%', 'background-position': 'right center' }
+}
+}
+}
+}
+}
+</script>
 <style>
-* { font-family: 'Mitr', sans-serif; }
-@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-.animate-marquee { display: inline-block; white-space: nowrap; animation: marquee 20s linear infinite; }
-@keyframes pan-grid { 0% { transform: translateY(0); } 100% { transform: translateY(30px); } }
-.cyber-grid-bg { background-image: linear-gradient(rgba(255, 182, 193, 0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 182, 193, 0.4) 1px, transparent 1px); background-size: 30px 30px; animation: pan-grid 4s linear infinite; }
-@keyframes float-particle { 0% { transform: translateY(0) scale(1); opacity: 0; } 50% { opacity: 0.8; } 100% { transform: translateY(-100px) scale(1.5); opacity: 0; } }
-.particle { position: absolute; background: #FFB6C1; border-radius: 50%; animation: float-particle 3s ease-in infinite; }
-@keyframes slide-smooth { 0% { background-position: 0 0; } 100% { background-position: 120px 0; } }
-.loading-bar-smooth { background: repeating-linear-gradient(90deg, #ffb6c1 0px, #ff85b2 30px, #f472b6 60px, #ff85b2 90px, #ffb6c1 120px); background-size: 120px 100%; animation: slide-smooth 2.5s linear infinite; }
-.text-stroke-pink { -webkit-text-stroke: 1.5px #ff4d94; color: #ffffff; text-shadow: 0 0 10px rgba(255, 77, 148, 0.3); }
-.icon-fill-current { fill: currentColor; }
-
-/* Modal Styles */
-.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); z-index: 50; align-items: center; justify-content: center; padding: 20px; }
-.modal-content { background: white; width: 100%; max-width: 380px; border-radius: 24px; padding: 24px; position: relative; transform: scale(0.9); transition: 0.3s ease-in-out; }
-.modal-overlay.active { display: flex; }
+body {
+background-color: #fff5f9; /* ปรับเป็นโทนชมพูตามที่ชอบ */
+background-image: 
+radial-gradient(circle at top left, rgba(255, 181, 217, 0.5) 0%, transparent 40%),
+radial-gradient(circle at bottom right, rgba(181, 227, 255, 0.5) 0%, transparent 50%),
+radial-gradient(circle at 80% 20%, rgba(255, 238, 181, 0.4) 0%, transparent 40%),
+radial-gradient(#ffb5d9 2px, transparent 2px);
+background-size: 100% 100%, 100% 100%, 100% 100%, 30px 30px;
+background-attachment: fixed;
+}
+.title-stroke { -webkit-text-stroke: 10px white; }
+.card-kawaii {
+background: rgba(255, 255, 255, 0.95);
+border: 3px solid #ffb5d9;
+border-radius: 28px;
+box-shadow: 0 10px 25px -5px rgba(255, 181, 217, 0.4);
+position: relative;
+}
+.btn-kawaii {
+background: linear-gradient(135deg, #ffb5d9 0%, #dcb5ff 100%);
+border: 2px solid #fff;
+box-shadow: 0 4px 12px rgba(255, 181, 217, 0.5);
+transition: all 0.3s ease;
+}
+.btn-kawaii:hover { transform: translateY(-2px) scale(1.02); }
+.modal-overlay { backdrop-filter: blur(5px); opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.modal-overlay.active { opacity: 1; visibility: visible; }
+.modal-content { transform: scale(0.9); transition: all 0.3s ease; }
 .modal-overlay.active .modal-content { transform: scale(1); }
-
-/* Custom Scrollbar for Modal */
-.custom-scrollbar::-webkit-scrollbar { width: 4px; }
-.custom-scrollbar::-webkit-scrollbar-track { background: #fff5f7; }
-.custom-scrollbar::-webkit-scrollbar-thumb { background: #ffb6c1; border-radius: 10px; }
+#sidebar { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
 </style>
 </head>
-<body class="bg-[#fff5f7] text-[#5d3a4a] flex justify-center relative overflow-x-hidden min-h-screen pb-20">
+<body class="font-thai text-kawaii-text min-h-screen relative pb-12">
 
-<div id="modal-overlay" class="modal-overlay" onclick="closeModal()">
-    <div class="modal-content shadow-2xl border border-pink-100" onclick="event.stopPropagation()">
-        <button onclick="closeModal()" class="absolute top-4 right-4 text-pink-300 hover:text-pink-500 z-20"><i data-lucide="x-circle"></i></button>
-        <div id="modal-body"></div>
-        <button onclick="closeModal()" class="w-full mt-6 py-3 bg-pink-500 text-white rounded-xl font-bold shadow-lg shadow-pink-200 active:scale-95 transition">รับทราบค่า ✨</button>
-    </div>
+<svg width="0" height="0" class="hidden">
+<defs>
+<g id="icon-sparkle"><path d="M12 0C12 5.5 16.5 10 22 10C16.5 10 12 14.5 12 20C12 14.5 7.5 10 2 10C7.5 10 12 5.5 12 0Z" fill="currentColor"/></g>
+<g id="icon-heart"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/></g>
+<g id="icon-cloud"><path d="M18.5 10c-.14 0-.27.01-.4.03C17.43 6.64 14.49 4 11 4 7.13 4 4 7.13 4 11c0 .17.01.33.03.5A5.5 5.5 0 0 0 5.5 22h13a4.5 4.5 0 0 0 0-9z" fill="currentColor"/></g>
+</defs>
+</svg>
+
+<div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+<div class="absolute top-[-10%] left-[-10%] w-[400px] h-[400px] bg-pastel-pink/60 rounded-full mix-blend-overlay filter blur-[80px] animate-blob"></div>
+<div class="absolute top-[35%] right-[8%] text-pastel-yellow animate-float-delayed"><svg class="w-8 h-8" viewBox="0 0 24 24"><use href="#icon-sparkle"></use></svg></div>
+<div class="absolute top-[50%] left-[85%] text-pastel-pink/40 animate-float" style="animation-delay: 1s;"><svg class="w-7 h-7" viewBox="0 0 24 24"><use href="#icon-heart"></use></svg></div>
 </div>
 
-<div class="w-full max-w-[430px] bg-white shadow-[0_0_50px_rgba(255,182,193,0.3)] relative overflow-hidden flex flex-col border-x border-[#ffe4e9]">
-    
-    <div class="flex flex-col items-center justify-center pt-14 pb-8 px-4 relative overflow-hidden bg-gradient-to-b from-[#fff0f3] to-white">
-        <div class="absolute inset-0 cyber-grid-bg opacity-30"></div>
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[250px] h-[250px] bg-pink-200/50 rounded-full blur-[70px] pointer-events-none"></div>
-        <div class="particle w-1.5 h-1.5 opacity-60" style="left: 20%; top: 80%; animation-delay: 0s;"></div>
-        <div class="particle w-2 h-2 opacity-60" style="left: 70%; top: 90%; animation-delay: 1s;"></div>
-        <p class="text-pink-500 text-[10px] font-bold tracking-[0.2em] mb-4 uppercase z-10 flex items-center gap-2">
-            <i data-lucide="cat" class="w-3 h-3 text-pink-500 icon-fill-current"></i>
-            Welcome to Koyangi Store
-            <i data-lucide="cat" class="w-3 h-3 text-pink-500 icon-fill-current"></i>
-        </p>
-        <div class="relative z-10 flex flex-col items-center w-full">
-            <svg class="absolute -right-2 -bottom-6 w-24 h-24 text-pink-300 opacity-60 animate-[spin_8s_linear_infinite]" viewBox="0 0 100 100" fill="none">
-                <path d="M50 5C74.8528 5 95 25.1472 95 50C95 74.8528 74.8528 95 50 95" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="10 10"/>
-                <circle cx="85" cy="15" r="4" fill="#FFD700" class="animate-pulse"/>
-            </svg>
-            <h1 class="text-5xl md:text-6xl font-black italic text-center leading-[1.05] tracking-wide relative z-10 text-stroke-pink transform -rotate-2">
-                KOYANGI<br/>STORE!
-            </h1>
-        </div>
-        <div class="mt-8 bg-white/80 backdrop-blur-sm border border-pink-200 rounded-[30px] py-3 px-5 text-[10px] text-pink-600 font-bold text-center w-[90%] z-10 shadow-sm">
-            เจ้าเหมียวรับทำ เว็บไซต์ งานป้าย โลโก้ ลายน้ำ GoogleSheet
-        </div>
-    </div>
+<div id="sidebar-overlay" class="fixed inset-0 bg-pastel-pink/20 backdrop-blur-sm z-40 opacity-0 invisible" onclick="toggleSidebar()"></div>
 
-    <div class="bg-pink-100 border-y border-pink-200 overflow-hidden py-3 relative block">
-        <div class="animate-marquee whitespace-nowrap text-pink-600 font-bold text-[12px] tracking-wider relative z-10">
-            <span class="inline-flex items-center gap-2">
-                <i data-lucide="zap" class="w-3.5 h-3.5 text-yellow-500 icon-fill-current"></i>
-                ร้าน Koyangi รับทำเว็บไซต์ งานป้าย โลโก้ ลายน้ำ และ GoogleSheet
-                <span class="text-pink-700 ml-1">ยินดีให้บริการค่า ✨</span>
-            </span>
-        </div>
-    </div>
-
-    <div class="px-5 mt-8 space-y-6">
-        <div class="border-[1.5px] border-pink-200 rounded-[20px] p-4 bg-white shadow-sm relative overflow-hidden">
-            <div class="grid grid-cols-3 gap-3 relative z-10">
-                <div onclick="openModal('design')" class="border border-pink-100 rounded-[16px] flex flex-col items-center p-3 bg-[#fff9fa] hover:border-pink-300 transition-all cursor-pointer group">
-                    <div class="w-12 h-12 rounded-2xl bg-pink-100 flex items-center justify-center border border-pink-200 mb-3 group-hover:bg-pink-200">
-                        <i data-lucide="pen-tool" class="text-pink-500 w-6 h-6"></i>
-                    </div>
-                    <p class="text-pink-800 text-[10px] font-bold mb-0.5 text-center">ป้าย โลโก้ ลายน้ำ</p>
-                    <p class="text-pink-400 text-[8px] mb-3">รายละเอียด</p>
-                    <div class="bg-pink-500 px-1 py-1.5 rounded text-white text-[9px] font-black w-full text-center tracking-widest mt-auto">Click!!!</div>
-                </div>
-                <div onclick="openModal('sheet')" class="border border-blue-100 rounded-[16px] flex flex-col items-center p-3 bg-[#f5faff] hover:border-blue-300 transition-all cursor-pointer group">
-                    <div class="w-12 h-12 rounded-2xl bg-blue-100 flex items-center justify-center border border-blue-200 mb-3 group-hover:bg-blue-200">
-                        <i data-lucide="table-2" class="text-blue-500 w-6 h-6"></i>
-                    </div>
-                    <p class="text-blue-800 text-[10px] font-bold mb-0.5 text-center">GoogleSheet</p>
-                    <p class="text-blue-400 text-[8px] mb-2 mt-1">รายละเอียด</p>
-                    <div class="bg-blue-500 px-1 py-1.5 rounded text-white text-[9px] font-black w-full text-center tracking-widest mt-auto">Click!!!</div>
-                </div>
-                <div onclick="openModal('web')" class="border border-yellow-100 rounded-[16px] flex flex-col items-center p-3 bg-[#fffcf5] hover:border-yellow-300 transition-all cursor-pointer group">
-                    <div class="w-12 h-12 rounded-2xl bg-yellow-100 flex items-center justify-center border border-yellow-200 mb-3 group-hover:bg-yellow-200">
-                        <i data-lucide="layout" class="text-yellow-600 w-6 h-6"></i>
-                    </div>
-                    <p class="text-yellow-800 text-[10px] font-bold mb-0.5 text-center">Website</p>
-                    <p class="text-yellow-500 text-[8px] mb-3">รายละเอียด</p>
-                    <div class="bg-yellow-500 px-1 py-1.5 rounded text-white text-[9px] font-black w-full text-center tracking-widest mt-auto">Click!!!</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="border border-pink-100 bg-white rounded-[24px] p-5 relative shadow-sm">
-            <div class="text-center mb-6">
-                <h3 class="text-pink-500 font-bold text-base flex justify-center items-center gap-2">บริการที่เราเปิดรับ 🎨</h3>
-            </div>
-            <div class="space-y-3">
-                <div class="flex items-center gap-4 bg-[#fff9fa] border border-pink-100 p-3.5 rounded-[16px]">
-                    <div class="w-11 h-11 rounded-full bg-white flex items-center justify-center border border-pink-200 text-pink-500"><i data-lucide="image" class="w-5 h-5"></i></div>
-                    <div class="flex-1"><p class="font-bold text-pink-800 text-sm">ป้าย / โลโก้ / ลายน้ำ</p><p class="text-[10px] text-pink-400">งานกราฟิกดีไซน์พรีเมียม</p></div>
-                </div>
-                <div class="flex items-center gap-4 bg-[#f6fff9] border border-green-100 p-3.5 rounded-[16px]">
-                    <div class="w-11 h-11 rounded-full bg-white flex items-center justify-center border border-green-200 text-green-500"><i data-lucide="database" class="w-5 h-5"></i></div>
-                    <div class="flex-1"><p class="font-bold text-green-800 text-sm">Google Sheet System</p><p class="text-[10px] text-green-400">ระบบสต็อกและจัดการข้อมูล</p></div>
-                </div>
-                <div class="flex items-center gap-4 bg-[#faf9ff] border border-purple-100 p-3.5 rounded-[16px]">
-                    <div class="w-11 h-11 rounded-full bg-white flex items-center justify-center border border-purple-200 text-purple-500"><i data-lucide="globe" class="w-5 h-5"></i></div>
-                    <div class="flex-1"><p class="font-bold text-purple-800 text-sm">Website Event</p><p class="text-[10px] text-purple-400">เว็บไซต์โชว์ผลงาน / กิจกรรม</p></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="border border-pink-100 bg-white rounded-[24px] p-5 shadow-sm relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-pink-300 to-blue-300"></div>
-            <h3 class="text-pink-500 font-bold text-sm text-center mb-5">ตัวอย่างผลงาน 🎨</h3>
-            <div class="grid grid-cols-2 gap-3 mb-4">
-                <a href="https://drive.google.com/drive/folders/1MzigyMzY0B_QnFz4dzk29Ppyk55xvfPE" target="_blank" class="bg-[#fff9fa] border border-pink-100 rounded-2xl p-4 flex flex-col items-center active:scale-95 transition">
-                    <i data-lucide="image" class="text-pink-400 mb-2"></i>
-                    <span class="font-bold text-pink-700 text-[10px]">ตัวอย่างงาน 1</span>
-                </a>
-                <a href="https://drive.google.com/drive/folders/1f4PPc1eVWV_VMclN8001cKOx1doNnbD_" target="_blank" class="bg-[#fcfaff] border border-purple-100 rounded-2xl p-4 flex flex-col items-center active:scale-95 transition">
-                    <i data-lucide="folder" class="text-purple-400 mb-2"></i>
-                    <span class="font-bold text-purple-700 text-[10px]">ตัวอย่างงาน 2</span>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <div class="mt-14 mb-10 px-5 text-center">
-        <div class="h-[20px] rounded-full shadow-inner mb-4 relative overflow-hidden border border-pink-100 bg-pink-50 loading-bar-smooth"></div>
-        <button onclick="window.open('https://lin.ee/UUfn5xL', '_blank')" class="bg-gradient-to-b from-[#ffb6c1] to-[#ff4d94] w-full rounded-[50px] py-4 shadow-lg active:scale-95 transition border-b-[5px] border-[#d81b60]">
-            <span class="text-[32px] font-black text-white tracking-widest">START</span>
-        </button>
-    </div>
-
-    <footer class="text-center pb-12 px-8">
-        <p class="text-pink-400 font-bold text-[10px] mb-6 tracking-widest uppercase opacity-80">✨ Contact Us ✨</p>
-        
-        <div class="flex items-center justify-center gap-5 bg-white/50 backdrop-blur-md border border-pink-100 p-5 rounded-[35px] shadow-sm">
-            <a href="https://lin.ee/UUfn5xL" target="_blank" 
-               class="w-12 h-12 bg-white border-2 border-pink-200 rounded-2xl flex items-center justify-center text-pink-400 shadow-sm hover:border-pink-400 hover:text-pink-500 hover:-translate-y-1 active:scale-95 transition-all duration-300">
-                <i data-lucide="message-circle" stroke-width="2" class="w-6 h-6"></i>
-            </a>
-            
-            <a href="https://www.facebook.com/k0yang1i?" target="_blank" 
-               class="w-12 h-12 bg-white border-2 border-pink-200 rounded-2xl flex items-center justify-center text-pink-400 shadow-sm hover:border-pink-400 hover:text-pink-500 hover:-translate-y-1 active:scale-95 transition-all duration-300">
-                <i data-lucide="facebook" stroke-width="2" class="w-6 h-6"></i>
-            </a>
-            
-            <a href="https://www.instagram.com/k0yangi_ii?" target="_blank" 
-               class="w-12 h-12 bg-white border-2 border-pink-200 rounded-2xl flex items-center justify-center text-pink-400 shadow-sm hover:border-pink-400 hover:text-pink-500 hover:-translate-y-1 active:scale-95 transition-all duration-300">
-                <i data-lucide="instagram" stroke-width="2" class="w-6 h-6"></i>
-            </a>
-        </div>
-        
-        <p class="mt-8 text-[9px] text-pink-300 font-medium tracking-tight">© 2026 Koyangi Store. All rights reserved.</p>
-    </footer>
+<aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white border-r-4 border-pastel-pink z-50 transform -translate-x-full rounded-r-3xl shadow-2xl flex flex-col">
+<div class="p-6 flex items-center justify-between border-b-2 border-pastel-pinkLight">
+<h2 class="font-eng text-2xl text-kawaii-highlight font-bold">Menu</h2>
+<button onclick="toggleSidebar()" class="text-pastel-pink hover:text-pastel-purpleDark focus:outline-none">
+<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+</button>
 </div>
+<nav class="flex-1 overflow-y-auto py-4 px-4 space-y-2">
+<a href="#home" onclick="toggleSidebar()" class="block px-4 py-3 rounded-2xl hover:bg-pastel-pinkLight text-kawaii-text font-medium transition-colors">หน้าแรก</a>
+<a href="#services" onclick="toggleSidebar()" class="block px-4 py-3 rounded-2xl hover:bg-pastel-blueLight text-kawaii-text font-medium transition-colors">บริการของเรา</a>
+<a href="#portfolio" onclick="toggleSidebar()" class="block px-4 py-3 rounded-2xl hover:bg-pastel-pinkLight text-kawaii-text font-medium transition-colors">ตัวอย่างผลงาน</a>
+<a href="#pricing" onclick="toggleSidebar()" class="block px-4 py-3 rounded-2xl hover:bg-pastel-yellowLight text-kawaii-text font-medium transition-colors">เรทราคา</a>
+<a href="#contact" onclick="toggleSidebar()" class="block px-4 py-3 rounded-2xl hover:bg-pastel-purpleLight text-kawaii-text font-medium transition-colors">ติดต่อเรา</a>
+</nav>
+<div class="p-4 border-t-2 border-pastel-pinkLight text-center text-sm text-pastel-pink">
+<svg class="w-5 h-5 inline-block mr-1 text-pastel-pink" viewBox="0 0 24 24"><use href="#icon-heart"></use></svg>
+Koyangi Store
+</div>
+</aside>
+
+<div class="absolute top-0 left-0 right-0 p-4 z-30 flex justify-between items-start pointer-events-none">
+<button onclick="toggleSidebar()" class="pointer-events-auto bg-white/90 backdrop-blur border-2 border-pastel-pink text-pastel-pink p-3 rounded-2xl shadow-kawaii hover:bg-pastel-pinkLight transition-colors focus:outline-none">
+<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+</button>
+</div>
+
+<main class="max-w-lg mx-auto pt-20 px-4 space-y-8">
+<section id="home" class="text-center relative pt-8 pb-4">
+<div class="grid place-items-center mb-2">
+<h1 class="col-start-1 row-start-1 font-logo text-5xl md:text-6xl text-white title-stroke font-normal tracking-wide leading-tight pointer-events-none" aria-hidden="true">Koyangi</h1>
+<h1 class="col-start-1 row-start-1 font-logo text-5xl md:text-6xl bg-gradient-to-r from-pastel-pink via-pastel-purple to-pastel-blue text-transparent bg-clip-text animate-gradient-x font-normal tracking-wide leading-tight z-10">Koyangi</h1>
+</div>
+<p class="font-thai text-xl text-pastel-purpleDark font-medium tracking-wide mt-1">ร้านเจ้าเหมียวทำเว็บนะคะ⭐️</p>
+<div class="mt-6 flex justify-center">
+<div class="bg-white/70 px-6 py-2 rounded-full border border-pastel-pink inline-flex items-center space-x-2 text-sm text-pastel-purpleDark shadow-sm backdrop-blur-sm">
+<svg class="w-4 h-4 text-pastel-pink" viewBox="0 0 24 24"><use href="#icon-heart"></use></svg>
+<span>Status: รับคิวปกติ</span>
+</div>
+</div>
+</section>
+
+<section class="card-kawaii p-6 text-center">
+<p class="text-lg mb-2 font-bold">Koyangi Store</p>
+<p class="text-md mb-4 text-pastel-purpleDark">บริการทำเว็บครบวงจรและกราฟิกดีไซน์</p>
+<div class="inline-block bg-pastel-pinkLight text-kawaii-highlight px-6 py-2 rounded-full font-medium text-xl border border-pastel-pink">
+ยินดีให้บริการค่ะ ✨
+</div>
+</section>
+
+<section id="services" class="card-kawaii p-6">
+<div class="flex items-center bg-gradient-to-r from-kawaii-header to-transparent border-l-[6px] border-pastel-pink rounded-r-xl py-2.5 px-4 mb-5 shadow-sm">
+<span class="text-[20px] mr-3 shrink-0">🎨</span>
+<div class="flex items-baseline flex-wrap gap-x-2 mt-0.5">
+<h2 class="font-thai text-lg font-bold text-kawaii-text m-0">งานที่รับทำ</h2>
+</div>
+</div>
+<ul class="space-y-3 mb-6">
+<li class="flex items-start gap-3 bg-pastel-pinkLight p-3 rounded-xl border border-pastel-pink/40">
+<div class="mt-1 w-2 h-2 rounded-full bg-pastel-pink flex-shrink-0"></div>
+<span>ป้าย โลโก้ ลายน้ำ</span>
+</li>
+<li class="flex items-start gap-3 bg-pastel-blueLight p-3 rounded-xl border border-pastel-blue/40">
+<div class="mt-1 w-2 h-2 rounded-full bg-pastel-blue flex-shrink-0"></div>
+<span>GoogleSheet</span>
+</li>
+<li class="flex items-start gap-3 bg-pastel-purpleLight p-3 rounded-xl border border-pastel-purple/40">
+<div class="mt-1 w-2 h-2 rounded-full bg-pastel-purple flex-shrink-0"></div>
+<span>เว็บแอพพรีเมียม</span>
+</li>
+<li class="flex items-start gap-3 bg-pastel-yellowLight p-3 rounded-xl border border-pastel-yellow/60">
+<div class="mt-1 w-2 h-2 rounded-full bg-pastel-yellow flex-shrink-0"></div>
+<span>เว็บรับเติมเกมส์ / เว็บรับทำป้าย</span>
+</li>
+</ul>
+</section>
+<section id="portfolio" class="card-kawaii p-6 text-center">
+<div class="flex items-center bg-gradient-to-r from-kawaii-header to-transparent border-l-[6px] border-pastel-blue rounded-r-xl py-2.5 px-4 mb-6 shadow-sm text-left">
+<span class="text-[20px] mr-3 shrink-0">✨</span>
+<div class="flex items-baseline flex-wrap gap-x-2 mt-0.5">
+<h2 class="font-thai text-lg font-bold text-kawaii-text m-0">ตัวอย่างผลงาน</h2>
+<span class="font-thai text-[13px] text-pastel-purpleDark opacity-80">- คลิกดูที่ลิงก์ -</span>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<a href="https://drive.google.com/drive/folders/1MzigyMzY0B_QnFz4dzk29Ppyk55xvfPE" target="_blank" class="btn-kawaii text-white py-3 px-6 rounded-full font-medium text-lg flex items-center justify-center gap-2">
+<svg class="w-5 h-5 text-white" viewBox="0 0 24 24"><use href="#icon-sparkle"></use></svg>
+Portfolio Folder 1
+</a>
+<a href="https://drive.google.com/drive/folders/1f4PPc1eVWV_VMclN8001cKOx1doNnbD_" target="_blank" class="btn-kawaii text-white py-3 px-6 rounded-full font-medium text-lg flex items-center justify-center gap-2" style="background: linear-gradient(135deg, #b5e3ff 0%, #9b72cf 100%);">
+<svg class="w-5 h-5 text-white" viewBox="0 0 24 24"><use href="#icon-sparkle"></use></svg>
+Portfolio Folder 2
+</a>
+</div>
+</section>
+
+<section id="pricing" class="card-kawaii p-6">
+<div class="flex items-center bg-gradient-to-r from-kawaii-header to-transparent border-l-[6px] border-pastel-yellow rounded-r-xl py-2.5 px-4 mb-6 shadow-sm">
+<span class="text-[20px] mr-3 shrink-0">💰</span>
+<h2 class="font-thai text-lg font-bold text-kawaii-text m-0">เรทราคา</h2>
+</div>
+<div class="bg-pastel-pinkLight p-4 rounded-2xl border border-pastel-pink/50 mb-5 text-center">
+<p class="text-pastel-purpleDark font-medium mb-1">สอบถามเพื่อประเมินราคา</p>
+<p class="text-sm text-pastel-purpleDark/70">ราคาขึ้นอยู่กับรายละเอียดของงาน</p>
+</div>
+
+<div class="flex items-center bg-gradient-to-r from-kawaii-header to-transparent border-l-[6px] border-pastel-purple rounded-r-xl py-2.5 px-4 mb-6 shadow-sm">
+<span class="text-[20px] mr-3 shrink-0">📝</span>
+<h2 class="font-thai text-lg font-bold text-kawaii-text m-0">ขั้นตอนการสั่งทํา</h2>
+</div>
+<div class="space-y-4 text-sm mb-6">
+<div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-pastel-pink/30">
+<span class="w-6 h-6 bg-pastel-pink text-white rounded-full flex items-center justify-center text-xs">1</span>
+<p>กรอกฟอร์ม เขียนรายละเอียดร้านค้า</p>
+</div>
+<div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-pastel-pink/30">
+<span class="w-6 h-6 bg-pastel-pink text-white rounded-full flex items-center justify-center text-xs">2</span>
+<p>ใส่ลิงก์ตัวอย่างงาน + แนบโลโก้</p>
+</div>
+<div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-pastel-pink/30">
+<span class="w-6 h-6 bg-pastel-pink text-white rounded-full flex items-center justify-center text-xs">3</span>
+<p>ส่งงานให้เช็ค แจ้งยอด และชำระเงิน</p>
+</div>
+<div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-pastel-pink/30">
+<span class="w-6 h-6 bg-pastel-pink text-white rounded-full flex items-center justify-center text-xs">4</span>
+<p>รอรับลิงก์ใช้งานได้เลยค่า</p>
+</div>
+</div>
+
+<div class="bg-pastel-blueLight p-4 rounded-xl border border-pastel-blue/30 mb-6">
+<h3 class="font-bold text-pastel-purpleDark mb-2 flex items-center gap-1">📋 เงื่อนไขเวลา</h3>
+<ul class="text-xs space-y-1 ml-4 list-disc">
+<li>รองาน 4-8 ชั่วโมง (แล้วแต่คิว)</li>
+<li>งานเร่ง คิดราคา x2</li>
+</ul>
+</div>
+
+<div class="bg-red-50/80 p-4 rounded-xl border border-red-200">
+<h3 class="font-bold text-red-400 mb-2">📍 กฎของร้าน (Rules)</h3>
+<ul class="space-y-1 ml-4 list-disc text-red-400/90 text-xs">
+<li>โอนแล้วไม่คืนเงินทุกกรณี</li>
+<li>ยกเลิกหลังเริ่มงาน คืนเงิน 50%</li>
+<li>ยกเลิกหลังเช็คงาน ไม่คืนเงินและส่งงานปกติ</li>
+</ul>
+</div>
+</section>
+
+<section id="contact" class="card-kawaii p-6 text-center">
+<div class="flex items-center bg-gradient-to-r from-kawaii-header to-transparent border-l-[6px] border-pastel-pink rounded-r-xl py-2.5 px-4 mb-6 shadow-sm text-left">
+<span class="text-[20px] mr-3 shrink-0">💬</span>
+<h2 class="font-thai text-lg font-bold text-kawaii-text m-0">ช่องทางการติดต่อ</h2>
+</div>
+<div class="flex justify-center gap-6">
+<a href="https://www.facebook.com/k0yang1i?" target="_blank" class="group flex flex-col items-center gap-1">
+<div class="w-12 h-12 bg-pastel-blueLight rounded-full flex items-center justify-center border-2 border-pastel-blue group-hover:bg-pastel-blue transition-all">
+<svg class="w-6 h-6 text-pastel-blue group-hover:text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 008.44-9.9c0-5.53-4.5-10.02-10-10.02z"/></svg>
+</div>
+<span class="text-xs font-medium">Facebook</span>
+</a>
+<a href="https://lin.ee/UUfn5xL" target="_blank" class="group flex flex-col items-center gap-1">
+<div class="w-12 h-12 bg-pastel-pinkLight rounded-full flex items-center justify-center border-2 border-pastel-pink group-hover:bg-pastel-pink transition-all">
+<svg class="w-6 h-6 text-pastel-pink group-hover:text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M21.4 10.3c0-4.3-4.2-7.8-9.4-7.8S2.6 6 2.6 10.3c0 3.8 3.3 7 7.7 7.7.3 0 .7.1.8.4l-.3 1.9c0 .1 0 .2.1.3s.2.1.3 0c1.7-1 6-3.6 7.6-5.5 1.7-1.7 2.6-3.4 2.6-4.8z"/></svg>
+</div>
+<span class="text-xs font-medium">Line</span>
+</a>
+<a href="https://www.instagram.com/k0yangi_ii?" target="_blank" class="group flex flex-col items-center gap-1">
+<div class="w-12 h-12 bg-pastel-purpleLight rounded-full flex items-center justify-center border-2 border-pastel-purple group-hover:bg-pastel-purple transition-all">
+<svg class="w-6 h-6 text-pastel-purple group-hover:text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41.56.22.96.48 1.36.88.4.4.66.8.88 1.36.16.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22-.22.56-.48.96-.88 1.36-.4.4-.8.66-1.36.88-.42.16-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41-.56-.22-.96-.48-1.36-.88-.4-.4-.66-.8-.88-1.36-.16-.42-.36-1.05-.41-2.22-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.22-.56.48-.96.88-1.36.4-.4.8-.66 1.36-.88.42-.16 1.05-.36 2.22-.41C8.42 2.17 8.8 2.16 12 2.16z"/></svg>
+</div>
+<span class="text-xs font-medium">Instagram</span>
+</a>
+</div>
+</section>
+
+<footer class="text-center text-pastel-pink/60 text-xs pb-6">
+<p>&copy; 2026 Koyangi Store. All rights reserved.</p>
+</footer>
+</main>
 
 <script>
-    // Initializing Lucide icons
-    lucide.createIcons();
-
-    const services = {
-        design: {
-            title: "งานป้าย • โลโก้ • ลายน้ำ",
-            icon: "pen-tool",
-            color: "text-pink-500",
-            desc: `<div class="text-left space-y-4 max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar"><div><p class="font-bold text-pink-600 text-xs mb-2 flex items-center gap-1"><i data-lucide="shopping-cart" class="w-4 h-4"></i> How to สั่งงาน</p><ul class="text-[11px] text-gray-600 list-disc pl-5 space-y-1.5 leading-relaxed"><li>เลือกงานส่งให้ทางร้านเพื่อสอบถามราคาและรายละเอียด</li><li>หากต้องการโทนสีเฉพาะ <span class="font-bold underline">ต้องแนบรูปเฉดสีมาให้</span></li><li>รายละเอียดต้อง <span class="font-bold text-red-500 underline">"พิมพ์"</span> เท่านั้น</li></ul></div><div class="bg-white border border-pink-100 p-3 rounded-xl shadow-sm"><p class="font-bold text-pink-600 text-[11px] mb-2 border-b border-pink-50 pb-1 italic">เรทราคางานเริ่มต้น 29.-</p></div></div>`
-        },
-        sheet: {
-            title: "Google Sheet System",
-            icon: "table-2",
-            color: "text-blue-500",
-            desc: "<p class='text-sm text-gray-500 text-left'>รับทำระบบจัดการหลังบ้านผ่าน Google Sheet!</p>"
-        },
-        web: {
-            title: "Website Design",
-            icon: "layout",
-            color: "text-yellow-600",
-            desc: "<p class='text-sm text-gray-500 text-left'>รับทำเว็บไซต์ Event สวยๆ แบบที่คุณเห็นอยู่นี้เลย!</p>"
-        }
-    };
-
-    function openModal(type) {
-        const data = services[type];
-        const body = document.getElementById('modal-body');
-        const modalContent = document.querySelector('.modal-content');
-        
-        if(type === 'design') { 
-            modalContent.classList.remove('max-w-[380px]'); 
-            modalContent.classList.add('max-w-[400px]'); 
-        } else { 
-            modalContent.classList.add('max-w-[380px]'); 
-            modalContent.classList.remove('max-w-[400px]'); 
-        }
-
-        body.innerHTML = `
-            <div class="flex flex-col items-center">
-                <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-3 border border-pink-100 shadow-sm">
-                    <i data-lucide="${data.icon}" class="${data.color} w-7 h-7"></i>
-                </div>
-                <h2 class="text-lg font-black ${data.color} mb-4">${data.title}</h2>
-                <div class="w-full">${data.desc}</div>
-            </div>`;
-            
-        document.getElementById('modal-overlay').classList.add('active');
-        
-        // Refresh icons only for the modal content to avoid flickering elsewhere
-        lucide.createIcons({
-            attrs: {
-                class: 'lucide'
-            },
-            nameAttr: 'data-lucide'
-        });
-    }
-
-    function closeModal() { 
-        document.getElementById('modal-overlay').classList.remove('active'); 
-    }
+function toggleSidebar() {
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebar-overlay');
+if (sidebar.classList.contains('-translate-x-full')) {
+sidebar.classList.remove('-translate-x-full');
+overlay.classList.remove('opacity-0', 'invisible');
+overlay.classList.add('opacity-100', 'visible');
+document.body.style.overflow = 'hidden';
+} else {
+sidebar.classList.add('-translate-x-full');
+overlay.classList.remove('opacity-100', 'visible');
+overlay.classList.add('opacity-0', 'invisible');
+document.body.style.overflow = 'auto';
+}
+}
 </script>
 </body>
 </html>
