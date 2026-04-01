@@ -4,11 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Koyangi Store - Web Event</title>
-<!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com"></script>
-<!-- Lucide Icons -->
 <script src="https://unpkg.com/lucide@latest"></script>
-<!-- Google Fonts: Mitr -->
 <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 * { font-family: 'Mitr', sans-serif; }
@@ -17,7 +14,7 @@
 @keyframes pan-grid { 0% { transform: translateY(0); } 100% { transform: translateY(30px); } }
 .cyber-grid-bg { background-image: linear-gradient(rgba(255, 182, 193, 0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 182, 193, 0.4) 1px, transparent 1px); background-size: 30px 30px; animation: pan-grid 4s linear infinite; }
 @keyframes float-particle { 0% { transform: translateY(0) scale(1); opacity: 0; } 50% { opacity: 0.8; } 100% { transform: translateY(-100px) scale(1.5); opacity: 0; } }
-.particle { position: absolute; background: #FFB6C1; border-radius: 50%; animation: float-particle 3s ease-in infinite; }
+.particle { position: absolute; background: #fdf2f8; border-radius: 50%; animation: float-particle 3s ease-in infinite; border: 1px solid #fbcfe8;}
 @keyframes slide-smooth { 0% { background-position: 0 0; } 100% { background-position: 120px 0; } }
 .loading-bar-smooth { background: repeating-linear-gradient(90deg, #ffb6c1 0px, #ff85b2 30px, #f472b6 60px, #ff85b2 90px, #ffb6c1 120px); background-size: 120px 100%; animation: slide-smooth 2.5s linear infinite; }
 .text-stroke-pink { -webkit-text-stroke: 1.5px #ff4d94; color: #ffffff; text-shadow: 0 0 10px rgba(255, 77, 148, 0.3); }
@@ -35,22 +32,19 @@
 .custom-scrollbar::-webkit-scrollbar-thumb { background: #ffb6c1; border-radius: 10px; }
 </style>
 </head>
-<body class="bg-[#fff5f7] text-[#5d3a4a] flex justify-center relative overflow-x-hidden min-h-screen pb-20">
+<body class="bg-gradient-to-b from-[#fff5f7] to-white text-[#5d3a4a] flex justify-center relative overflow-x-hidden min-h-screen pb-20">
 
-<!-- 📱 Popup Modals -->
 <div id="modal-overlay" class="modal-overlay" onclick="closeModal()">
     <div class="modal-content shadow-2xl border border-pink-100" onclick="event.stopPropagation()">
         <button onclick="closeModal()" class="absolute top-4 right-4 text-pink-300 hover:text-pink-500 z-20"><i data-lucide="x-circle"></i></button>
         <div id="modal-body">
-            <!-- Content will be injected here -->
-        </div>
+            </div>
         <button onclick="closeModal()" class="w-full mt-6 py-3 bg-pink-500 text-white rounded-xl font-bold shadow-lg shadow-pink-200 active:scale-95 transition">รับทราบค่า ✨</button>
     </div>
 </div>
 
 <div class="w-full max-w-[430px] bg-white shadow-[0_0_50px_rgba(255,182,193,0.3)] relative overflow-hidden flex flex-col border-x border-[#ffe4e9]">
     
-    <!-- ✨ Hero Section -->
     <div class="flex flex-col items-center justify-center pt-14 pb-8 px-4 relative overflow-hidden bg-gradient-to-b from-[#fff0f3] to-white">
         <div class="absolute inset-0 cyber-grid-bg opacity-30"></div>
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[250px] h-[250px] bg-pink-200/50 rounded-full blur-[70px] pointer-events-none"></div>
@@ -75,7 +69,6 @@
         </div>
     </div>
 
-    <!-- Marquee -->
     <div class="bg-pink-100 border-y border-pink-200 overflow-hidden py-3 relative block">
         <div class="animate-marquee whitespace-nowrap text-pink-600 font-bold text-[12px] tracking-wider relative z-10">
             <span class="inline-flex items-center gap-2">
@@ -87,10 +80,8 @@
     </div>
 
     <div class="px-5 mt-8 space-y-6">
-        <!-- 🎯 Services Section -->
         <div class="border-[1.5px] border-pink-200 rounded-[20px] p-4 bg-white shadow-sm relative overflow-hidden">
             <div class="grid grid-cols-3 gap-3 relative z-10">
-                <!-- Item 1 -->
                 <div onclick="openModal('design')" class="border border-pink-100 rounded-[16px] flex flex-col items-center p-3 bg-[#fff9fa] hover:border-pink-300 transition-all cursor-pointer group">
                     <div class="w-12 h-12 rounded-2xl bg-pink-100 flex items-center justify-center border border-pink-200 mb-3 group-hover:bg-pink-200">
                         <i data-lucide="pen-tool" class="text-pink-500 w-6 h-6"></i>
@@ -99,7 +90,6 @@
                     <p class="text-pink-400 text-[8px] mb-3">รายละเอียด</p>
                     <div class="bg-pink-500 px-1 py-1.5 rounded text-white text-[9px] font-black w-full text-center tracking-widest mt-auto">Click!!!</div>
                 </div>
-                <!-- Item 2 -->
                 <div onclick="openModal('sheet')" class="border border-blue-100 rounded-[16px] flex flex-col items-center p-3 bg-[#f5faff] hover:border-blue-300 transition-all cursor-pointer group">
                     <div class="w-12 h-12 rounded-2xl bg-blue-100 flex items-center justify-center border border-blue-200 mb-3 group-hover:bg-blue-200">
                         <i data-lucide="table-2" class="text-blue-500 w-6 h-6"></i>
@@ -108,7 +98,6 @@
                     <p class="text-blue-400 text-[8px] mb-2 mt-1">รายละเอียด</p>
                     <div class="bg-blue-500 px-1 py-1.5 rounded text-white text-[9px] font-black w-full text-center tracking-widest mt-auto">Click!!!</div>
                 </div>
-                <!-- Item 3 -->
                 <div onclick="openModal('web')" class="border border-yellow-100 rounded-[16px] flex flex-col items-center p-3 bg-[#fffcf5] hover:border-yellow-300 transition-all cursor-pointer group">
                     <div class="w-12 h-12 rounded-2xl bg-yellow-100 flex items-center justify-center border border-yellow-200 mb-3 group-hover:bg-yellow-200">
                         <i data-lucide="layout" class="text-yellow-600 w-6 h-6"></i>
@@ -120,7 +109,6 @@
             </div>
         </div>
 
-        <!-- บริการที่เปิดรับ -->
         <div class="border border-pink-100 bg-white rounded-[24px] p-5 relative shadow-sm">
             <div class="text-center mb-6">
                 <h3 class="text-pink-500 font-bold text-base flex justify-center items-center gap-2">บริการที่เราเปิดรับ 🎨</h3>
@@ -141,7 +129,6 @@
             </div>
         </div>
 
-        <!-- Portfolio -->
         <div class="border border-pink-100 bg-white rounded-[24px] p-5 shadow-sm relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-pink-300 to-blue-300"></div>
             <h3 class="text-pink-500 font-bold text-sm text-center mb-5">ตัวอย่างผลงาน 🎨</h3>
@@ -158,7 +145,6 @@
         </div>
     </div>
 
-    <!-- 🚀 START Button -->
     <div class="mt-14 mb-10 px-5 text-center">
         <div class="h-[20px] rounded-full shadow-inner mb-4 relative overflow-hidden border border-pink-100 bg-pink-50 loading-bar-smooth"></div>
         <button onclick="window.open('https://lin.ee/UUfn5xL', '_blank')" class="bg-gradient-to-b from-[#ffb6c1] to-[#ff4d94] w-full rounded-[50px] py-4 shadow-lg active:scale-95 transition border-b-[5px] border-[#d81b60]">
@@ -205,20 +191,17 @@
                                 <i data-lucide="tag" class="w-3.5 h-3.5"></i> เรทราคางาน
                             </p>
                             <div class="space-y-3 text-[10px] text-gray-500">
-                                <!-- หมวดลายน้ำ -->
                                 <div>
                                     <div class="flex justify-between font-bold text-gray-700"><span>💧 งานลายน้ำ</span><span>เริ่มต้น 29.-</span></div>
                                     <div class="flex justify-between pl-4 italic border-l-2 border-pink-50 ml-1 mt-1"><span>- ใช้บล็อก</span><span>เริ่มต้น 29.-</span></div>
                                     <div class="flex justify-between pl-4 italic border-l-2 border-pink-50 ml-1 mt-1"><span>- ใช้ตัวตูน</span><span>เริ่มต้น 39.-</span></div>
                                 </div>
-                                <!-- หมวดงานป้าย -->
                                 <div class="pt-1">
                                     <div class="flex justify-between font-bold text-gray-700"><span>🖼️ งานป้าย</span><span>เริ่มต้น 39.-</span></div>
                                     <div class="flex justify-between pl-4 italic border-l-2 border-pink-50 ml-1 mt-1"><span>- ไม่ใช้บล็อก</span><span>เริ่มต้น 39.-</span></div>
                                     <div class="flex justify-between pl-4 italic border-l-2 border-pink-50 ml-1 mt-1"><span>- ใช้ตัวตูน</span><span>เริ่มต้น 39.-</span></div>
                                     <div class="flex justify-between pl-4 italic border-l-2 border-pink-50 ml-1 mt-1"><span>- ใช้บล็อก</span><span>เริ่มต้น 59.-</span></div>
                                 </div>
-                                <!-- หมวดโลโก้ -->
                                 <div class="pt-1">
                                     <div class="flex justify-between font-bold text-gray-700 border-t border-pink-50 pt-2"><span>🎨 โลโก้</span><span class="text-pink-500">เริ่มต้น 39.-</span></div>
                                 </div>
