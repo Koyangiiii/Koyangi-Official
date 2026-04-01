@@ -102,17 +102,31 @@
 
         <main class="px-6 py-8 space-y-10 relative z-10 flex-grow">
             <section class="grid grid-cols-3 gap-3">
-                <button onclick="openModal('graphics')" class="bg-white border-2 border-ui-gradientStart rounded-2xl p-3 flex flex-col items-center justify-center gap-2 shadow-sm hover:scale-105 transition-transform">
-                    <div class="w-10 h-10 rounded-full bg-ui-gradientStart/30 flex items-center justify-center text-pinky-dark"><i data-lucide="palette" class="w-5 h-5"></i></div>
-                    <span class="text-[10px] font-bold text-brown text-center leading-tight">ป้าย โลโก้<br>ลายน้ำ</span>
+                <button onclick="openModal('graphics')" class="bg-white border-2 border-ui-gradientStart rounded-2xl p-3 flex flex-col items-center justify-between gap-2 shadow-sm hover:scale-105 transition-transform min-h-[110px]">
+                    <div class="w-10 h-10 rounded-full bg-ui-gradientStart/30 flex items-center justify-center text-pinky-dark shrink-0">
+                        <i data-lucide="palette" class="w-5 h-5"></i>
+                    </div>
+                    <div class="flex-grow flex items-center">
+                        <span class="text-[10px] font-bold text-brown text-center leading-tight">ป้าย โลโก้<br>ลายน้ำ</span>
+                    </div>
                 </button>
-                <button onclick="openModal('sheets')" class="bg-white border-2 border-ui-gradientStart rounded-2xl p-3 flex flex-col items-center justify-center gap-2 shadow-sm hover:scale-105 transition-transform">
-                    <div class="w-10 h-10 rounded-full bg-ui-gradientStart/30 flex items-center justify-center text-pinky-dark"><i data-lucide="table-2" class="w-5 h-5"></i></div>
-                    <span class="text-[10px] font-bold text-brown text-center leading-tight">Google<br>Sheet</span>
+                
+                <button onclick="openModal('sheets')" class="bg-white border-2 border-ui-gradientStart rounded-2xl p-3 flex flex-col items-center justify-between gap-2 shadow-sm hover:scale-105 transition-transform min-h-[110px]">
+                    <div class="w-10 h-10 rounded-full bg-ui-gradientStart/30 flex items-center justify-center text-pinky-dark shrink-0">
+                        <i data-lucide="table-2" class="w-5 h-5"></i>
+                    </div>
+                    <div class="flex-grow flex items-center">
+                        <span class="text-[10px] font-bold text-brown text-center leading-tight">Google<br>Sheet</span>
+                    </div>
                 </button>
-                <button onclick="openModal('websites')" class="bg-white border-2 border-ui-gradientStart rounded-2xl p-3 flex flex-col items-center justify-center gap-2 shadow-sm hover:scale-105 transition-transform">
-                    <div class="w-10 h-10 rounded-full bg-ui-gradientStart/30 flex items-center justify-center text-pinky-dark"><i data-lucide="monitor" class="w-5 h-5"></i></div>
-                    <span class="text-[10px] font-bold text-brown text-center leading-tight">Website</span>
+                
+                <button onclick="openModal('websites')" class="bg-white border-2 border-ui-gradientStart rounded-2xl p-3 flex flex-col items-center justify-between gap-2 shadow-sm hover:scale-105 transition-transform min-h-[110px]">
+                    <div class="w-10 h-10 rounded-full bg-ui-gradientStart/30 flex items-center justify-center text-pinky-dark shrink-0">
+                        <i data-lucide="monitor" class="w-5 h-5"></i>
+                    </div>
+                    <div class="flex-grow flex items-center">
+                        <span class="text-[10px] font-bold text-brown text-center leading-tight">Website<br>Design</span>
+                    </div>
                 </button>
             </section>
 
