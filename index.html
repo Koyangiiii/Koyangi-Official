@@ -17,21 +17,21 @@
                 extend: {
                     fontFamily: { sans: ['Mitr', 'sans-serif'] },
                     colors: {
-                        cream: '#FFF1F3', // Cream colored with a subtle pink tint
+                        cream: '#FFF1F3', 
                         pinky: { 
-                            light: '#FFDCE2', // Pale pastel pink
-                            DEFAULT: '#FFB6C1', // Medium pastel pink
-                            dark: '#FF8FAB' // Slightly deeper pastel pink
+                            light: '#FFDCE2', 
+                            DEFAULT: '#FFB6C1', 
+                            dark: '#FF8FAB' 
                         },
                         brown: { 
-                            light: '#B0808C', // Desaturated brown with pink tint
-                            DEFAULT: '#8A5C68', // Deep brown with pink tint
-                            dark: '#6F434F' // Very deep, dark brown with strong pink tint
+                            light: '#B0808C', 
+                            DEFAULT: '#8A5C68', 
+                            dark: '#6F434F' 
                         },
                         ui: {
                             white: '#FFFFFF',
                             icon: '#FFB6C1',
-                            gradientStart: '#FFE4E8' // Lighter pastel pink for gradient
+                            gradientStart: '#FFE4E8' 
                         }
                     },
                     boxShadow: { 'card': '0 10px 25px -5px rgba(255, 182, 193, 0.2)' }
@@ -41,11 +41,33 @@
     </script>
 
     <style>
-        body { background-color: #FFF1F3; color: #8A5C68; }
+        body { background-color: #FFF1F3; color: #8A5C68; position: relative; }
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #FFF1F3; }
         ::-webkit-scrollbar-thumb { background: #FFB6C1; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #FF8FAB; }
+
+        /* Gradient Glow Background */
+        body::before {
+            content: "";
+            position: fixed;
+            top: -10%;
+            left: -10%;
+            width: 40%;
+            height: 40%;
+            background: radial-gradient(circle, rgba(255, 182, 193, 0.2) 0%, transparent 70%);
+            z-index: -1;
+        }
+        body::after {
+            content: "";
+            position: fixed;
+            bottom: -10%;
+            right: -10%;
+            width: 40%;
+            height: 40%;
+            background: radial-gradient(circle, rgba(255, 228, 232, 0.3) 0%, transparent 70%);
+            z-index: -1;
+        }
 
         .modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
         .modal-content { transition: transform 0.3s ease; transform: translateY(20px) scale(0.95); }
@@ -58,6 +80,14 @@
 </head>
 
 <body class="antialiased selection:bg-pinky selection:text-white">
+
+    <div class="hidden lg:block fixed inset-0 pointer-events-none z-0">
+        <i data-lucide="sparkles" class="absolute top-1/4 left-10 text-pinky-light w-12 h-12 rotate-12 opacity-40 animate-float"></i>
+        <i data-lucide="heart" class="absolute bottom-1/4 left-20 text-pinky w-8 h-8 -rotate-12 opacity-30 animate-float-delayed"></i>
+        
+        <i data-lucide="star" class="absolute top-1/3 right-12 text-pinky-light w-10 h-10 -rotate-12 opacity-40 animate-float-delayed"></i>
+        <i data-lucide="cat" class="absolute bottom-1/3 right-20 text-pinky w-14 h-14 rotate-12 opacity-30 animate-float"></i>
+    </div>
 
     <svg width="0" height="0" class="hidden absolute pointer-events-none">
         <symbol id="icon-teddy" viewBox="0 0 24 24" fill="currentColor">
