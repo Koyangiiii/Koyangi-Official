@@ -248,10 +248,10 @@
                             </h4>
                             <ul class="list-disc list-inside space-y-1 text-brown-light">
                                 <li>เลือกงานที่ต้องการเพื่อสอบถามราคาและรายละเอียด</li>
-                                <li>เลือก <b>สี / ตูน / ของตกแต่ง / บล็อก</b> ที่ต้องการใช้</li>
-                                <li class="text-pinky-dark">ของตกแต่งเลือกเป็นเซ็ตเท่านั้น ไม่สามารถเปลี่ยนใหม่ได้</li>
-                                <li>ระบุโทนสีโดยการ <b>"แนบรูปเฉดสี"</b></li>
-                                <li>รายละเอียดใช้การ <b class="underline">"พิมพ์"</b> เท่านั้น</li>
+                                <li>เลือก <b>สี / ตูน / ของตกแต่ง / บล็อก</b> ที่ต้องการใช้ (หากไม่ใช้แจ้งได้เลยค่ะ)</li>
+                                <li class="text-pinky-dark">ของตกแต่งเลือกเป็นเซ็ตเท่านั้น ไม่สามารถเปลี่ยนใหม่หรือนำมายำรวมกันได้</li>
+                                <li>ระบุโทนสีโดยการ <b>"แนบรูปเฉดสี"</b> (หากแจ้งแค่ชื่อสี ไม่สามารถแก้โทนสีทีหลังได้)</li>
+                                <li>รายละเอียดใช้การ <b class="underline">"พิมพ์"</b> เท่านั้น รบกวนตรวจสอบให้ถูกต้องก่อนส่ง</li>
                             </ul>
                         </section>
                         <section>
@@ -261,25 +261,45 @@
                             <div class="grid grid-cols-1 gap-2">
                                 <div class="bg-white/50 p-2 rounded-lg border border-ui-gradientStart/50">
                                     <p class="font-bold text-pinky-dark">งานลายน้ำ เริ่มต้น 29.-</p>
+                                    <div class="ml-4 space-y-0.5 mt-1">
+                                        <p class="text-[11px] text-brown-light">• ใช้บล็อก เริ่มต้น 29-.</p>
+                                        <p class="text-[11px] text-brown-light">• ใช้ตัวตูน เริ่มต้น 39-.</p>
+                                    </div>
                                 </div>
                                 <div class="bg-white/50 p-2 rounded-lg border border-ui-gradientStart/50">
                                     <p class="font-bold text-pinky-dark">งานป้าย เริ่มต้น 39.-</p>
+                                    <div class="ml-4 space-y-0.5 mt-1">
+                                        <p class="text-[11px] text-brown-light">• ไม่ใช้บล็อก เริ่มต้น 39-.</p>
+                                        <p class="text-[11px] text-brown-light">• ใช้ตัวตูน เริ่มต้น 39-.</p>
+                                        <p class="text-[11px] text-brown-light">• ใช้บล็อก เริ่มต้น 59-.</p>
+                                    </div>
                                 </div>
                                 <div class="bg-white/50 p-2 rounded-lg border border-ui-gradientStart/50">
-                                    <p class="font-bold text-pinky-dark">โลโก้ เริ่มต้น 39.-</p>
+                                    <p class="font-bold text-pinky-dark">โลโก้ เริ่มต้น 39-.</p>
                                 </div>
                             </div>
+                        </section>
+                        <section class="bg-pinky/10 p-3 rounded-xl border border-ui-gradientStart">
+                            <h4 class="font-bold text-brown flex items-center gap-1 mb-1">
+                                <i data-lucide="refresh-cw" class="w-4 h-4 text-pinky-dark"></i> การแก้งาน
+                            </h4>
+                            <p class="text-brown-light mb-2 italic">แก้ได้จนกว่าจะพอใจ (ในขอบเขตบรีฟแรก)</p>
+                            <ul class="list-disc list-inside space-y-1 text-[12px] text-brown-light">
+                                <li class="text-red-500 font-medium">หากส่งงานแล้ว จะไม่สามารถแก้งานย้อนหลังได้</li>
+                                <li>ไม่สามารถเปลี่ยนบรีฟ/ของตกแต่ง/ตัวตูน/บล็อก ที่เลือกไว้แต่แรกได้</li>
+                                <li class="font-bold">หากต้องการแก้หลังจากส่งงานแล้ว คิดค่าแก้จุดละ 10-.</li>
+                            </ul>
                         </section>
                     </div>
                 `
             },
             sheets: {
                 title: "GoogleSheet",
-                content: `<div class="space-y-3"><p>📊 <b>จัดการหลังบ้านให้เป็นระบบ</b></p><ul class="list-disc list-inside space-y-1 text-brown-light"><li>ระบบสต็อกสินค้า</li><li>บัญชีรายรับ-รายจ่าย</li><li>สรุปยอดขายอัตโนมัติ</li></ul></div>`
+                content: `<div class="space-y-3"><p>📊 <b>จัดการหลังบ้านให้เป็นระบบ</b></p><ul class="list-disc list-inside space-y-1 text-brown-light"><li>ระบบสต็อกสินค้า</li><li>บัญชีรายรับ-รายจ่าย</li><li>สรุปยอดขายอัตโนมัติ</li><li>ตารางเช็คคิวงาน</li></ul><p class="mt-4 text-pinky-dark font-medium">จัดทำตามความต้องการของลูกค้า</p></div>`
             },
             websites: {
                 title: "Website",
-                content: `<div class="space-y-3"><p>🌐 <b>เว็บไซต์สวยงาม ใช้งานง่าย</b></p><ul class="list-disc list-inside space-y-1 text-brown-light"><li>เว็บแอพพรีเมียม</li><li>เว็บรับเติมเกมส์</li><li>Landing Page</li></ul></div>`
+                content: `<div class="space-y-3"><p>🌐 <b>เว็บไซต์สวยงาม ใช้งานง่าย</b></p><ul class="list-disc list-inside space-y-1 text-brown-light"><li>เว็บแอพพรีเมียม</li><li>เว็บรับเติมเกมส์</li><li>เว็บรวมลิงก์ / Portfolio</li><li>Landing Page ขายสินค้า</li></ul><p class="mt-4 text-pinky-dark font-medium">รองรับทั้งมือถือและคอมพิวเตอร์</p></div>`
             }
         };
 
