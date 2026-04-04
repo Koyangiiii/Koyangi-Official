@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K0yangiii</title>
+    <title>K0yangiii | Sweet Store</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,310 +17,237 @@
                 extend: {
                     fontFamily: { sans: ['Mitr', 'sans-serif'] },
                     colors: {
-                        cream: '#FFF1F3', 
-                        pinky: { 
-                            light: '#FFDCE2', 
-                            DEFAULT: '#FFB6C1', 
-                            dark: '#FF8FAB' 
-                        },
-                        brown: { 
-                            light: '#B0808C', 
-                            DEFAULT: '#8A5C68', 
-                            dark: '#6F434F' 
-                        },
-                        ui: {
-                            white: '#FFFFFF',
-                            icon: '#FFB6C1',
-                            gradientStart: '#FFE4E8' 
+                        candy: {
+                            bg: '#FFF5F7',
+                            pink: '#FFB7C5',
+                            peach: '#FFD1BA',
+                            border: '#FFE4E8',
+                            text: '#8A5C68',
+                            accent: '#FF8FAB'
                         }
                     },
-                    boxShadow: { 'card': '0 10px 25px -5px rgba(255, 182, 193, 0.2)' }
+                    borderRadius: {
+                        '4xl': '2rem',
+                    }
                 }
             }
         }
     </script>
 
     <style>
-        body { background-color: #FFF1F3; color: #8A5C68; position: relative; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #FFF1F3; }
-        ::-webkit-scrollbar-thumb { background: #FFB6C1; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #FF8FAB; }
-
-        body::before {
-            content: "";
-            position: fixed;
-            top: -10%;
-            left: -10%;
-            width: 40%;
-            height: 40%;
-            background: radial-gradient(circle, rgba(255, 182, 193, 0.2) 0%, transparent 70%);
-            z-index: -1;
-        }
-        body::after {
-            content: "";
-            position: fixed;
-            bottom: -10%;
-            right: -10%;
-            width: 40%;
-            height: 40%;
-            background: radial-gradient(circle, rgba(255, 228, 232, 0.3) 0%, transparent 70%);
-            z-index: -1;
+        body { 
+            background-color: #FFF5F7; 
+            color: #8A5C68;
+            background-image: 
+                radial-gradient(#FFDCE2 1px, transparent 1px),
+                radial-gradient(#FFDCE2 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
         }
 
-        .modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
-        .modal-content { transition: transform 0.3s ease; transform: translateY(20px) scale(0.95); }
-        .modal.active .modal-content { transform: translateY(0) scale(1); }
+        /* นำทาง Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #FFB7C5; border-radius: 10px; }
 
-        @keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-15px) rotate(5deg); } }
-        .animate-float { animation: float 4s ease-in-out infinite; }
-        .animate-float-delayed { animation: float 4s ease-in-out 2s infinite; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 2px solid #FFFFFF;
+        }
+
+        .floating { animation: floating 3s ease-in-out infinite; }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .bouncy-hover:hover { transform: scale(1.05) rotate(1deg); }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 183, 197, 0.3);
+            z-index: -1;
+            border-radius: 4px;
+        }
     </style>
 </head>
 
-<body class="antialiased selection:bg-pinky selection:text-white">
+<body class="antialiased">
 
-    <div class="hidden lg:block fixed inset-0 pointer-events-none z-0">
-        <i data-lucide="sparkles" class="absolute top-1/4 left-10 text-pinky-light w-12 h-12 rotate-12 opacity-40 animate-float"></i>
-        <i data-lucide="heart" class="absolute bottom-1/4 left-20 text-pinky w-8 h-8 -rotate-12 opacity-30 animate-float-delayed"></i>
-        <i data-lucide="star" class="absolute top-1/3 right-12 text-pinky-light w-10 h-10 -rotate-12 opacity-40 animate-float-delayed"></i>
-        <i data-lucide="cat" class="absolute bottom-1/3 right-20 text-pinky w-14 h-14 rotate-12 opacity-30 animate-float"></i>
-    </div>
+    <div class="max-w-md mx-auto min-h-screen relative flex flex-col pb-10">
+        
+        <header class="relative px-6 pt-12 pb-20 overflow-hidden">
+            <div class="absolute top-0 right-0 -mr-10 -mt-10 w-40 h-40 bg-candy-peach/40 rounded-full blur-3xl"></div>
+            <div class="absolute top-20 left-0 -ml-10 w-32 h-32 bg-candy-pink/30 rounded-full blur-2xl"></div>
 
-    <svg width="0" height="0" class="hidden absolute pointer-events-none">
-        <symbol id="icon-teddy" viewBox="0 0 24 24" fill="currentColor">
-            <circle cx="6" cy="7" r="3.5" /><circle cx="6" cy="7" r="1.5" fill="#FFF1F3" />
-            <circle cx="18" cy="7" r="3.5" /><circle cx="18" cy="7" r="1.5" fill="#FFF1F3" />
-            <path d="M12 6C7 6 4 10 4 15C4 20 7 22.5 12 22.5C17 22.5 20 20 20 15C20 10 17 6 12 6Z" />
-            <circle cx="8.5" cy="12" r="1.2" fill="#FFF1F3" /><circle cx="15.5" cy="12" r="1.2" fill="#FFF1F3" />
-            <ellipse cx="12" cy="16.5" rx="4" ry="3" fill="#FFF1F3" /><ellipse cx="12" cy="15" rx="1.5" ry="1" fill="#8A5C68" />
-            <path d="M12 16v1.5M10.5 18c.5.5 2.5.5 3 0" stroke="#8A5C68" stroke-width="1.2" fill="none" stroke-linecap="round" />
-        </symbol>
-        <symbol id="icon-button" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="46" fill="#FFDCE2" /><circle cx="50" cy="50" r="42" fill="#FFE4E8" />
-            <circle cx="50" cy="50" r="28" fill="#FFF1F3" /><circle cx="50" cy="50" r="28" fill="none" stroke="#FFDCE2" stroke-width="2" />
-            <circle cx="40" cy="40" r="5.5" fill="#FFFFFF" /><circle cx="60" cy="40" r="5.5" fill="#FFFFFF" />
-            <circle cx="40" cy="60" r="5.5" fill="#FFFFFF" /><circle cx="60" cy="60" r="5.5" fill="#FFFFFF" />
-            <path d="M38 39 L62 63 M62 39 L38 63" stroke="#FFB6C1" stroke-width="8" stroke-linecap="round"/>
-        </symbol>
-    </svg>
-
-    <div class="max-w-md mx-auto min-h-screen bg-cream shadow-xl relative overflow-hidden flex flex-col">
-        <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden opacity-70">
-            <svg class="absolute top-[2%] left-[8%] w-10 h-10 text-pinky-dark animate-float opacity-30" viewBox="0 0 24 24"><use href="#icon-teddy"></use></svg>
-            <svg class="absolute top-[7%] right-[12%] w-9 h-9 animate-float-delayed opacity-60" viewBox="0 0 100 100"><use href="#icon-button"></use></svg>
-        </div>
-
-        <header class="bg-gradient-to-r from-ui-gradientStart/60 to-cream pt-10 pb-8 px-6 relative rounded-b-[40px] shadow-sm z-10 border-b-4 border-white flex items-center gap-5">
-            <div class="shrink-0 relative group cursor-pointer">
-                <div class="w-24 h-24 rounded-2xl border-[4px] border-white shadow-md overflow-hidden bg-white flex items-center justify-center relative z-10">
-                    <img src="logo_koyangi.png" alt="Koyangi Logo" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/150x150/FFE4E8/FFB6C1?text=Koyangi';">
+            <div class="relative z-10 flex flex-col items-center text-center">
+                <div class="relative mb-6">
+                    <div class="w-28 h-28 rounded-4xl border-4 border-white shadow-xl overflow-hidden bg-white floating">
+                        <img src="logo_koyangi.png" alt="Logo" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/200x200/FFB7C5/FFFFFF?text=🐱';">
+                    </div>
+                    <div class="absolute -bottom-2 -right-2 bg-candy-accent text-white p-2 rounded-2xl shadow-lg rotate-12">
+                        <i data-lucide="sparkles" class="w-5 h-5"></i>
+                    </div>
                 </div>
-                <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm border-2 border-ui-gradientStart z-20">
-                    <i data-lucide="cat" class="w-4 h-4 text-pinky-dark"></i>
+                
+                <h1 class="text-4xl font-bold text-candy-text tracking-tight mb-1">Koyangi</h1>
+                <p class="text-sm font-medium opacity-80 mb-4 italic">“เนรมิตความน่ารักให้ธุรกิจคุณ”</p>
+                
+                <div class="inline-flex items-center gap-2 bg-white/80 px-4 py-2 rounded-full border border-candy-border shadow-sm">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-candy-text/70">Open for Commission</span>
                 </div>
-            </div>
-            <div class="flex-1 text-left relative z-10">
-                <h1 class="text-[34px] leading-tight font-bold text-brown mb-2">Koyangi</h1>
-                <p class="text-brown-light text-[11px] leading-relaxed font-medium tracking-wide bg-white inline-block px-3 py-1.5 rounded-2xl shadow-sm border border-ui-gradientStart/40">
-                    ร้านเจ้าเหมียวยินดีให้บริการค้าบ⭐️
-                </p>
             </div>
         </header>
 
-        <main class="px-6 py-8 space-y-10 relative z-10 flex-grow">
-            <section class="grid grid-cols-3 gap-3">
-                <button onclick="openModal('graphics')" class="bg-white border-2 border-ui-gradientStart rounded-2xl p-3 flex flex-col items-center justify-between gap-2 shadow-sm hover:scale-105 transition-transform min-h-[110px]">
-                    <div class="w-10 h-10 rounded-full bg-ui-gradientStart/30 flex items-center justify-center text-pinky-dark shrink-0">
-                        <i data-lucide="palette" class="w-5 h-5"></i>
+        <main class="px-6 -mt-12 relative z-20 space-y-8">
+            
+            <section class="grid grid-cols-3 gap-4">
+                <button onclick="openModal('graphics')" class="glass-card p-4 rounded-3xl flex flex-col items-center gap-3 bouncy-hover transition-all shadow-sm">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-candy-pink to-candy-accent/40 flex items-center justify-center text-white">
+                        <i data-lucide="palette"></i>
                     </div>
-                    <div class="flex-grow flex items-center">
-                        <span class="text-[10px] font-bold text-brown text-center leading-tight">ป้าย โลโก้<br>ลายน้ำ</span>
-                    </div>
+                    <span class="text-[11px] font-bold">Logo/Art</span>
                 </button>
-                <button onclick="openModal('sheets')" class="bg-white border-2 border-ui-gradientStart rounded-2xl p-3 flex flex-col items-center justify-between gap-2 shadow-sm hover:scale-105 transition-transform min-h-[110px]">
-                    <div class="w-10 h-10 rounded-full bg-ui-gradientStart/30 flex items-center justify-center text-pinky-dark shrink-0">
-                        <i data-lucide="table-2" class="w-5 h-5"></i>
+                <button onclick="openModal('sheets')" class="glass-card p-4 rounded-3xl flex flex-col items-center gap-3 bouncy-hover transition-all shadow-sm">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#A7D8DE] to-[#E0F7FA] flex items-center justify-center text-white">
+                        <i data-lucide="layout" class="text-cyan-600"></i>
                     </div>
-                    <div class="flex-grow flex items-center">
-                        <span class="text-[10px] font-bold text-brown text-center leading-tight">Google<br>Sheet</span>
-                    </div>
+                    <span class="text-[11px] font-bold">G-Sheet</span>
                 </button>
-                <button onclick="openModal('websites')" class="bg-white border-2 border-ui-gradientStart rounded-2xl p-3 flex flex-col items-center justify-between gap-2 shadow-sm hover:scale-105 transition-transform min-h-[110px]">
-                    <div class="w-10 h-10 rounded-full bg-ui-gradientStart/30 flex items-center justify-center text-pinky-dark shrink-0">
-                        <i data-lucide="monitor" class="w-5 h-5"></i>
+                <button onclick="openModal('websites')" class="glass-card p-4 rounded-3xl flex flex-col items-center gap-3 bouncy-hover transition-all shadow-sm">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-candy-peach to-[#FFEDD5] flex items-center justify-center text-white">
+                        <i data-lucide="code" class="text-orange-400"></i>
                     </div>
-                    <div class="flex-grow flex items-center">
-                        <span class="text-[10px] font-bold text-brown text-center leading-tight">Website<br>Design</span>
-                    </div>
+                    <span class="text-[11px] font-bold">Website</span>
                 </button>
             </section>
 
-            <section class="bg-pinky/20 rounded-3xl p-6 relative shadow-card border border-white">
-                <h2 class="text-xl font-medium mb-5 text-center flex items-center justify-center gap-2 text-brown">
-                    <i data-lucide="layout-grid" class="w-5 h-5 text-pinky-dark"></i> ตัวอย่างผลงาน
-                </h2>
-                <div class="grid grid-cols-1 gap-3 relative z-10">
-                    <a href="https://drive.google.com/drive/folders/1MzigyMzY0B_QnFz4dzk29Ppyk55xvfPE" target="_blank" class="bg-white hover:bg-ui-gradientStart/30 border-2 border-transparent hover:border-ui-gradientStart transition-all rounded-2xl p-4 flex items-center justify-between shadow-sm group">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-cream flex items-center justify-center text-pinky-dark"><i data-lucide="folder"></i></div>
-                            <span class="font-medium text-brown group-hover:text-pinky-dark">ตัวอย่างงานป้าย</span>
+            <section class="space-y-4">
+                <h2 class="section-title font-bold text-lg px-2">ตัวอย่างความน่ารัก</h2>
+                <div class="space-y-3">
+                    <a href="#" class="group flex items-center justify-between p-5 bg-white rounded-4xl border-2 border-candy-border hover:border-candy-pink transition-all shadow-sm">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-full bg-candy-bg flex items-center justify-center group-hover:scale-110 transition-transform">
+                                🎨
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-sm">Portfolio: Graphics</h3>
+                                <p class="text-[10px] text-candy-text/50">รวมงานป้ายและลายน้ำ</p>
+                            </div>
                         </div>
-                        <i data-lucide="external-link" class="w-5 h-5 text-pinky"></i>
+                        <i data-lucide="chevron-right" class="w-5 h-5 text-candy-pink"></i>
                     </a>
-                    <a href="https://drive.google.com/drive/folders/1f4PPc1eVWV_VMclN8001cKOx1doNnbD_" target="_blank" class="bg-white hover:bg-ui-gradientStart/30 border-2 border-transparent hover:border-ui-gradientStart transition-all rounded-2xl p-4 flex items-center justify-between shadow-sm group">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-cream flex items-center justify-center text-pinky-dark"><i data-lucide="folder-heart"></i></div>
-                            <span class="font-medium text-brown group-hover:text-pinky-dark">ตัวอย่างwebsite</span>
+
+                    <a href="#" class="group flex items-center justify-between p-5 bg-white rounded-4xl border-2 border-candy-border hover:border-candy-pink transition-all shadow-sm">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-full bg-candy-bg flex items-center justify-center group-hover:scale-110 transition-transform">
+                                💻
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-sm">Portfolio: Web Design</h3>
+                                <p class="text-[10px] text-candy-text/50">ตัวอย่างเว็บไซต์ที่เคยทำ</p>
+                            </div>
                         </div>
-                        <i data-lucide="external-link" class="w-5 h-5 text-pinky"></i>
+                        <i data-lucide="chevron-right" class="w-5 h-5 text-candy-pink"></i>
                     </a>
                 </div>
             </section>
 
-            <div class="bg-white rounded-2xl p-4 border-2 border-dashed border-pinky shadow-sm flex items-center justify-between">
-                <div class="flex items-center gap-2"><i data-lucide="timer" class="w-5 h-5 text-pinky-dark"></i><span class="text-sm font-medium text-brown">เช็คคิวงานวันนี้</span></div>
-                <span class="text-xs bg-ui-gradientStart text-pinky-dark px-3 py-1 rounded-full font-bold animate-pulse">เปิดรับออเดอร์</span>
-            </div>
-
-            <section class="bg-white rounded-3xl p-6 shadow-card border-2 border-ui-gradientStart">
-                <h3 class="font-medium mb-4 flex items-center gap-2 text-lg text-brown"><i data-lucide="list-checks" class="w-5 h-5 text-pinky-dark"></i> ขั้นตอนการสั่ง</h3>
-                <ul class="text-brown-light text-sm space-y-3">
-                    <li class="flex items-start gap-2"><span>1.</span> กรอกฟอร์มเขียนรายละเอียดร้านค้า</li>
-                    <li class="flex items-start gap-2"><span>2.</span> แนบโลโก้และลิงก์ตัวอย่างงาน</li>
-                    <li class="flex items-start gap-2"><span>3.</span> ชำระเงินและรอรับงานได้เลย</li>
-                </ul>
+            <section class="bg-gradient-to-br from-candy-pink/20 to-candy-peach/20 rounded-4xl p-8 border-2 border-white relative overflow-hidden">
+                <div class="absolute -top-4 -right-4 text-4xl opacity-20">✨</div>
+                <h3 class="font-bold text-lg mb-6 flex items-center gap-2">
+                    <i data-lucide="shopping-bag" class="text-candy-accent"></i> ขั้นตอนการสั่ง
+                </h3>
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="w-6 h-6 rounded-full bg-white flex items-center justify-center text-[10px] font-bold shadow-sm shrink-0">1</div>
+                        <p class="text-sm">แจ้งรายละเอียดหรือบรีฟงานที่ต้องการ</p>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-6 h-6 rounded-full bg-white flex items-center justify-center text-[10px] font-bold shadow-sm shrink-0">2</div>
+                        <p class="text-sm">ประเมินราคาและแจ้งคิวงาน</p>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-6 h-6 rounded-full bg-white flex items-center justify-center text-[10px] font-bold shadow-sm shrink-0">3</div>
+                        <p class="text-sm">ชำระเงินและรอรับความปังได้เลย!</p>
+                    </div>
+                </div>
             </section>
+
+            <footer class="text-center pt-8 space-y-6">
+                <p class="text-xs font-bold text-candy-text/40 tracking-widest uppercase">— Contact Me —</p>
+                <div class="flex justify-center gap-4">
+                    <a href="#" class="w-12 h-12 rounded-2xl bg-white border border-candy-border flex items-center justify-center shadow-sm bouncy-hover text-[#1877F2]">
+                        <i data-lucide="facebook"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 rounded-2xl bg-white border border-candy-border flex items-center justify-center shadow-sm bouncy-hover text-[#E4405F]">
+                        <i data-lucide="instagram"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 rounded-2xl bg-white border border-candy-border flex items-center justify-center shadow-sm bouncy-hover text-[#06C755]">
+                        <i data-lucide="message-circle"></i>
+                    </a>
+                </div>
+                <p class="text-[9px] opacity-50">© 2026 KOYANGI STORE. ALL RIGHTS RESERVED.</p>
+            </footer>
         </main>
-
-        <footer class="bg-cream pt-10 pb-6 px-6 rounded-t-[40px] text-center border-t-2 border-ui-gradientStart z-10 relative">
-            <div class="absolute inset-0 opacity-[0.15] pointer-events-none" style="background-image: radial-gradient(#8A5C68 0.5px, transparent 0.5px); background-size: 10px 10px;"></div>
-            <h2 class="text-[15px] font-bold mb-6 text-brown uppercase relative z-10">CONTACT US</h2>
-            <div class="flex flex-col items-center gap-3 relative z-10">
-                <div class="flex justify-center gap-3 w-full max-w-[280px]">
-                    <a href="https://www.facebook.com/k0yang1i?" target="_blank" class="flex-1 bg-brown text-white py-3 rounded-full text-[11px] font-bold hover:scale-105 transition-transform text-center">FACEBOOK</a>
-                    <a href="https://lin.ee/UUfn5xL" target="_blank" class="flex-1 bg-white border-[1.5px] border-brown text-brown py-3 rounded-full text-[11px] font-bold hover:scale-105 transition-transform text-center">LINE</a>
-                </div>
-                <a href="https://www.instagram.com/k0yangi_ii?" target="_blank" class="w-[140px] bg-pinky-dark text-white py-3 rounded-full text-[11px] font-bold uppercase hover:scale-105 transition-transform text-center">Instagram</a>
-            </div>
-            <div class="mt-12 mb-4 relative z-10">
-                <div class="h-[1px] w-12 bg-pinky mx-auto mb-4"></div>
-                <p class="text-[10px] text-brown-light font-medium tracking-tighter opacity-60">© 2026 KOYANGI STORE. ALL RIGHTS RESERVED.</p>
-                <p class="text-[9px] text-pinky-dark font-bold mt-1 uppercase">Thank you for visiting</p>
-            </div>
-            <div class="absolute -bottom-1 right-4 opacity-40 pointer-events-none">
-                <i data-lucide="cat" class="w-12 h-12 text-pinky rotate-12"></i>
-            </div>
-        </footer>
     </div>
 
-    <div id="portfolioModal" 
-         onclick="closeModal()" 
-         class="modal fixed inset-0 z-[100] flex items-center justify-center bg-brown-dark/50 backdrop-blur-sm invisible opacity-0 p-4 cursor-pointer">
-        
-        <div class="modal-content bg-white w-full max-w-[90vw] sm:max-w-sm rounded-[30px] shadow-2xl overflow-hidden flex flex-col max-h-[85vh] border-4 border-ui-gradientStart cursor-default" 
-             onclick="event.stopPropagation()">
-            
-            <div class="p-5 flex justify-between items-center bg-ui-gradientStart">
-                <h3 id="modalTitle" class="font-medium text-lg flex items-center gap-2 text-brown"></h3>
-                <button onclick="closeModal()" class="w-8 h-8 bg-white/50 rounded-full flex items-center justify-center hover:bg-white transition-colors">
-                    <i data-lucide="x" class="w-5 h-5 text-brown"></i>
-                </button>
+    <div id="portfolioModal" onclick="closeModal()" class="fixed inset-0 z-[100] flex items-end sm:items-center justify-center bg-black/20 backdrop-blur-sm invisible opacity-0 transition-all p-0 sm:p-4">
+        <div class="bg-white w-full max-w-md rounded-t-4xl sm:rounded-4xl p-8 shadow-2xl transform translate-y-full transition-transform duration-300" onclick="event.stopPropagation()" id="modalContent">
+            <div class="w-12 h-1.5 bg-candy-border rounded-full mx-auto mb-6 sm:hidden"></div>
+            <div class="flex justify-between items-center mb-6">
+                <h3 id="modalTitle" class="text-xl font-bold text-candy-text"></h3>
+                <button onclick="closeModal()" class="text-candy-text/30 hover:text-candy-accent"><i data-lucide="x-circle"></i></button>
             </div>
-            
-            <div class="p-6 overflow-y-auto flex-1 bg-cream">
-                <div id="modalLinks"></div>
-            </div>
+            <div id="modalBody" class="text-sm leading-relaxed text-candy-text/80"></div>
         </div>
     </div>
 
     <script>
         lucide.createIcons();
 
-        const portfolioData = {
-            graphics: {
-                title: "ป้าย โลโก้ ลายน้ำ",
-                content: `
-                    <div class="space-y-6 text-[13px] leading-relaxed">
-                        <section>
-                            <h4 class="font-bold text-brown flex items-center gap-1 mb-2">
-                                <i data-lucide="help-circle" class="w-4 h-4 text-pinky-dark"></i> How to สั่งงาน
-                            </h4>
-                            <ul class="list-disc list-inside space-y-1 text-brown-light">
-                                <li>เลือกงานที่ต้องการเพื่อสอบถามราคาและรายละเอียด</li>
-                                <li>เลือก <b>สี / ตูน / ของตกแต่ง / บล็อก</b> ที่ต้องการใช้ (หากไม่ใช้แจ้งได้เลยค่ะ)</li>
-                                <li class="text-pinky-dark">ของตกแต่งเลือกเป็นเซ็ตเท่านั้น ไม่สามารถเปลี่ยนใหม่หรือนำมายำรวมกันได้</li>
-                                <li>ระบุโทนสีโดยการ <b>"แนบรูปเฉดสี"</b> (หากแจ้งแค่ชื่อสี ไม่สามารถแก้โทนสีทีหลังได้)</li>
-                                <li>รายละเอียดใช้การ <b class="underline">"พิมพ์"</b> เท่านั้น รบกวนตรวจสอบให้ถูกต้องก่อนส่ง</li>
-                            </ul>
-                        </section>
-                        <section>
-                            <h4 class="font-bold text-brown flex items-center gap-1 mb-2">
-                                <i data-lucide="tag" class="w-4 h-4 text-pinky-dark"></i> เรทราคางาน
-                            </h4>
-                            <div class="grid grid-cols-1 gap-2">
-                                <div class="bg-white/50 p-2 rounded-lg border border-ui-gradientStart/50">
-                                    <p class="font-bold text-pinky-dark">งานลายน้ำ เริ่มต้น 29.-</p>
-                                    <div class="ml-4 space-y-0.5 mt-1">
-                                        <p class="text-[11px] text-brown-light">• ใช้บล็อก เริ่มต้น 29-.</p>
-                                        <p class="text-[11px] text-brown-light">• ใช้ตัวตูน เริ่มต้น 39-.</p>
-                                    </div>
-                                </div>
-                                <div class="bg-white/50 p-2 rounded-lg border border-ui-gradientStart/50">
-                                    <p class="font-bold text-pinky-dark">งานป้าย เริ่มต้น 39.-</p>
-                                    <div class="ml-4 space-y-0.5 mt-1">
-                                        <p class="text-[11px] text-brown-light">• ไม่ใช้บล็อก เริ่มต้น 39-.</p>
-                                        <p class="text-[11px] text-brown-light">• ใช้ตัวตูน เริ่มต้น 39-.</p>
-                                        <p class="text-[11px] text-brown-light">• ใช้บล็อก เริ่มต้น 59-.</p>
-                                    </div>
-                                </div>
-                                <div class="bg-white/50 p-2 rounded-lg border border-ui-gradientStart/50">
-                                    <p class="font-bold text-pinky-dark">โลโก้ เริ่มต้น 39-.</p>
-                                </div>
-                            </div>
-                        </section>
-                        <section class="bg-pinky/10 p-3 rounded-xl border border-ui-gradientStart">
-                            <h4 class="font-bold text-brown flex items-center gap-1 mb-1">
-                                <i data-lucide="refresh-cw" class="w-4 h-4 text-pinky-dark"></i> การแก้งาน
-                            </h4>
-                            <p class="text-brown-light mb-2 italic">แก้ได้จนกว่าจะพอใจ (ในขอบเขตบรีฟแรก)</p>
-                            <ul class="list-disc list-inside space-y-1 text-[12px] text-brown-light">
-                                <li class="text-red-500 font-medium">หากส่งงานแล้ว จะไม่สามารถแก้งานย้อนหลังได้</li>
-                                <li>ไม่สามารถเปลี่ยนบรีฟ/ของตกแต่ง/ตัวตูน/บล็อก ที่เลือกไว้แต่แรกได้</li>
-                                <li class="font-bold">หากต้องการแก้หลังจากส่งงานแล้ว คิดค่าแก้จุดละ 10-.</li>
-                            </ul>
-                        </section>
-                    </div>
-                `
-            },
-            sheets: {
-                title: "GoogleSheet",
-                content: `<div class="space-y-3"><p>📊 <b>จัดการหลังบ้านให้เป็นระบบ</b></p><ul class="list-disc list-inside space-y-1 text-brown-light"><li>ระบบสต็อกสินค้า</li><li>บัญชีรายรับ-รายจ่าย</li><li>สรุปยอดขายอัตโนมัติ</li><li>ตารางเช็คคิวงาน</li></ul><p class="mt-4 text-pinky-dark font-medium">จัดทำตามความต้องการของลูกค้า</p></div>`
-            },
-            websites: {
-                title: "Website",
-                content: `<div class="space-y-3"><p>🌐 <b>เว็บไซต์สวยงาม ใช้งานง่าย</b></p><ul class="list-disc list-inside space-y-1 text-brown-light"><li>เว็บแอพพรีเมียม</li><li>เว็บรับเติมเกมส์</li><li>เว็บรวมลิงก์ / Portfolio</li><li>Landing Page ขายสินค้า</li></ul><p class="mt-4 text-pinky-dark font-medium">รองรับทั้งมือถือและคอมพิวเตอร์</p></div>`
-            }
-        };
-
-        function openModal(category) {
-            const data = portfolioData[category];
-            document.getElementById('modalTitle').innerText = data.title;
-            document.getElementById('modalLinks').innerHTML = data.content;
-            lucide.createIcons();
+        function openModal(type) {
             const modal = document.getElementById('portfolioModal');
+            const content = document.getElementById('modalContent');
+            const title = document.getElementById('modalTitle');
+            const body = document.getElementById('modalBody');
+
+            if(type === 'graphics') {
+                title.innerText = 'Logo & Graphics';
+                body.innerHTML = 'รับออกแบบโลโก้ ลายน้ำ งานป้ายทุกชนิด เริ่มต้นเพียง 29.- เท่านั้น! แก้ไขงานได้จนกว่าจะพอใจในขอบเขตบรีฟ';
+            } else if(type === 'sheets') {
+                title.innerText = 'Google Sheet';
+                body.innerHTML = 'เซ็ตระบบสต็อกสินค้า บัญชีรายรับ-จ่าย อัตโนมัติ ช่วยให้ร้านค้าของคุณจัดการง่ายขึ้น 100%';
+            } else {
+                title.innerText = 'Web Design';
+                body.innerHTML = 'สร้างเว็บไซต์ Portfolio หรือ Landing Page ขายของให้ดูแพงและน่ารัก ในราคาที่จับต้องได้';
+            }
+
             modal.classList.remove('invisible', 'opacity-0');
-            modal.classList.add('active');
+            content.classList.remove('translate-y-full');
             document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
             const modal = document.getElementById('portfolioModal');
-            modal.classList.remove('active');
-            modal.classList.add('opacity-0');
-            setTimeout(() => { 
-                modal.classList.add('invisible'); 
-                document.body.style.overflow = ''; 
+            const content = document.getElementById('modalContent');
+            content.classList.add('translate-y-full');
+            setTimeout(() => {
+                modal.classList.add('invisible', 'opacity-0');
+                document.body.style.overflow = '';
             }, 300);
         }
     </script>
